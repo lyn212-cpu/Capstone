@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Pages/Dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Pages/courseManagement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Pages/feedback.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/views/Dashboard.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Pages/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/sideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/sideBar.php" afterDir="false" />
-    </list>
+    <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "L:/Downloads/student_booking",
+    "last_opened_file_path": "L:/Downloads/Tesda(capastone)",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -112,6 +104,7 @@
       <workItem from="1740185026740" duration="1449000" />
       <workItem from="1740214581541" duration="3000" />
       <workItem from="1740270988932" duration="35000" />
+      <workItem from="1743909578694" duration="329000" />
     </task>
     <servers />
   </component>
