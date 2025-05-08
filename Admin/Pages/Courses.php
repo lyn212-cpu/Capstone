@@ -11,7 +11,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <title>Course Management</title>
+    <title>Admin</title>
 </head>
 
 <body>
@@ -144,7 +144,7 @@
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
-                <h3 style="color: #190960" class="fw-bold">Dashboard</h3>
+                <h3 style="color: #190960" class="fw-bold">Manage Courses</h3>
             </div>
         </header>
 
@@ -287,7 +287,7 @@
                         <label for="courseDescription">Course Description</label>
                     </div>
 
-                    <!-- Requirements -->
+                    <!-- Requirements -->s
                     <div class="col-12">
                         <label class="form-label">Requirements</label>
                         <select multiple class="form-select" id="requirements" onchange="toggleOtherRequirement()">
