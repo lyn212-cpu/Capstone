@@ -27,28 +27,13 @@
                 <div class="modal-body">
                     <form id="editForm">
                         <div class="mb-3">
-                            <label for="editCourseName" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="editCourseName" placeholder="Enter course name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Duration</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Slots Available</label>
-                            <input type="number" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editCourseName" class="form-label">Training Center Name</label>
+                            <input type="text" class="form-control" id="editTrainingCenter"
+                                placeholder="Enter course name">
                         </div>
                         <div class="mb-3">
                             <label for="editAvailableSlot" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <input type="text" class="form-control" id="editLocation" placeholder="Enter New Location">
                         </div>
                         <div class="mb-3">
                             <label for="contactInformation" class="form-label">Contact Information</label>
@@ -58,11 +43,6 @@
                                 <input type="email" class="form-control" id="contactEmail"
                                     placeholder="Enter email address">
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
                         </div>
                         <div class="mb-3">
                             <label for="editRequirements" class="form-label">Requirements</label>
@@ -89,6 +69,56 @@
                             <!-- Container for additional requirements -->
                             <div id="additionalRequirementsEdit" class="mt-2"></div>
                         </div>
+                        <div class="mb-3">
+                            <label for="editAvailableSlot" class="form-label">Operation Hours</label>
+                            <input type="text" class="form-control" id="editAvailableSlot"
+                                placeholder="Enter New Operation Hours">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAvailableCourses" class="form-label">Available Courses</label>
+                            <div id="editAvailableCourses">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                        value="Computer System Servicing NC II" id="course1">
+                                    <label class="form-check-label" for="course1">
+                                        Computer System Servicing NC II
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Visual Graphic Design NC III"
+                                        id="course2">
+                                    <label class="form-check-label" for="course2">
+                                        Visual Graphic Design NC III
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2D Animation NC II"
+                                        id="course3">
+                                    <label class="form-check-label" for="course3">
+                                        2D Animation NC II
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Programming NC III"
+                                        id="course4">
+                                    <label class="form-check-label" for="course4">
+                                        Programming NC III
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                        value="Electrical Installation and Maintenance NC II" id="course5">
+                                    <label class="form-check-label" for="course5">
+                                        Electrical Installation and Maintenance NC II
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAvailableSlot" class="form-label">Student Slot</label>
+                            <input type="number" class="form-control" id="editAvailableSlot"
+                                placeholder="Enter New Available Slot">
+                        </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>
@@ -104,8 +134,8 @@
                     <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this course?
+                <div class="modal-body" id="deleteModalMessage">
+                    Are you sure you want to delete this training center?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -158,7 +188,6 @@
                 </div>
             </div>
         </div>
-
     </nav>
     <main class="container-fluid d-flex flex-column gap-3 p-2">
         <header class="shadow-sm border-bottom border-2 rounded-3 p-2">
@@ -166,7 +195,7 @@
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
-                <h3 style="color: #190960" class="fw-bold">Manage Courses</h3>
+                <h3 style="color: #190960" class="fw-bold">Training Center</h3>
             </div>
         </header>
 
@@ -174,7 +203,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Course Management</li>
+                    <li class="breadcrumb-item active" aria-current="page">Training Center Management</li>
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
@@ -186,56 +215,36 @@
         <div class="card mb-4 bg-transparent">
             <div style="background-color: #190960" class="card-header text-light">
                 <i class="fas fa-table me-1"></i>
-                Course List
+                Training Center List
             </div>
             <div class="card-body">
                 <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Actions</button>
                 <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
-                            <th>Course Name</th>
                             <th>Training Center Name</th>
-                            <th>Duration</th>
-                            <th>Slots Available</th>
                             <th>Location</th>
                             <th>Contact Information</th>
-                            <th>Course Description</th>
                             <th>Requirements</th>
+                            <th>Operation Hours</th>
+                            <th>Available Courses</th>
+                            <th>Student Slot</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Computer System Servicing NC II</td>
                             <td>Philippine Academy for Technical and Vocational Inc.</td>
-                            <td>35 Days</td>
-                            <td>10</td>
                             <td>San Roque, Marikina City</td>
                             <td>
                                 <strong>Contact Number:</strong> 09123456789<br>
                                 <strong>Email:</strong> example@example.com
                             </td>
-                            <td>This course is about computers bruh</td>
                             <td>Barangay id<br>Form 137<br>Birth Certificate</td>
-                            <td>
-                                <button class="btn btn-primary edit-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">Edit</button>
-                                <button class="btn btn-danger delete-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                            <td>8:00 AM - 5:00 PM</td>
+                            <td>Computer System Servicing NC II<br>Visual Graphic Design NC III<br>2D Animation NC II
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Programming NC III</td>
-                            <td>Philippine Academy for Technical and Vocational Inc.</td>
-                            <td>45 Days</td>
-                            <td>15</td>
-                            <td>San Roque, Marikina City</td>
-                            <td>
-                                <strong>Contact Number:</strong> 09876543210<br>
-                                <strong>Email:</strong> programming@example.com
-                            </td>
-                            <td>This course is about programming</td>
-                            <td>Barangay id<br>Form 137<br>Birth Certificate</td>
+                            <td>10</td>
                             <td>
                                 <button class="btn btn-primary edit-btn d-none" data-bs-toggle="modal"
                                     data-bs-target="#editModal">Edit</button>
@@ -260,28 +269,16 @@
                 </div>
 
                 <div class="modal-body row g-3 px-3">
-                    <!-- Course Name -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="courseName" placeholder="Course Name">
-                        <label for="courseName">Course Name</label>
-                    </div>
-
                     <!-- Training Center Name -->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="centerName" placeholder="Training Center Name">
-                        <label for="centerName">Training Center Name</label>
-                    </div>
-
-                    <!-- Duration -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="duration" placeholder="Duration">
-                        <label for="duration">Duration (e.g., 3 months)</label>
+                        <input type="text" class="form-control" id="courseName" placeholder="Course Name">
+                        <label for="courseName">Training Center Name</label>
                     </div>
 
                     <!-- Location -->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="location" placeholder="Location">
-                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="centerName" placeholder="Training Center Name">
+                        <label for="centerName">Location</label>
                     </div>
 
                     <!-- Contact Number -->
@@ -296,20 +293,7 @@
                         <label for="email">Email</label>
                     </div>
 
-                    <!-- Slot Availability (typable) -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="slotAvailability" placeholder="Slot Availability">
-                        <label for="slotAvailability">Slot Availability</label>
-                    </div>
-
-                    <!-- Course Description -->
-                    <div class="form-floating col-12">
-                        <textarea class="form-control" placeholder="Leave a course description here"
-                            id="courseDescription" style="height: 100px"></textarea>
-                        <label for="courseDescription">Course Description</label>
-                    </div>
-
-                    <!-- Requirements -->s
+                    <!-- Requirements -->
                     <div class="col-12">
                         <label class="form-label">Requirements</label>
                         <select multiple class="form-select" id="requirements" onchange="toggleOtherRequirement()">
@@ -332,21 +316,74 @@
                         <button type="button" class="btn btn-secondary mt-2" id="addRequirementBtn"
                             style="display: none;">Add Another Requirement</button>
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
+                    <!-- Operation Hours-->
+                    <div class="form-floating col-md-6">
+                        <input type="text" class="form-control" id="slotAvailability" placeholder="Slot Availability">
+                        <label for="slotAvailability">Operation Hours</label>
+                    </div>
+
+                    <!-- Available Courses -->
+                    <div class="mb-3">
+                        <label for="editAvailableCourses" class="form-label">Available Courses</label>
+                        <div id="editAvailableCourses">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Computer System Servicing NC II"
+                                    id="course1">
+                                <label class="form-check-label" for="course1">
+                                    Computer System Servicing NC II
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Visual Graphic Design NC III"
+                                    id="course2">
+                                <label class="form-check-label" for="course2">
+                                    Visual Graphic Design NC III
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2D Animation NC II" id="course3">
+                                <label class="form-check-label" for="course3">
+                                    2D Animation NC II
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Programming NC III" id="course4">
+                                <label class="form-check-label" for="course4">
+                                    Programming NC III
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="Electrical Installation and Maintenance NC II" id="course5">
+                                <label class="form-check-label" for="course5">
+                                    Electrical Installation and Maintenance NC II
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Slot -->
+                    <div class="form-floating col-md-6">
+                        <input type="text" class="form-control" id="location" placeholder="Location">
+                        <label for="location">Student Slot</label>
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="/Capstone/JavaScript_Admin/js_courses.js"></script>
+        <script src="/Capstone/JavaScript_Admin/js_training_center.js"></script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

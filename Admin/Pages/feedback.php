@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <title>Admin</title>
@@ -31,11 +31,32 @@
         include_once '../../include/sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
-        <div class="d-flex justify-content-evenly  align-items-center p-2">
-            <a href="#" class="nav-link active text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75">
+        <div class="d-flex justify-content-evenly align-items-center p-2">
+            <!-- Logout Button -->
+            <button class="btn text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75"
+                data-bs-toggle="modal" data-bs-target="#logoutModal">
                 Logout
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+            </button>
+        </div>
+
+        <!-- Logout Confirmation Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to log out?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="login.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <main class="container-fluid d-flex flex-column gap-3 p-2">
@@ -60,29 +81,28 @@
         <div class="card mb-4 bg-transparent ">
             <div style="background-color: #190960" class="card-header text-light">
                 <i class="fas fa-table me-1"></i>
-                Feedbacks
+                Feedback List
             </div>
             <div class="card-body">
+                <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
                 <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Username/th>
+                            <th>Username</th>
                             <th>Course</th>
-                            <th>Ratings</th>
                             <th>Feedback</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>johndoe</td>
-                            <td>johndoe</td>
+                            <td>Jefte E. Ramon Jr.</td>
+                            <td>DIT 3-1</td>
+                            <td>Maganda ang training na ibinibigay sa mga trainees, marami ka talagang matututunan
+                                brobro</td>
                             <td>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-danger delete-btn" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -91,30 +111,28 @@
         </div>
     </main>
 
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this feedback?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
+    <script src="/Capstone/JavaScript_Admin/js_feedback.js"></script>
 </body>
 
 </html>
-<script>
-    window.addEventListener('DOMContentLoaded', event => {
-        const datatablesSimple = document.getElementById('datatablesSimple');
-        if (datatablesSimple) {
-            new simpleDatatables.DataTable(datatablesSimple);
-        }
-    });
-
-    const Nav = document.getElementById('collapseExample');
-    const btn_menu = document.getElementById('btn_menu');
-
-    btn_menu.addEventListener('click', () => {
-        Nav.classList.toggle('d-none');
-        Nav.classList.add('nav_active');
-    });
-
-    if (window.innerWidth < 768) {
-        Nav.classList.add('d-none');
-
-
-    }
-</script>

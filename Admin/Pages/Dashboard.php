@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <title>Admin</title>
 </head>
@@ -31,11 +31,33 @@
         include_once '../../include/sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
-        <div class="d-flex justify-content-evenly  align-items-center p-2">
-            <a href="#" class="nav-link active text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75">
+        <div class="d-flex justify-content-evenly align-items-center p-2">
+            <!-- Logout Button -->
+            <button class="btn text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75"
+                data-bs-toggle="modal" data-bs-target="#logoutModal">
                 Logout
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+            </button>
+        </div>
+
+
+        <!-- Logout Confirmation Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to log out?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="login.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <main class="container-fluid d-flex flex-column gap-3 p-2">
@@ -151,11 +173,13 @@
         </form>
 
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 
     <script src="/Capstone/JavaScript_Admin/js_dashboard.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
