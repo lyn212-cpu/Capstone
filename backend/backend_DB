@@ -3,7 +3,7 @@
 CREATE DATABASE `NC Finder`;
 
 -- Use the database
-USE `NC Finder`;
+USE `NCFiner`;
 
 -- Table: Sign-up
 CREATE TABLE `Sign_up` (
@@ -29,7 +29,7 @@ CREATE TABLE `Student_Dashboard` (
     FOREIGN KEY (student_number) REFERENCES Sign_up(student_number)
 );
 
--- Table: NC Sites
+-- Table: NCSites
 CREATE TABLE `NC_Sites` (
     site_name VARCHAR(100) PRIMARY KEY,
     site_contact_num VARCHAR(20),
