@@ -3,7 +3,7 @@
 include 'db_connect.php';
 session_start();
 
-if ($_SESSION['role'] !== 'user') {
+if ($_SESSION['role'] !== 'student') {
     http_response_code(403);
     echo json_encode(["error" => "Access denied."]);
     exit;
