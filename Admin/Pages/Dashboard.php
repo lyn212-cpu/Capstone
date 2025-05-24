@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <title>Admin</title>
 </head>
@@ -112,13 +111,14 @@
         <!--User list table-->
         <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
 
-
             <table id="datatablesSimple" class="table">
                 <thead>
                     <tr>
-                        <th><button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
+                        <th>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
                                 Delete
-                            </button></th>
+                            </button>
+                        </th>
                         <th>Last Name</th>
                         <th>Middle Name</th>
                         <th>First Name</th>
@@ -177,9 +177,10 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 
-    <script src="/Capstone/JavaScript_Admin/js_dashboard.js"></script>
+    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>
 
 </html>
+

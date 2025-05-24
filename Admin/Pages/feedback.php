@@ -132,7 +132,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="/Capstone/JavaScript_Admin/js_feedback.js"></script>
+    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
 </body>
 
 </html>

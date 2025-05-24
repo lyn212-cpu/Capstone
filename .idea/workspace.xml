@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/nc_finder_logo_transparent.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserInterface/pages/contact_us.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserInterface/pages/privacy_and_policy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/EditProfileInfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/centeAttended.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/myFeedback.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/viewCertificates.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/ProfileSideBar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/Components/navSection.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/Components/navSection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/tesda_training_Center_Info.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/tesda_training_Center_Info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Pages/Courses.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Pages/Courses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Pages/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Pages/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Pages/TrainingCenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Pages/TrainingCenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Pages/feedback.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Pages/feedback.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserInterface/pages/userProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/userProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Dashboard.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Admin/Pages/Dashboard.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/UserInterface/pages/userProfile.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/cdn_links.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/sideBar.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
@@ -47,22 +52,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/xampp/htdocs/ims",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.notifications",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;L:/Downloads/Tesda(capastone)&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="L:\Downloads\Tesda(capastone)\Assets\sideBarIcon" />
@@ -129,6 +134,9 @@
       <workItem from="1747453751527" duration="7211000" />
       <workItem from="1747564430917" duration="4921000" />
       <workItem from="1747571940632" duration="5658000" />
+      <workItem from="1748055382848" duration="5829000" />
+      <workItem from="1748072273995" duration="1286000" />
+      <workItem from="1748080921647" duration="3421000" />
     </task>
     <servers />
   </component>

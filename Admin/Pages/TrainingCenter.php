@@ -369,8 +369,6 @@
                         <label for="location">Student Slot</label>
                     </div>
 
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
@@ -379,9 +377,7 @@
             </div>
         </div>
 
-        <script src="/Capstone/JavaScript_Admin/js_training_center.js"></script>
-
-
+        <script src="../../JavaScript_Admin/js_dashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
             crossorigin="anonymous"></script>
 </body>
