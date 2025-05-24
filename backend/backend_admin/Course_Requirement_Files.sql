@@ -7,3 +7,4 @@ CREATE TABLE Course_Requirement_Files (
     uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (course_id) REFERENCES Course_Admin(id) ON DELETE CASCADE
 );
+
