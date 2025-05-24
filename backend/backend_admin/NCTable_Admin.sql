@@ -7,3 +7,4 @@ CREATE TABLE NCTable_Admin (
     certificate_number VARCHAR(100),
     uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
