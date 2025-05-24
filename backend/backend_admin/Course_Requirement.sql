@@ -4,3 +4,4 @@ CREATE TABLE Course_Requirements (
     requirement_name VARCHAR(255),
     FOREIGN KEY (course_id) REFERENCES Course_Admin(id) ON DELETE CASCADE
 );
+
