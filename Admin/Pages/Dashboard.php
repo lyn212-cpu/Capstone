@@ -40,7 +40,6 @@
             </button>
         </div>
 
-
         <!-- Logout Confirmation Modal -->
         <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -111,14 +110,14 @@
 
         <!--User list table-->
         <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
-
-
             <table id="datatablesSimple" class="table">
                 <thead>
                     <tr>
-                        <th><button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
+                        <th>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
                                 Delete
-                            </button></th>
+                            </button>
+                        </th>
                         <th>Last Name</th>
                         <th>Middle Name</th>
                         <th>First Name</th>
@@ -129,49 +128,11 @@
                         <th>Contact Person</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <!-- Sample User Row -->
-                    <tr>
-                        <td><input type="checkbox" name="usernames[]" value="johndoe"></td>
-                        <td>Doe</td>
-                        <td>Hon</td>
-                        <td>Johnny</td>
-                        <td>johndoe</td>
-                        <td>johndoe@example.com</td>
-                        <td>123 Main St</td>
-                        <td>555-1234</td>
-                        <td>Jane Doe</td>
-                    </tr>
-                    <!-- Repeat for more users -->
-                    <tr>
-                        <td><input type="checkbox" name="usernames[]" value="johndoe"></td>
-                        <td>Deds</td>
-                        <td>Hon</td>
-                        <td>John</td>
-                        <td>johndoeabcdefgh</td>
-                        <td>johndoe@example.com</td>
-                        <td>123 Main St</td>
-                        <td>555-1234</td>
-                        <td>Jane Doe</td>
-                    </tr>
-
-                    <tr>
-                        <td><input type="checkbox" name="usernames[]" value="johndoe"></td>
-                        <td>Hulo</td>
-                        <td>Hon</td>
-                        <td>John</td>
-                        <td>johndoe</td>
-                        <td>johndoe@example.com</td>
-                        <td>123 Main St Dasdasan Marikina City Philippines</td>
-                        <td>555-1234</td>
-                        <td>Jane Doe</td>
-                    </tr>
+                    <!-- No sample data, only column headers remain -->
                 </tbody>
-
             </table>
         </form>
-
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
