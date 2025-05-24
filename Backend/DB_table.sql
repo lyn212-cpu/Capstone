@@ -1,6 +1,6 @@
 -- Connect as NC_Admin now
 -- Create the database
-CREATE DATABASE `NC Finder`;
+CREATE DATABASE `NC_Finder`;
 
 -- Use the database
-USE `NC Finder`;
+USE `NC_Finder`;
