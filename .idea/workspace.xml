@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/UserInterface/Sign In.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/Sign_In.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/Sign Up.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/Sign_Up.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/nc_finder_logo_transparent.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/contact_us.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/pages/privacy_and_policy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserInterface/Components/navSection.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/Components/navSection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserInterface/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserInterface/pages/tesda_training_Center_Info.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/tesda_training_Center_Info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +51,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "L:/Downloads/Tesda(capastone)",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/xampp/htdocs/ims",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -62,6 +69,8 @@
       <recent name="L:\Downloads\Tesda(capastone)\Assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="L:\Downloads\Tesda(capastone)\Assets" />
+      <recent name="L:\Downloads\Tesda(capastone)\include" />
       <recent name="L:\Downloads\Tesda(capastone)\Assets\sideBarIcon" />
     </key>
   </component>
@@ -117,7 +126,9 @@
       <workItem from="1747353958336" duration="7652000" />
       <workItem from="1747444168789" duration="2070000" />
       <workItem from="1747452021817" duration="1022000" />
-      <workItem from="1747453751527" duration="2125000" />
+      <workItem from="1747453751527" duration="7211000" />
+      <workItem from="1747564430917" duration="4921000" />
+      <workItem from="1747571940632" duration="5658000" />
     </task>
     <servers />
   </component>
