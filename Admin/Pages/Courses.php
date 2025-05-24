@@ -26,70 +26,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="editForm">
-                        <div class="mb-3">
-                            <label for="editCourseName" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="editCourseName" placeholder="Enter course name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Duration</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Slots Available</label>
-                            <input type="number" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="contactInformation" class="form-label">Contact Information</label>
-                            <div>
-                                <input type="tel" class="form-control mb-2" id="contactNumber"
-                                    placeholder="Enter contact number">
-                                <input type="email" class="form-control" id="contactEmail"
-                                    placeholder="Enter email address">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editRequirements" class="form-label">Requirements</label>
-                            <select multiple class="form-select" id="editRequirements"
-                                onchange="toggleOtherRequirementEdit()">
-                                <option value="form_137">Form 137</option>
-                                <option value="birth_certificate">Birth Certificate</option>
-                                <option value="barangay_clearance">Barangay Clearance</option>
-                                <option value="nbi_clearance">NBI Clearance</option>
-                                <option value="high_school_diploma">High School Diploma</option>
-                                <option value="other">Other (specify below)</option>
-                            </select>
-                            <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
-                            <!-- Other Requirement Field (hidden by default) -->
-                            <div class="form-floating mt-2" id="otherRequirementEditDiv" style="display: none;">
-                                <input type="text" class="form-control mb-2" id="otherRequirementEdit"
-                                    placeholder="Other Requirement">
-                                <label for="otherRequirementEdit">Specify Other Requirement</label>
-                                <button type="button" class="btn btn-secondary mt-2" id="addRequirementEditBtn">Add
-                                    Another Requirement</button>
-                            </div>
-
-                            <!-- Container for additional requirements -->
-                            <div id="additionalRequirementsEdit" class="mt-2"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <!-- ...existing code for edit form... -->
                     </form>
                 </div>
             </div>
@@ -181,7 +118,6 @@
                 class="btn text-light">New Course</button>
         </nav>
 
-
         <!-- User list table -->
         <div class="card mb-4 bg-transparent">
             <div style="background-color: #190960" class="card-header text-light">
@@ -205,44 +141,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Computer System Servicing NC II</td>
-                            <td>Philippine Academy for Technical and Vocational Inc.</td>
-                            <td>35 Days</td>
-                            <td>10</td>
-                            <td>San Roque, Marikina City</td>
-                            <td>
-                                <strong>Contact Number:</strong> 09123456789<br>
-                                <strong>Email:</strong> example@example.com
-                            </td>
-                            <td>This course is about computers bruh</td>
-                            <td>Barangay id<br>Form 137<br>Birth Certificate</td>
-                            <td>
-                                <button class="btn btn-primary edit-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">Edit</button>
-                                <button class="btn btn-danger delete-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Programming NC III</td>
-                            <td>Philippine Academy for Technical and Vocational Inc.</td>
-                            <td>45 Days</td>
-                            <td>15</td>
-                            <td>San Roque, Marikina City</td>
-                            <td>
-                                <strong>Contact Number:</strong> 09876543210<br>
-                                <strong>Email:</strong> programming@example.com
-                            </td>
-                            <td>This course is about programming</td>
-                            <td>Barangay id<br>Form 137<br>Birth Certificate</td>
-                            <td>
-                                <button class="btn btn-primary edit-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">Edit</button>
-                                <button class="btn btn-danger delete-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
+                        <!-- No sample data, only column headers remain -->
                     </tbody>
                 </table>
             </div>
@@ -260,78 +159,7 @@
                 </div>
 
                 <div class="modal-body row g-3 px-3">
-                    <!-- Course Name -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="courseName" placeholder="Course Name">
-                        <label for="courseName">Course Name</label>
-                    </div>
-
-                    <!-- Training Center Name -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="centerName" placeholder="Training Center Name">
-                        <label for="centerName">Training Center Name</label>
-                    </div>
-
-                    <!-- Duration -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="duration" placeholder="Duration">
-                        <label for="duration">Duration (e.g., 3 months)</label>
-                    </div>
-
-                    <!-- Location -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="location" placeholder="Location">
-                        <label for="location">Location</label>
-                    </div>
-
-                    <!-- Contact Number -->
-                    <div class="form-floating col-md-6">
-                        <input type="tel" class="form-control" id="contactNumber" placeholder="Contact Number">
-                        <label for="contactNumber">Contact Number</label>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="form-floating col-md-6">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                        <label for="email">Email</label>
-                    </div>
-
-                    <!-- Slot Availability (typable) -->
-                    <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="slotAvailability" placeholder="Slot Availability">
-                        <label for="slotAvailability">Slot Availability</label>
-                    </div>
-
-                    <!-- Course Description -->
-                    <div class="form-floating col-12">
-                        <textarea class="form-control" placeholder="Leave a course description here"
-                            id="courseDescription" style="height: 100px"></textarea>
-                        <label for="courseDescription">Course Description</label>
-                    </div>
-
-                    <!-- Requirements -->s
-                    <div class="col-12">
-                        <label class="form-label">Requirements</label>
-                        <select multiple class="form-select" id="requirements" onchange="toggleOtherRequirement()">
-                            <option value="form_137">Form 137</option>
-                            <option value="birth_certificate">Birth Certificate</option>
-                            <option value="barangay_clearance">Barangay Clearance</option>
-                            <option value="nbi_clearance">NBI Clearance</option>
-                            <option value="high_school_diploma">High School Diploma</option>
-                            <option value="other">Other (specify below)</option>
-                        </select>
-                        <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
-                        <!-- Other Requirement Field (hidden by default) -->
-                        <div class="form-floating mt-2" id="otherRequirementDiv" style="display: none;">
-                            <input type="text" class="form-control" id="otherRequirement"
-                                placeholder="Other Requirement">
-                            <label for="otherRequirement">Specify Other Requirement</label>
-                        </div>
-                        <div id="additionalRequirements"></div> <!-- Container for additional fields -->
-                        <button type="button" class="btn btn-secondary mt-2" id="addRequirementBtn"
-                            style="display: none;">Add Another Requirement</button>
-                    </div>
+                    <!-- ...existing code for new course form... -->
                 </div>
 
                 <div class="modal-footer">
@@ -342,7 +170,11 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+=======
+    <script src="/Capstone/JavaScript_Admin/js_courses.js"></script>
+>>>>>>> 1ca11bbb63edb056c0c1af6801ab777ec55ef203
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 </body>

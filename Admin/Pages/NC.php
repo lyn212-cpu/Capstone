@@ -98,17 +98,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Jefte E. Ramon Jr.</td>
-                            <td>DIT 3-1</td>
-                            <td>example123@gmail.com</td>
-                            <td>Visual Graphic Design NC III</td>
-                            <td>123456789</td>
-                            <td>
-                                <button class="btn btn-danger delete-btn" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
+                        <!-- No sample data, only column headers remain -->
                     </tbody>
                 </table>
             </div>

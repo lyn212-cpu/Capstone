@@ -210,7 +210,6 @@
                 class="btn text-light">New Course</button>
         </nav>
 
-
         <!-- User list table -->
         <div class="card mb-4 bg-transparent">
             <div style="background-color: #190960" class="card-header text-light">
@@ -233,25 +232,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Philippine Academy for Technical and Vocational Inc.</td>
-                            <td>San Roque, Marikina City</td>
-                            <td>
-                                <strong>Contact Number:</strong> 09123456789<br>
-                                <strong>Email:</strong> example@example.com
-                            </td>
-                            <td>Barangay id<br>Form 137<br>Birth Certificate</td>
-                            <td>8:00 AM - 5:00 PM</td>
-                            <td>Computer System Servicing NC II<br>Visual Graphic Design NC III<br>2D Animation NC II
-                            </td>
-                            <td>10</td>
-                            <td>
-                                <button class="btn btn-primary edit-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">Edit</button>
-                                <button class="btn btn-danger delete-btn d-none" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
+                        <!-- No sample data, only column headers remain -->
                     </tbody>
                 </table>
             </div>
@@ -377,7 +358,11 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+=======
+        <script src="/Capstone/JavaScript_Admin/js_training_center.js"></script>
+>>>>>>> 1ca11bbb63edb056c0c1af6801ab777ec55ef203
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
             crossorigin="anonymous"></script>
 </body>
