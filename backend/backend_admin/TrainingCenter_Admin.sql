@@ -10,3 +10,4 @@ CREATE TABLE TrainingCenter_Admin (
     student_slot INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
