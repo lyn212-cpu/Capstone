@@ -1,5 +1,5 @@
 <?php
-include 'your_connection_file.php'; // Replace with your actual filename (e.g., db_connection.php)
+include 'connect.php'; // Replace with your actual filename (e.g., db_connection.php)
 
 $sql = "
     SELECT 
