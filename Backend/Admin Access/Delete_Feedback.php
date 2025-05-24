@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connection.php';
+require_once 'connect.php';
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
