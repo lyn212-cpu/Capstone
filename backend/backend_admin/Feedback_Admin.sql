@@ -7,3 +7,4 @@ CREATE TABLE Feedback_Admin (
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES Courses(id) ON DELETE CASCADE
 );
+
