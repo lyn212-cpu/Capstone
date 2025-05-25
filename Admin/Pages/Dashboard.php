@@ -109,10 +109,7 @@
 
         <!--User list table-->
         <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
-<<<<<<< HEAD
 
-=======
->>>>>>> 1ca11bbb63edb056c0c1af6801ab777ec55ef203
             <table id="datatablesSimple" class="table">
                 <thead>
                     <tr>
@@ -147,4 +144,3 @@
 </body>
 
 </html>
-

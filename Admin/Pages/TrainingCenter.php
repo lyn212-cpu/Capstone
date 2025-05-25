@@ -358,11 +358,11 @@
             </div>
         </div>
 
-<<<<<<< HEAD
+
         <script src="../../JavaScript_Admin/js_dashboard.js"></script>
-=======
+
         <script src="/Capstone/JavaScript_Admin/js_training_center.js"></script>
->>>>>>> 1ca11bbb63edb056c0c1af6801ab777ec55ef203
+
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
             crossorigin="anonymous"></script>
 </body>
