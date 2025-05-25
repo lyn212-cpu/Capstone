@@ -78,6 +78,32 @@
             </nav>
         </nav>
 
+        <!-- Upload .xlsx Button Only -->
+        <div class="mb-3 d-flex justify-content-end">
+            <form action="upload_nc_excel.php" method="post" enctype="multipart/form-data"
+                class="d-flex align-items-center gap-2">
+                <input type="file" name="nc_excel" accept=".xlsx" class="form-control d-none" id="ncExcelInput"
+                    required>
+                <button type="button" class="btn btn-primary"
+                    onclick="document.getElementById('ncExcelInput').click();">
+                    Upload .xlsx
+                </button>
+                <button type="submit" class="btn btn-success d-none" id="submitNcExcelBtn">Submit</button>
+            </form>
+        </div>
+        <script>
+            // Show submit button after file is selected
+            const fileInput = document.getElementById('ncExcelInput');
+            const submitBtn = document.getElementById('submitNcExcelBtn');
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files.length > 0) {
+                    submitBtn.classList.remove('d-none');
+                } else {
+                    submitBtn.classList.add('d-none');
+                }
+            });
+        </script>
+
         <!--     User list table-->
         <div class="card mb-4 bg-transparent ">
             <div style="background-color: #190960" class="card-header text-light">
