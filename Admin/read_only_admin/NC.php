@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <title>Admin</title>
@@ -85,34 +84,6 @@
                 National Certificate Form List
             </div>
             <div class="card-body">
-                <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
-
-                <!-- Upload .xlsx Button Only (moved below toggle button) -->
-                <div class="mb-3 d-flex justify-content-start">
-                    <form action="upload_nc_excel.php" method="post" enctype="multipart/form-data"
-                        class="d-flex align-items-center gap-2">
-                        <input type="file" name="nc_excel" accept=".xlsx" class="form-control d-none" id="ncExcelInput"
-                            required>
-                        <button type="button" class="btn btn-primary"
-                            onclick="document.getElementById('ncExcelInput').click();">
-                            Upload .xlsx
-                        </button>
-                        <button type="submit" class="btn btn-success d-none" id="submitNcExcelBtn">Submit</button>
-                    </form>
-                </div>
-                <script>
-                    // Show submit button after file is selected
-                    const fileInput = document.getElementById('ncExcelInput');
-                    const submitBtn = document.getElementById('submitNcExcelBtn');
-                    fileInput.addEventListener('change', function () {
-                        if (fileInput.files.length > 0) {
-                            submitBtn.classList.remove('d-none');
-                        } else {
-                            submitBtn.classList.add('d-none');
-                        }
-                    });
-                </script>
-
                 <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
@@ -121,7 +92,6 @@
                             <th>Email</th>
                             <th>National Certificate</th>
                             <th>Certificate No.</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -131,25 +101,6 @@
             </div>
         </div>
     </main>
-
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
