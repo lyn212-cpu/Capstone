@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <title>Admin</title>
@@ -28,7 +27,7 @@
         </div>
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/moderator_sideBar.php';
+        include_once '../../include/read_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -84,14 +83,12 @@
                 Feedback List
             </div>
             <div class="card-body">
-                <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
                 <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
                             <th>Username</th>
                             <th>Course</th>
                             <th>Feedback</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,25 +98,6 @@
             </div>
         </div>
     </main>
-
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this feedback?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
