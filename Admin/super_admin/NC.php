@@ -23,7 +23,7 @@
                     alt="administrator-male--v1" />
             </picture>
             <div>
-                <h5 class="">Admin</h5>
+                <h5 class="">Super Admin</h5>
             </div>
         </div>
         <!-- SideBar--------------------------------------------------------------->
