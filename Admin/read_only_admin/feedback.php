@@ -28,7 +28,7 @@
         </div>
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/moderator_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">

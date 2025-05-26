@@ -27,7 +27,7 @@
 
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/moderator_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -61,7 +61,6 @@
     <main class="container-fluid d-flex flex-column gap-3 p-2">
         <header class="shadow-sm border-bottom border-2 rounded-3 p-2">
             <div class="d-flex gap-3">
-
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
@@ -108,31 +107,27 @@
         </section>
 
         <!--User list table-->
-        <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
-
-            <table id="datatablesSimple" class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
-                                Delete
-                            </button>
-                        </th>
-                        <th>Last Name</th>
-                        <th>Middle Name</th>
-                        <th>First Name</th>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Contact Person</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- No sample data, only column headers remain -->
-                </tbody>
-            </table>
-        </form>
+        <div class="card mb-4 bg-transparent">
+            <div class="card-body">
+                <table id="datatablesSimple" class="table">
+                    <thead>
+                        <tr>
+                            <th>Last Name</th>
+                            <th>Middle Name</th>
+                            <th>First Name</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone Number</th>
+                            <th>Contact Person</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- No sample data, only column headers remain -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
