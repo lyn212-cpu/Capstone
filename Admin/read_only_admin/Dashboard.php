@@ -109,7 +109,7 @@
         <!--User list table-->
         <div class="card mb-4 bg-transparent">
             <div class="card-body">
-                <table id="datatablesSimple" class="table">
+                <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Last Name</th>

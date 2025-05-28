@@ -84,7 +84,7 @@
                 Training Center List
             </div>
             <div class="card-body">
-                <table id="datatablesSimple" class="table">
+                <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Training Center Name</th>

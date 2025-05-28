@@ -110,7 +110,7 @@
         <!--User list table-->
         <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
 
-            <table id="datatablesSimple" class="table">
+            <table id="datatablesSimple" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>

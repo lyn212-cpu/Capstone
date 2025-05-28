@@ -113,7 +113,7 @@
                     });
                 </script>
 
-                <table id="datatablesSimple" class="table">
+                <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Full Name</th>

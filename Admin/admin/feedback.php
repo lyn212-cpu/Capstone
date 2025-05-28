@@ -85,7 +85,7 @@
             </div>
             <div class="card-body">
                 <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
-                <table id="datatablesSimple" class="table">
+                <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Username</th>
