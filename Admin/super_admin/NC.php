@@ -11,7 +11,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <title>Admin</title>
+    <title>Super Admin</title>
 </head>
 
 <body>
