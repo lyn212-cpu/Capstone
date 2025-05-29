@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UserInterface/pages/about_us.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserInterface/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/EditProfileInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/EditProfileInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/contact_us.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/contact_us.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/privacy_and_policy.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/privacy_and_policy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/userProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/userProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/viewCertificates.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/viewCertificates.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +128,7 @@
       <workItem from="1748163251400" duration="1965000" />
       <workItem from="1748270117484" duration="404000" />
       <workItem from="1748293506498" duration="118000" />
-      <workItem from="1748530797871" duration="3103000" />
+      <workItem from="1748530797871" duration="3416000" />
     </task>
     <servers />
   </component>
