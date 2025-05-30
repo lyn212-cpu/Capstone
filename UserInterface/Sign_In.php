@@ -15,8 +15,6 @@
             <!-- Logo Image coures -->
             <img src="white logo.png" alt="NC Finder Logo" class="h-16 mb-2" />
 
-
-
             <h2 class="text-lg font-semibold mb-4">Enter Your Account</h2>
 
             <form class="space-y-4">
