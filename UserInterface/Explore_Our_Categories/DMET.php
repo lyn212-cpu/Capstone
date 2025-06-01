@@ -13,7 +13,7 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <title>CategoryInfo</title>
+    <title>DMET</title>
 </head>
 
 <body>
@@ -70,7 +70,7 @@
         <div class="text-center mb-4">
             <div class="d-flex justify-content-center align-items-center mb-2">
                 <i class="fas fa-desktop fa-2x text-primary me-2"></i>
-                <h2 class="fw-bold mb-0">Diploma in Information Technology</h2>
+                <h2 class="fw-bold mb-0">Diploma in Mechanical Engineering Technology</h2>
             </div>
             <div class="input-group mt-3 w-50 mx-auto">
                 <input type="text" class="form-control" placeholder="Search">

@@ -19,9 +19,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../Assets/style.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <title>Home</title>
 </head>
 
@@ -65,7 +62,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="#"><i
+                                <li><a class="dropdown-item text-danger" href="Sign_In.php"><i
                                             class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
                             </ul>
                         </div>
@@ -107,7 +104,7 @@
     <section
         class="container-fluid category-section justify-content-center align-items-center row gap-3 text-center p-3">
         <!--  category card start  -->
-        <a href="#" class="card col-lg-2">
+        <a href="Explore_Our_Categories/DCET.php" class="card col-lg-2">
             <div class="p-2">
                 <svg width="73" height="73" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -130,7 +127,7 @@
         <!--  category card end  -->
 
         <!--  category card start  -->
-        <a href="#" class="card col-lg-2">
+        <a href="Explore_Our_Categories/DECET.php" class="card col-lg-2">
             <div class="p-2">
                 <svg width="73" height="73" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -176,7 +173,7 @@
         <!--  category card end  -->
 
         <!--  category card start  -->
-        <a href="#" class="card col-lg-2">
+        <a href="Explore_Our_Categories/DCVET.php" class="card col-lg-2">
             <div class="p-2">
                 <svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -199,7 +196,7 @@
             <!--  category card end  -->
 
             <!--  category card start  -->
-            <a href="#" class="card col-lg-2">
+            <a href="Explore_Our_Categories/DEET.php" class="card col-lg-2">
                 <div class="p-2">
                     <svg width="73" height="73" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -222,7 +219,7 @@
             <!--  category card end  -->
 
             <!--  category card start  -->
-            <a href="#" class="card col-lg-2">
+            <a href="Explore_Our_Categories/DMET.php" class="card col-lg-2">
                 <div class="p-2">
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -245,7 +242,7 @@
             <!--  category card end  -->
 
             <!--  category card start  -->
-            <a href="#" class="card col-lg-2">
+            <a href="Explore_Our_Categories/DOMT.php" class="card col-lg-2">
                 <div class="p-2">
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -268,7 +265,7 @@
             <!--  category card end  -->
 
             <!--  category card start  -->
-            <a href="#" class="card col-lg-2">
+            <a href="Explore_Our_Categories/DRET.php" class="card col-lg-2">
                 <div class="p-2">
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -397,59 +394,41 @@
             <h3>Students Feedback</h3>
             <p>Honest Review From Real Student</p>
         </div>
-        <div>
-
-            <!-- Swiper -->
-            <div class="swiper mySwiper mt-5">
-                <div class="swiper-wrapper d-flex  align-items-center">
-                    <!-- start swiper slide-->
-                    <div class="swiper-slide shadow-sm rounded-3 h-50">
-                        <div>
-                            <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                                class="rounded-circle img-thumbnail" style="height: 50px; width: 50px;" alt="image">
-                            <h5>John Doe</h5>
-                            <p class="mt-3">
-                                "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                                recommend this platform to all students looking to enhance their skills."
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End swiper slide-->
-
-                    <!-- start swiper slide-->
-                    <div class="swiper-slide shadow-sm rounded-2  h-50">
-                        <div>
-                            <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                                class="rounded-circle img-thumbnail" style="height: 50px; width: 50px;" alt="image">
-                            <h5>John Doe</h5>
-                            <p class="mt-3">
-                                "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                                recommend this platform to all students looking to enhance their skills."
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End swiper slide-->
-
-
-
-                    <!-- start swiper slide-->
-                    <div class="swiper-slide shadow-sm rounded-2  h-50">
-                        <div>
-                            <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                                class="rounded-circle img-thumbnail" style="height: 50px; width: 50px;" alt="image">
-                            <h5>John Doe</h5>
-                            <p class="mt-3">
-                                "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                                recommend this platform to all students looking to enhance their skills."
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End swiper slide-->
-
-
+        <div class="row justify-content-center mt-5 g-4">
+            <div class="col-lg-4">
+                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
+                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
+                    <h5>John Doe</h5>
+                    <p class="mt-3">
+                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
+                        recommend this platform to all students looking to enhance their skills."
+                    </p>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
+            <div class="col-lg-4">
+                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
+                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
+                    <h5>John Doe</h5>
+                    <p class="mt-3">
+                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
+                        recommend this platform to all students looking to enhance their skills."
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
+                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
+                    <h5>John Doe</h5>
+                    <p class="mt-3">
+                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
+                        recommend this platform to all students looking to enhance their skills."
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!--  About Page -->
@@ -525,34 +504,3 @@
 </body>
 
 </html>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            // when window width is >= 640px
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            // when window width is >= 768px
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            // when window width is >= 1024px
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-        },
-    });
-</script>
