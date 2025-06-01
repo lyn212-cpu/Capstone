@@ -147,15 +147,23 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
 
                     <!-- Profile Info Row -->
                     <div class="row g-4">
-                        <div class="col-md-4 col-sm-6">
-                            <small class="text-muted">First Name</small>
+                        <div class="col-md-3 col-sm-6">
+                            <small class="text-muted">Full Name</small>
                             <div class="fw-medium text-dark">
                                 <?php
                                 echo $user ? htmlspecialchars($user['full_name']) : "User not found";
                                 ?>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
+                            <small class="text-muted">Student Number</small>
+                            <div class="fw-medium text-dark">
+                                <?php
+                                echo $user ? htmlspecialchars($user['school_number']) : "User not found";
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
                             <small class="text-muted">Section</small>
                             <div class="fw-medium text-dark">
                                 <?php
@@ -163,7 +171,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                                 ?>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6 d-flex flex-column align-items-end">
                             <small class="text-muted">Year Level</small>
                             <div class="fw-medium text-dark">
                                 <?php
@@ -179,19 +187,9 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <div class="row g-4">
                         <div class="col-md-4 col-sm-6">
                             <small class="text-muted">Address</small>
-                            <div class="fw-medium text-dark">123 Tutuban St.</div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <small class="text-muted">Street</small>
-                            <div class="fw-medium text-dark">Tondo</div>
-                        </div>
-                        <div class="col-md-2 col-sm-6">
-                            <small class="text-muted">City</small>
-                            <div class="fw-medium text-dark">Manila</div>
-                        </div>
-                        <div class="col-md-2 col-sm-6">
-                            <small class="text-muted">Province</small>
-                            <div class="fw-medium text-dark">Manila</div>
+                            <?php
+                            echo $user ? htmlspecialchars($user['address']) : "User not found";
+                            ?>
                         </div>
                     </div>
                 </div>

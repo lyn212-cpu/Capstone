@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../connect.php';
 
 if (isset($_GET['id'])) {
     $course_id = intval($_GET['id']);

@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php'; // Use a shared DB connection file
+require_once '../connect.php'; // Use a shared DB connection file
 
 $sql = "SELECT f.feedback_id, f.username, c.course_name, f.feedback, f.created_at
         FROM Feedback f

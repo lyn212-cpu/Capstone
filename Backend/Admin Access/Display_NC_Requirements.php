@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../connect.php';
 
 $sql = "SELECT sr.student_email, nr.requirement_name, nr.is_custom, sr.submission_date
         FROM Student_Requirements sr

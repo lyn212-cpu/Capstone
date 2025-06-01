@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../connect.php';
 
 $sql = "SELECT * FROM NC_Certificate ORDER BY created_at DESC";
 $result = $conn->query($sql);

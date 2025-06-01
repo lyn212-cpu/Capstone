@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../connect.php';
 
 $result = $conn->query("SELECT * FROM Users");
 $users = [];
