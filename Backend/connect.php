@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "NC_Admin";
 $password = "AdminGroup3";
-$database = "NC Finder";
+$database = "nc_finder";
 
 $conn = new mysqli($host, $username, $password, $database);
 

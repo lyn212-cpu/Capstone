@@ -118,14 +118,10 @@
                                 Delete
                             </button>
                         </th>
-                        <th>Last Name</th>
-                        <th>Middle Name</th>
-                        <th>First Name</th>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Contact Person</th>
+                        <th>School Number</th>
+                        <th>Full Name</th>
+                        <th>Course</th>
+                        <th>Year Level</th>
                     </tr>
                 </thead>
                 <tbody>
