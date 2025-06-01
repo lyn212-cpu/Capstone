@@ -2,10 +2,9 @@
 include '../Backend/connect.php';
 session_start();
 
-// Protective routing: Redirect logged-in users away from sign-up page
-if (isset($_SESSION['user_id'])) {
-    header("Location: index.php"); // Change to your actual dashboard or home page
-    exit;
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Sign_in.php");
+    exit();
 }
 
 $success = ""; // <-- Add this
