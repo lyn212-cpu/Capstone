@@ -142,15 +142,55 @@
                 <div class="row g-4">
                     <div class="col-md-3 col-sm-6">
                         <small class="text-muted">First Name</small>
-                        <div class="fw-medium text-dark">Lorem Ipsum Dolor</div>
+                        <div class="fw-medium text-dark">
+                            <?php
+                            $id = $_SESSION['user_id'];
+                            $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+                            $stmt->bind_param("i", $id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            if ($result->num_rows > 0) {
+                                $user = $result->fetch_assoc();
+                                echo htmlspecialchars($user['full_name']);
+                            } else {
+                                echo "User not found";
+                            }
+                            ?>
                     </div>
+
                     <div class="col-md-5 col-sm-6">
                         <small class="text-muted">Section</small>
-                        <div class="fw-medium text-dark">Diploma in Information Technology</div>
+                        <div class="fw-medium text-dark">
+                            <?php
+                            $id = $_SESSION['user_id'];
+                            $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+                            $stmt->bind_param("i", $id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            if ($result->num_rows > 0) {
+                                $user = $result->fetch_assoc();
+                                echo htmlspecialchars($user['course']);
+                            } else {
+                                echo "User not found";
+                            }
+                            ?>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <small class="text-muted">Year Level</small>
-                        <div class="fw-medium text-dark">1st Year</div>
+                        <div class="fw-medium text-dark">
+                            <?php
+                            $id = $_SESSION['user_id'];
+                            $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+                            $stmt->bind_param("i", $id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            if ($result->num_rows > 0) {
+                                $user = $result->fetch_assoc();
+                                echo htmlspecialchars($user['year_level']);
+                            } else {
+                                echo "User not found";
+                            }
+                            ?>
                     </div>
                 </div>
 
