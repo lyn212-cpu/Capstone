@@ -1,6 +1,45 @@
 <?php
 include '../Backend/connect.php';
 session_start();
+
+// Protective routing: Redirect logged-in users away from sign-up page
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // Change to your actual dashboard or home page
+    exit;
+}
+
+$success = ""; // <-- Add this
+$error = "";   // <-- And this
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data safely
+    $school_number = $_POST['school_number'] ?? '';
+    $full_name = $_POST['full_name'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $year_level = $_POST['year_level'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Simple validation
+    if ($school_number && $full_name && $course && $year_level && $password) {
+        // Hash the password for security
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare and execute insert
+        $role = 'Student';
+        $stmt = $conn->prepare("INSERT INTO users (school_number, full_name, course, year_level, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $school_number, $full_name, $course, $year_level, $hashed_password, $role);
+
+        if ($stmt->execute()) {
+            $success = "Account created successfully!";
+        } else {
+            $error = "Error: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        $error = "All fields are required.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +59,21 @@ session_start();
 
             <h2 class="text-lg font-semibold mb-4">Enter Your Information</h2>
 
-            <form class="space-y-4">
+            <?php if ($success): ?>
+                <div id="successMsg" class="bg-green-500 text-white p-2 rounded mb-2 w-full text-center"><?= $success ?>
+                </div>
+                <script>
+                    setTimeout(function () {
+                        var msg = document.getElementById('successMsg');
+                        if (msg) msg.style.display = 'none';
+                    }, 3000); // 3000ms = 3 seconds
+                </script>
+            <?php endif; ?>
+            <?php if ($error): ?>
+                <div class="bg-red-500 text-white p-2 rounded mb-2 w-full text-center"><?= $error ?></div>
+            <?php endif; ?>
+
+            <form class="space-y-4" method="POST" action="">
                 <!-- Student Number -->
                 <div class="flex items-center bg-white rounded-lg px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="10 0 20 20"
@@ -29,7 +82,8 @@ session_start();
                             d="M11.097 1.515a.75.75 0 0 1 .589.882L10.666 7.5h4.47l1.079-5.397a.75.75 0 1 1 1.47.294L16.665 7.5h3.585a.75.75 0 0 1 0 1.5h-3.885l-1.2 6h3.585a.75.75 0 0 1 0 1.5h-3.885l-1.08 5.397a.75.75 0 1 1-1.47-.294l1.02-5.103h-4.47l-1.08 5.397a.75.75 0 1 1-1.47-.294l1.02-5.103H3.75a.75.75 0 0 1 0-1.5h3.885l1.2-6H5.25a.75.75 0 0 1 0-1.5h3.885l1.08-5.397a.75.75 0 0 1 .882-.588ZM10.365 9l-1.2 6h4.47l1.2-6h-4.47Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <input type="text" placeholder="2022-12345-MN-0" class="w-full text-black focus:outline-none" />
+                    <input type="text" name="school_number" placeholder="2022-12345-MN-0"
+                        class="w-full text-black focus:outline-none" required />
                 </div>
 
                 <!-- Username -->
@@ -40,7 +94,8 @@ session_start();
                             d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <input type="text" placeholder="Juan Dela Cruz" class="w-full text-black focus:outline-none" />
+                    <input type="text" name="full_name" placeholder="Juan Dela Cruz"
+                        class="w-full text-black focus:outline-none" required />
                 </div>
 
                 <!-- Course -->
@@ -79,7 +134,7 @@ session_start();
                             clip-rule="evenodd" />
                     </svg>
 
-                    <select class="w-full text-black focus:outline-none bg-white">
+                    <select class="w-full text-black focus:outline-none bg-white" name="year_level" required>
                         <option disabled selected>Select Year Level</option>
                         <option>1st Year</option>
                         <option>2nd Year</option>
@@ -96,8 +151,8 @@ session_start();
                             clip-rule="evenodd" />
                     </svg>
 
-                    <input type="password" id="passwordInput" placeholder="Enter Password"
-                        class="w-full text-black focus:outline-none" />
+                    <input type="password" name="password" id="passwordInput" placeholder="Enter Password"
+                        class="w-full text-black focus:outline-none" required />
 
                     <button type="button" id="togglePassword" class="absolute right-3">
                         <!-- Eye Icon (show password) -->
@@ -122,10 +177,6 @@ session_start();
                     </button>
                 </div>
 
-
-
-
-
                 <!-- Sign In Button -->
                 <button type="submit"
                     class="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-lg font-semibold">
@@ -138,11 +189,11 @@ session_start();
             <div class="text-center text-sm mt-4">
                 <p class="text-gray-300">
                     Already have an account?
-                    <a href="#" class="text-sky-400 hover:underline">Sign In</a>
+                    <a href="Sign_In.php" class="text-sky-400 hover:underline">Sign In</a>
                 </p>
-
             </div>
         </div>
+    </div>
 </body>
 
 </html>
