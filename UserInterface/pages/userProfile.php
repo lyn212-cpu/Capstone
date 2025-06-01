@@ -187,9 +187,13 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <div class="row g-4">
                         <div class="col-md-4 col-sm-6">
                             <small class="text-muted">Address</small>
-                            <?php
-                            echo $user ? htmlspecialchars($user['address']) : "User not found";
-                            ?>
+                            <div class="fw-medium text-dark">
+                                <?php
+                                echo $user ? htmlspecialchars($user['address']) : "User not found";
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>

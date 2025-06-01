@@ -5,6 +5,14 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../Sign_in.php");
     exit();
 }
+
+// Fetch user data once
+$id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,7 +38,13 @@ if (!isset($_SESSION['user_id'])) {
                     alt="administrator-male--v1" />
             </picture>
             <div>
-                <h5 class="">Merlyn Malasage</h5>
+                <?php
+                if ($user) {
+                    echo "<h5 class=''>" . htmlspecialchars($user['full_name']) . "</h5>";
+                } else {
+                    echo "<h5 class=''>User not found</h5>";
+                }
+                ?>
             </div>
         </div>
         <!-- SideBar--------------------------------------------------------------->
