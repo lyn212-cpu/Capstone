@@ -1,3 +1,8 @@
+<?php
+include '../Backend/connect.php';
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,8 +57,17 @@
                             d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <input type="text" placeholder="Diploma in Information Technology"
-                        class="w-full text-black focus:outline-none" />
+                    <select class="w-full text-black focus:outline-none bg-white" name="course" required>
+                        <option disabled selected>Select Course</option>
+                        <option>Diploma in Information Technology</option>
+                        <option>Diploma in Computer Engineering Technology</option>
+                        <option>Diploma in Office Management Technology</option>
+                        <option>Diploma in Electronics Engineering Technology</option>
+                        <option>Diploma in Electrical Technology</option>
+                        <option>Diploma in Mechanical Engineering Technology</option>
+                        <option>Diploma in Civil Engineering Technology</option>
+                        <option>Diploma in Railway Engineering Technology</option>
+                    </select>
                 </div>
 
                 <!-- Year Level / Course Selection Dropdown -->
