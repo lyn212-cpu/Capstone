@@ -1,11 +1,12 @@
 <?php
 session_start();
-include '../Backend/connect.php';
+include '../../Backend/connect.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: Sign_in.php");
     exit();
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
