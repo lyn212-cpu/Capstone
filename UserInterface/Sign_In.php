@@ -2,10 +2,7 @@
 include '../Backend/connect.php';
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
-}
+
 
 $error = "";
 

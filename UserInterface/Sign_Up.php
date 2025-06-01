@@ -2,10 +2,7 @@
 include '../Backend/connect.php';
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
-}
+
 
 $success = ""; // <-- Add this
 $error = "";   // <-- And this
@@ -59,7 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2 class="text-lg font-semibold mb-4">Enter Your Information</h2>
 
             <?php if ($success): ?>
-                <div id="successMsg" class="bg-green-500 text-white p-2 rounded mb-2 w-full text-center"><?= $success ?>
+                <div id="successMsg" class="bg-green-500 text-white p-2 rounded mb-2 w-full text-center">
+                    <?= $success ?>
                 </div>
                 <script>
                     setTimeout(function () {
@@ -69,7 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </script>
             <?php endif; ?>
             <?php if ($error): ?>
-                <div class="bg-red-500 text-white p-2 rounded mb-2 w-full text-center"><?= $error ?></div>
+                <div class="bg-red-500 text-white p-2 rounded mb-2 w-full text-center">
+                    <?= $error ?>
+                </div>
             <?php endif; ?>
 
             <form class="space-y-4" method="POST" action="">
