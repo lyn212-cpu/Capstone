@@ -104,9 +104,10 @@
         </h1>
     </div>
     <!-- categories Section  -->
-    <section class="container-fluid justify-content-center align-items-center row gap-3 text-center p-3">
+    <section
+        class="container-fluid category-section justify-content-center align-items-center row gap-3 text-center p-3">
         <!--  category card start  -->
-        <a href="pages/categoryInfo.php" class="card col-lg-2">
+        <a href="#" class="card col-lg-2">
             <div class="p-2">
                 <svg width="73" height="73" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -152,7 +153,7 @@
         <!--  category card end  -->
 
         <!--  category card start  -->
-        <a href="http://api.paymongo.com" class="card col-lg-2">
+        <a href="Explore_Our_Categories/DIT.php" class="card col-lg-2">
             <div class="p-2">
                 <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
