@@ -1,11 +1,8 @@
 <?php
+include '../../Backend/connect.php'; // <-- fixed directory
 session_start();
-include '../../Backend/connect.php';
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
-}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -60,7 +57,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -133,7 +131,22 @@ if (!isset($_SESSION['user_id'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- No sample data, only column headers remain -->
+                    <?php
+                    // Fetch users from the database
+                    $sql = "SELECT user_id, school_number, full_name, course, year_level FROM users";
+                    $result = $conn->query($sql);
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . htmlspecialchars($row['user_id']) . "'></td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['course']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['year_level']) . "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </form>
@@ -145,6 +158,8 @@ if (!isset($_SESSION['user_id'])) {
     <script src="../../JavaScript_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>

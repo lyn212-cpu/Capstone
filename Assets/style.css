@@ -37,9 +37,6 @@ body {
     background-image: linear-gradient(to bottom, #190960, rgba(16, 12, 12, 0.8)), url('../Assets/bg.jpg');
 }
 
-
-
-
 .user_box {
     width: 30px;
     height: 30px;
@@ -66,4 +63,106 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     width: 100%;
+}
+
+body {
+    background-image: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: white !important;
+}
+
+.navbar .nav-link {
+    color: #190960 !important;
+    font-weight: bold;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.main-header h2 {
+    color: #190960;
+    font-weight: bold;
+}
+
+.search-bar {
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.courses-wrapper {
+    background-color: #190960;
+    padding: 40px 30px;
+    border-radius: 15px;
+}
+
+.courses-wrapper h4 {
+    color: white;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.card h5 {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.btn-view {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.btn-view:hover {
+    background-color: #009fcd;
+}
+
+.card-img-top {
+    height: 140px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
