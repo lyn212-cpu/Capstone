@@ -1,10 +1,10 @@
 <?php
- session_start();
- include '../Backend/connect.php';
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: Sign_in.php");
-        exit();
-    }
+session_start();
+include '../Backend/connect.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Sign_in.php");
+    exit();
+}
 ?>
 
 <!doctype html>
@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../Assets/style.css">
+    <link rel="stylesheet" href="../css/index.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <title>Home</title>
 </head>
@@ -83,9 +83,10 @@
                 Advance your career with TESDA's accredited courses. Gain the skills that matter.
             </p>
             <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
-                <button class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #190960; border: none;">
+                <a href="pages/FindCourse.php" class="btn btn-primary px-4 py-2 fw-semibold"
+                    style="background-color: #190960; border: none;">
                     Find Course
-                </button>
+                </a>
                 <button class="btn btn-light px-4 py-2 fw-semibold">
                     Watch Video
                     <i class="fa-solid fa-play ms-2" style="color: #190960;"></i>
@@ -287,6 +288,7 @@
             </a>
             <!--  category card end  -->
     </section>
+
     <!--  Training Center  -->
     <section id="topTraining"
         class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">

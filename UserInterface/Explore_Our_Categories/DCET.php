@@ -84,7 +84,7 @@
                 <h2 class="fw-bold mb-0">Diploma in Computer Engineering Technology</h2>
             </div>
             <div class="input-group mt-3 w-50 mx-auto">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" id="centerSearch" placeholder="Search">
                 <button class="btn btn-secondary">
                     <i class="fas fa-search"></i>
                 </button>
@@ -138,3 +138,13 @@
 </body>
 
 </html>
+
+<script>
+    document.getElementById('centerSearch').addEventListener('input', function () {
+        const search = this.value.toLowerCase();
+        document.querySelectorAll('.center-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(search) ? '' : 'none';
+        });
+    });
+</script>

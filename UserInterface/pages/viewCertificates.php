@@ -29,7 +29,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
     <title>Profile</title>
 </head>
 
-<body>
+<body style="background: #fff;">
     <nav id="collapseExample" class="d-flex flex-column"
         style="background-color: #190960; min-width: 230px; min-height: 100vh; height: auto;">
         <div class="text-light d-flex flex-column justify-content-center align-items-center p-2 gap-3">

@@ -1,10 +1,17 @@
 <?php
 session_start();
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+include '../Backend/connect.php';
+=======
+>>>>>>> Stashed changes
 include '../../Backend/connect.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: Sign_in.php");
     exit();
 }
+>>>>>>> b058c2f137eaa309b9f7124148aa8577e467b5fd
 ?>
 <!doctype html>
 <html lang="en">
@@ -161,7 +168,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
