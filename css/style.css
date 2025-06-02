@@ -1,0 +1,50 @@
+/* Removed index.php-specific styles. Only keep global/shared styles below. */
+
+/* Example: (You can add your global styles here) */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.main-header h2 {
+    color: #190960;
+    font-weight: bold;
+}
+
+.search-bar {
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.courses-wrapper {
+    background-color: #190960;
+    padding: 40px 30px;
+    border-radius: 15px;
+}
+
+.courses-wrapper h4 {
+    color: white;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Remove all styles related to: 
+body, .navbar, .navbar-brand, .navbar-brand img, .navbar .nav-link, 
+#hero_section, #topTraining, .user_box, .card.col-lg-2, .card.col-lg-2 .card-body, 
+.card, .card-body, .card h5, .card p, .btn-view, .btn-view:hover, .card-img-top 
+as these are specific to index.php */
