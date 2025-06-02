@@ -83,9 +83,10 @@ if (!isset($_SESSION['user_id'])) {
                 Advance your career with TESDA's accredited courses. Gain the skills that matter.
             </p>
             <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
-                <button class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #190960; border: none;">
+                <a href="pages/FindCourse.php" class="btn btn-primary px-4 py-2 fw-semibold"
+                    style="background-color: #190960; border: none;">
                     Find Course
-                </button>
+                </a>
                 <button class="btn btn-light px-4 py-2 fw-semibold">
                     Watch Video
                     <i class="fa-solid fa-play ms-2" style="color: #190960;"></i>
@@ -287,6 +288,7 @@ if (!isset($_SESSION['user_id'])) {
             </a>
             <!--  category card end  -->
     </section>
+
     <!--  Training Center  -->
     <section id="topTraining"
         class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">
