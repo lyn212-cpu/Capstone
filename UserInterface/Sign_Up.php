@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="min-h-screen bg-cover bg-center flex items-center justify-center"
-    style="background-image: url('blur_1.jpg');">
+    style="background-image: url('background.jpg');">
     <div class="bg-indigo-900 bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-sm w-full text-white">
         <div class="flex flex-col items-center mb-6">
 
