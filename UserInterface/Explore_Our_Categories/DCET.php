@@ -73,7 +73,7 @@
                 <h2 class="fw-bold mb-0">Diploma in Computer Engineering Technology</h2>
             </div>
             <div class="input-group mt-3 w-50 mx-auto">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" id="centerSearch" placeholder="Search">
                 <button class="btn btn-secondary">
                     <i class="fas fa-search"></i>
                 </button>
@@ -81,11 +81,12 @@
         </div>
 
         <!-- Cards -->
-        <div class="row g-3">
-            <div class="col-12">
+        <div class="row g-3" id="centerCards">
+            <div class="col-12 center-card">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <a href="tesda_training_Center_Info.php" class="card-title text-primary fw-bold">Asian Institute
+                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">Asian
+                            Institute
                             of Computer Studies</a>
                         <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV ...</p>
                         <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>AICS Bldg., P. Noval St. Cor. España,
@@ -95,40 +96,51 @@
                 </div>
             </div>
 
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Don Bosco Youth Center - Tondo Inc.</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Bo. Magsaysay, Tondo, Manila</p>
-                        <p class="mb-0"><i class="fas fa-phone me-2"></i>0942 3484 932</p>
+            <div class="row g-3">
+                <div class="col-12 center-card">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <a href="../pages/tesda_training_Center_Info.php"
+                                class="card-title text-primary fw-bold">Don Bosco Youth Center - Tondo Inc.</a>
+                            <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV ...</p>
+                            <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Bo. Magsaysay, Tondo, Manila</p>
+                            <p class="mb-0"><i class="fas fa-phone me-2"></i>0942 3484 932</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Guzman College of Science and Technology</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>GCST Bldg., 509 Z. P. De Guzman
-                            Street, Quiapo, Manila</p>
-                        <p class="mb-0"><i class="fas fa-phone me-2"></i>0993 3234 0230</p>
+                <div class="row g-3">
+                    <div class="col-12 center-card">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <a href="../pages/tesda_training_Center_Info.php"
+                                    class="card-title text-primary fw-bold">Guzman College of Science and Technology</a>
+                                <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV ...
+                                </p>
+                                <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>GCST Bldg., 509 Z. P. De
+                                    Guzman
+                                    Street, Quiapo, Manila</p>
+                                <p class="mb-0"><i class="fas fa-phone me-2"></i>0993 3234 0230</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">STI College - Recto</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <!-- You can add address and contact here if available -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="row g-3">
+                        <div class="col-12 center-card">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <a href="../pages/tesda_training_Center_Info.php"
+                                        class="card-title text-primary fw-bold">STI College - Recto</a>
+                                    <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV
+                                        ...
+                                    </p>
+                                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Dona Faustina Building,
+                                        Recto Ave, Quiapo, City of Manila</p>
+                                    <p class="mb-0"><i class="fas fa-phone me-2"></i>(02) 8735 5054</p>
+                                </div>
+                            </div>
+                        </div>
+
 
 
 
@@ -136,3 +148,13 @@
 </body>
 
 </html>
+
+<script>
+    document.getElementById('centerSearch').addEventListener('input', function () {
+        const search = this.value.toLowerCase();
+        document.querySelectorAll('.center-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(search) ? '' : 'none';
+        });
+    });
+</script>
