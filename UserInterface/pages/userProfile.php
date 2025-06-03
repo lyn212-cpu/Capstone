@@ -189,14 +189,16 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                             <small class="text-muted">Address</small>
                             <div class="fw-medium text-dark">
                                 <?php
-                                echo ($user && isset($user['address'])) ? htmlspecialchars($user['address']) : "No address on file";
+                                echo $user ? htmlspecialchars($user['address']) : "User not found";
                                 ?>
                             </div>
                         </div>
                     </div>
-                </div> <!-- This closes .card-body -->
-            </div> <!-- This closes .card -->
-        </div> <!-- This closes .container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"

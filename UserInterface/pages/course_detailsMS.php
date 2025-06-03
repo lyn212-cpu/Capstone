@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>NC Finder - Course Details</title>
@@ -54,75 +53,73 @@
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="../../Assets/nc_finder_logo_transparent.png" height="40" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../Assets/nc_finder_logo_transparent.png" height="40" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="courses.php">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
-                </ul>
-                <div class="d-flex align-items-center">
-                    <a class="btn btn-light rounded-circle p-0" href="#" style="width: 44px; height: 44px;">
-                        <i class="fa-solid fa-user-tie text-secondary d-block m-auto"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Course Details Section -->
-    <div class="container py-5">
-        <a href="FindCourse.php" class="btn btn-light-blue mb-4">← Back to Courses</a>
-
-        <div class="course-box text-white shadow-lg rounded-4 p-4 p-md-5">
-            <div class="row g-4 align-items-center">
-                <!-- Left Column -->
-                <div class="col-md-6">
-                    <h1 class="h4 fw-bold text-white">Mechatronics Servicing NC III</h1>
-                    <p class="fw-semibold mb-1">St. Paul Technical Institute</p>
-                    <p><strong>Duration:</strong> 5 months</p>
-                    <p><strong>Slots Available:</strong> 6</p>
-                    <p><strong>Location:</strong> 7WVQ+FPV, Governor's Dr, Dasmarinas City, 4114 Cavite</p>
-                    <p><strong>Contact:</strong> 0972 375 639 | StPaulTech@example.com</p>
-
-                    <h5 class="mt-4 fw-bold">Course Description:</h5>
-                    <p>
-                        This course provides essential training in mechatronics,
-                        including robotics, automation, and control systems.
-                        Students will learn how to design, assemble, and maintain
-                        mechatronic systems effectively.
-                    </p>
-
-                    <h5 class="mt-4 fw-bold">Requirements:</h5>
-                    <ul class="list-unstyled ps-3">
-                        <li>• At least 18 years old</li>
-                        <li>• High school graduate or equivalent</li>
-                        <li>• Basic knowledge of computers</li>
-                        <li>• Government-issued ID</li>
-                    </ul>
-                </div>
-
-                <!-- Right Column -->
-                <div class="col-md-6">
-                    <img src="../../Assets/COURSE_BG/ms.jpg" alt="Course Image" class="img-fluid course-image shadow">
-                </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="courses.php">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <a class="btn btn-light rounded-circle p-0" href="#" style="width: 44px; height: 44px;">
+                    <i class="fa-solid fa-user-tie text-secondary d-block m-auto"></i>
+                </a>
             </div>
         </div>
     </div>
+</nav>
+
+<!-- Course Details Section -->
+<div class="container py-5">
+    <a href="courses.php" class="btn btn-light-blue mb-4">← Back to Courses</a>
+
+    <div class="course-box text-white shadow-lg rounded-4 p-4 p-md-5">
+        <div class="row g-4 align-items-center">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <h1 class="h4 fw-bold text-white">Mechatronics Servicing NC III</h1>
+                <p class="fw-semibold mb-1">St. Paul Technical Institute</p>
+                <p><strong>Duration:</strong> 5 months</p>
+                <p><strong>Slots Available:</strong> 6</p>
+                <p><strong>Location:</strong> 7WVQ+FPV, Governor's Dr, Dasmarinas City, 4114 Cavite</p>
+                <p><strong>Contact:</strong> 0972 375 639 | StPaulTech@example.com</p>
+
+                <h5 class="mt-4 fw-bold">Course Description:</h5>
+                <p>
+                    This course provides essential training in mechatronics,
+                    including robotics, automation, and control systems.
+                    Students will learn how to design, assemble, and maintain
+                    mechatronic systems effectively.
+                </p>
+
+                <h5 class="mt-4 fw-bold">Requirements:</h5>
+                <ul class="list-unstyled ps-3">
+                    <li>• At least 18 years old</li>
+                    <li>• High school graduate or equivalent</li>
+                    <li>• Basic knowledge of computers</li>
+                    <li>• Government-issued ID</li>
+                </ul>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <img src="../MCS.jpg" alt="Course Image" class="img-fluid course-image shadow">
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
-
 </html>
