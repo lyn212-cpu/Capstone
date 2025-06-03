@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
   <script src="../../js/bootstrap.bundle.min.js"></script>
@@ -11,7 +12,8 @@
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <title>Contact Us</title>
   <style>
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
     }
@@ -47,10 +49,11 @@
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
@@ -78,6 +81,8 @@
       </div>
     </nav>
   </header>
+
+
 
   <main>
     <!-- Contact info -->
@@ -156,4 +161,5 @@
     <?php include_once '../../include/footer.php'; ?>
   </footer>
 </body>
+
 </html>
