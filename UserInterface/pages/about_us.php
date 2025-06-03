@@ -114,13 +114,13 @@ if (!isset($_SESSION['user_id'])) {
         <form class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <p>
-                    Welcome to <strong>TESDA Tracker</strong>, a dedicated platform created for PUP ITECH students to simplify the search
+                    Welcome to <strong>NC Finder</strong>, a dedicated platform created for PUP ITECH students to simplify the search
                     for TESDA-accredited courses and training centers. We understand the challenges students face when
                     navigating TESDA’s offerings, from scattered information to difficulty finding courses that fit
                     their skills, interests, and location. Our website bridges this gap, providing a centralized,
                     user-friendly solution designed with students’ needs in mind.
                     <br><br>
-                    TESDA Tracker offers comprehensive details about TESDA programs, including course duration,
+                    NC Finder offers comprehensive details about TESDA programs, including course duration,
                     prerequisites, costs, and certification opportunities. With intuitive filters and a clean interface,
                     students can efficiently explore courses based on their field of study, skill level, or location. We
                     aim to support students in pursuing technical and vocational training, empowering them with the
