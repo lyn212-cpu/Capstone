@@ -22,13 +22,13 @@ if (!isset($_SESSION['user_id'])) {
 
     <style>
         body {
-            background-image: url("../../Assets/bg.jpg");
+            background-image: url("../../Assets/background/raw 2.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
@@ -59,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         p {
-            color: #190960;
+            color:rgb(255, 255, 255);
             font-size: 1.1rem;
         }
 
@@ -108,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- About Page -->
     <section id="topTraining" class="container">
-    <h1 class="text-center fw-bold text- #190960 mb-5 display-4" style="letter-spacing: 2px;">ABOUT US</h1>
+    <h1 class="text-center fw-bold mb-5 display-4" style="letter-spacing: 2px; color:rgb(255, 255, 255);">ABOUT US</h1>
     
     <div class="card p-5">
         <form class="row align-items-center">
