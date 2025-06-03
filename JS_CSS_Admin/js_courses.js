@@ -103,76 +103,81 @@ document
     additionalRequirementsEdit.appendChild(newField);
   });
 
-document.addEventListener("click", function (event) {
-  // Edit Button
-  if (event.target.classList.contains("edit-btn")) {
-    const btn = event.target;
-    document.getElementById("editCourseId").value = btn.dataset.course_id || "";
-    document.getElementById("editCourseName").value =
-      btn.dataset.course_name || "";
-    document.getElementById("editAvailableSlot").value =
-      btn.dataset.training_center_name || "";
-    document.getElementById("editDuration").value = btn.dataset.duration || "";
-    document.getElementById("editSlotsAvailable").value =
-      btn.dataset.slots_available || "";
-    document.getElementById("editLocation").value = btn.dataset.location || "";
-    document.getElementById("contactNumber").value =
-      btn.dataset.contact_info || "";
-    document.getElementById("editCourseDescription").value =
-      btn.dataset.course_description || "";
-    document.getElementById("editRequirements").value =
-      btn.dataset.requirements || "";
+document.addEventListener("DOMContentLoaded", function () {
+  // Edit button click
+  document.querySelectorAll(".edit-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.getElementById("editCourseId").value =
+        btn.getAttribute("data-course_id");
+      document.getElementById("editCourseName").value =
+        btn.getAttribute("data-course_name");
+      document.getElementById("editTrainingCenterName").value =
+        btn.getAttribute("data-training_center_name");
+      document.getElementById("editDuration").value =
+        btn.getAttribute("data-duration");
+      document.getElementById("editSlotsAvailable").value = btn.getAttribute(
+        "data-slots_available"
+      );
+      document.getElementById("editLocation").value =
+        btn.getAttribute("data-location");
+      document.getElementById("editContactInfo").value =
+        btn.getAttribute("data-contact_info");
+      document.getElementById("editCourseDescription").value = btn.getAttribute(
+        "data-course_description"
+      );
+      document.getElementById("editRequirements").value =
+        btn.getAttribute("data-requirements");
+      var editModal = new bootstrap.Modal(document.getElementById("editModal"));
+      editModal.show();
+    });
+  });
 
-    const editModal = new bootstrap.Modal(document.getElementById("editModal"));
-    editModal.show();
-  }
-
-  // Handle Edit Form Submission (AJAX)
+  // Edit form submit
   document.getElementById("editForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    const formData = new FormData(this);
+    var formData = new FormData(this);
     fetch("editCourse.php", {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
-          alert("Course updated successfully!");
-          location.reload(); // Reload to show updated data
-        } else {
-          alert("Failed to update course: " + data.message);
-        }
-      })
-      .catch(() => alert("An error occurred while updating the course."));
+        alert(data.message);
+        if (data.success) location.reload();
+      });
   });
 
-  // Delete Button
-  if (event.target.classList.contains("delete-btn")) {
-    const btn = event.target;
-    const courseName = btn
-      .closest("tr")
-      .querySelector("td:nth-child(1)").textContent;
-    const deleteModalBody = document.querySelector("#deleteModal .modal-body");
-    deleteModalBody.textContent = `Are you sure you want to delete the course "${courseName}"?`;
-    window.rowToDelete = btn.closest("tr");
-    const deleteModal = new bootstrap.Modal(
-      document.getElementById("deleteModal")
-    );
-    deleteModal.show();
-  }
-});
+  // Delete button click
+  let courseIdToDelete = null;
+  document.querySelectorAll(".delete-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      courseIdToDelete = btn
+        .closest("tr")
+        .querySelector(".edit-btn")
+        .getAttribute("data-course_id");
+      var deleteModal = new bootstrap.Modal(
+        document.getElementById("deleteModal")
+      );
+      deleteModal.show();
+    });
+  });
 
-// Confirm Delete
-document.getElementById("confirmDelete").addEventListener("click", function () {
-  if (window.rowToDelete) {
-    window.rowToDelete.remove();
-    window.rowToDelete = null;
-  }
-  const deleteModal = bootstrap.Modal.getInstance(
-    document.getElementById("deleteModal")
-  );
-  deleteModal.hide();
+  // Confirm delete
+  document
+    .getElementById("confirmDelete")
+    .addEventListener("click", function () {
+      if (!courseIdToDelete) return;
+      fetch("deleteCourse.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "course_id=" + encodeURIComponent(courseIdToDelete),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.message);
+          if (data.success) location.reload();
+        });
+    });
 });
 
 // Toggle Actions Button

@@ -3,8 +3,6 @@ include '../../Backend/connect.php'; // <-- fixed directory
 session_start();
 ?>
 
-
-
 <!doctype html>
 <html lang="en">
 
@@ -33,71 +31,40 @@ session_start();
                 </div>
                 <div class="modal-body">
                     <form id="editForm">
+                        <input type="hidden" id="editCourseId" name="course_id">
                         <div class="mb-3">
                             <label for="editCourseName" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="editCourseName" placeholder="Enter course name">
+                            <input type="text" class="form-control" id="editCourseName" name="course_name">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editTrainingCenterName"
-                                placeholder="Enter available slot">
+                            <label for="editTrainingCenterName" class="form-label">Training Center Name</label>
+                            <input type="text" class="form-control" id="editTrainingCenterName" name="training_center_name">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Duration</label>
-                            <input type="text" class="form-control" id="editDuration"
-                                placeholder="Enter available slot">
+                            <label for="editDuration" class="form-label">Duration</label>
+                            <input type="text" class="form-control" id="editDuration" name="duration">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Slots Available</label>
-                            <input type="number" class="form-control" id="editSlotsAvailable"
-                                placeholder="Enter available slot">
+                            <label for="editSlotsAvailable" class="form-label">Slots Available</label>
+                            <input type="number" class="form-control" id="editSlotsAvailable" name="slots_available">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="editLocation"
-                                placeholder="Enter available slot">
+                            <label for="editLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="editLocation" name="location">
                         </div>
                         <div class="mb-3">
-                            <label for="contactInformation" class="form-label">Contact Information</label>
-                            <div>
-                                <input type="tel" class="form-control mb-2" id="contactNumber"
-                                    placeholder="Enter contact number">
-                                <input type="email" class="form-control" id="contactEmail"
-                                    placeholder="Enter email address">
-                            </div>
+                            <label for="editContactInfo" class="form-label">Contact Information</label>
+                            <input type="text" class="form-control" id="editContactInfo" name="contact_info">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editCourseDescription" class="form-label">Course Description</label>
+                            <input type="text" class="form-control" id="editCourseDescription" name="course_description">
                         </div>
                         <div class="mb-3">
                             <label for="editRequirements" class="form-label">Requirements</label>
-                            <select multiple class="form-select" id="editRequirements"
-                                onchange="toggleOtherRequirementEdit()">
-                                <option value="form_137">Form 137</option>
-                                <option value="birth_certificate">Birth Certificate</option>
-                                <option value="barangay_clearance">Barangay Clearance</option>
-                                <option value="nbi_clearance">NBI Clearance</option>
-                                <option value="high_school_diploma">High School Diploma</option>
-                                <option value="other">Other (specify below)</option>
-                            </select>
-                            <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
-                            <!-- Other Requirement Field (hidden by default) -->
-                            <div class="form-floating mt-2" id="otherRequirementEditDiv" style="display: none;">
-                                <input type="text" class="form-control mb-2" id="otherRequirementEdit"
-                                    placeholder="Other Requirement">
-                                <label for="otherRequirementEdit">Specify Other Requirement</label>
-                                <button type="button" class="btn btn-secondary mt-2" id="addRequirementEditBtn">Add
-                                    Another Requirement</button>
-                            </div>
-
-                            <!-- Container for additional requirements -->
-                            <div id="additionalRequirementsEdit" class="mt-2"></div>
+                            <input type="text" class="form-control" id="editRequirements" name="requirements">
                         </div>
-                        <button type=" submit" class="btn btn-primary">Save Changes</button>
-                        <input type="hidden" id="editCourseId" name="course_id">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>
             </div>
