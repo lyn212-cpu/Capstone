@@ -19,6 +19,35 @@ body {
   margin-right: 5px;
 }
 
+.user_box {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-flex.align-items-center {
+  align-items: center !important;
+}
+
+.btn.rounded-circle.p-0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  padding: 0;
+}
+
+.fa-user-tie {
+  font-size: 1.5rem; /* Adjust as needed */
+  line-height: 1;
+}
+
 #hero_section {
   display: flex;
   flex-direction: column;
