@@ -132,10 +132,6 @@ $result = $conn->query($sql);
                         'img' => 'EMS.jpg',
                         'details' => 'course_detailsCATV.php'
                     ],
-                    'Automotive Servicing NC II' => [
-                        'img' => 'EMS.jpg',
-                        'details' => 'course_detailsAS.php'
-                    ],
                     'Gas Metal Arc Welding (GMAW) NC II' => [
                         'img' => 'EMS.jpg',
                         'details' => 'course_detailsGMAW.php'
@@ -159,7 +155,8 @@ $result = $conn->query($sql);
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="col">
                             <div class="card h-100">
-                                <img src="../../Assets/nc_finder_logo_transparent.png" class="card-img-top course-logo" alt="Course Image">
+                                <img src="../../Assets/nc_finder_logo_transparent.png" class="card-img-top course-logo"
+                                    alt="Course Image">
                                 <div class="card-body">
                                     <div>
                                         <h5 class="card-title"><?php echo htmlspecialchars($row['course_name']); ?></h5>
@@ -190,7 +187,7 @@ $result = $conn->query($sql);
     </div>
 
     <script>
-        document.getElementById('courseSearch').addEventListener('input', function() {
+        document.getElementById('courseSearch').addEventListener('input', function () {
             const search = this.value.toLowerCase();
             const cards = document.querySelectorAll('#coursesRow .col');
             cards.forEach(card => {
