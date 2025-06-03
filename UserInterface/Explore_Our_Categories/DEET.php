@@ -85,7 +85,7 @@
             <div class="col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <a href="tesda_training_Center_Info.php" class="card-title text-primary fw-bold">Asian Institute
+                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">Asian Institute
                             of Computer Studies</a>
                         <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV ...</p>
                         <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>AICS Bldg., P. Noval St. Cor. España,

@@ -112,7 +112,7 @@ if (!isset($_SESSION['user_id'])) {
                     // Show submit button after file is selected
                     const fileInput = document.getElementById('ncExcelInput');
                     const submitBtn = document.getElementById('submitNcExcelBtn');
-                    fileInput.addEventListener('change', function () {
+                    fileInput.addEventListener('change', function() {
                         if (fileInput.files.length > 0) {
                             submitBtn.classList.remove('d-none');
                         } else {
@@ -161,7 +161,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="/Capstone/JavaScript_Admin/js_nc.js"></script>
+    <script src="/Capstone/JS_CSS_Admin/js_nc.js"></script>
     <script>
         // Initialize the Simple-DataTables library for the table
         const table = document.querySelector('#datatablesSimple');

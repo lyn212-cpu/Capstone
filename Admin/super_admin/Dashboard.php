@@ -116,13 +116,12 @@ if (!isset($_SESSION['user_id'])) {
         </section>
 
         <!--User list table-->
-        <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
-
+        <form id="deleteForm" action="deleteUser.php" method="POST">
             <table id="datatablesSimple" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
+                            <button type="button" class="btn btn-danger btn-sm" id="deleteButton">
                                 Delete
                             </button>
                         </th>
@@ -139,12 +138,49 @@ if (!isset($_SESSION['user_id'])) {
         </form>
     </main>
 
+    <!-- Modal for Delete Confirmation -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the selected user/s?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-
-    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+<<<<<<< Updated upstream
+=======
+
+    <script>
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]:checked');
+            if (checkboxes.length > 0) {
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                deleteModal.show();
+            } else {
+                alert('Please select at least one user to delete.');
+            }
+        });
+
+        document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+            document.getElementById('deleteForm').submit();
+        });
+    </script>
+>>>>>>> Stashed changes
 </body>
 
 </html>
