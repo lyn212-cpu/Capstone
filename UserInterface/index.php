@@ -1,10 +1,10 @@
 <?php
- session_start();
- include '../Backend/connect.php';
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: Sign_in.php");
-        exit();
-    }
+session_start();
+include '../Backend/connect.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Sign_in.php");
+    exit();
+}
 ?>
 
 <!doctype html>
@@ -207,21 +207,21 @@
                             </pattern>
                             <image id="image0_133_26" width="64" height="64"
                                 xlink:href="data:image/png;base64,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" />
-                    </defs>
-                </svg>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    Diploma in Electrical Engineering Technology
-                </h5>
-            </div>
-        </a>
-        <!--  category card end  -->
+                        </defs>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Diploma in Electrical Engineering Technology
+                    </h5>
+                </div>
+            </a>
+            <!--  category card end  -->
 
-        <!--  category card start  -->
-        <a href="Explore_Our_Categories/DMET.php" class="card col-lg-2">
-            <div class="p-2">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+            <!--  category card start  -->
+            <a href="Explore_Our_Categories/DMET.php" class="card col-lg-2">
+                <div class="p-2">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="64" height="64" fill="url(#pattern0_133_32)" />
                         <defs>
@@ -230,21 +230,21 @@
                             </pattern>
                             <image id="image0_133_32" width="64" height="64"
                                 xlink:href="data:image/png;base64,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" />
-                    </defs>
-                </svg>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    Diploma in Mechanical Engineering technology
-                </h5>
-            </div>
-        </a>
-        <!--  category card end  -->
+                        </defs>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Diploma in Mechanical Engineering technology
+                    </h5>
+                </div>
+            </a>
+            <!--  category card end  -->
 
-        <!--  category card start  -->
-        <a href="Explore_Our_Categories/DOMT.php" class="card col-lg-2">
-            <div class="p-2">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+            <!--  category card start  -->
+            <a href="Explore_Our_Categories/DOMT.php" class="card col-lg-2">
+                <div class="p-2">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="64" height="64" fill="url(#pattern0_137_35)" />
                         <defs>
@@ -253,16 +253,16 @@
                             </pattern>
                             <image id="image0_137_35" width="64" height="64"
                                 xlink:href="data:image/png;base64,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" />
-                    </defs>
-                </svg>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    Diploma in Railway Engineering Technology
-                </h5>
-            </div>
-        </a>
-        <!--  category card end  -->
+                        </defs>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Diploma in Railway Engineering Technology
+                    </h5>
+                </div>
+            </a>
+            <!--  category card end  -->
     </section>
     <!--  Training Center  -->
     <section id="topTraining"
