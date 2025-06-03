@@ -96,6 +96,62 @@ $result = $conn->query($sql);
                         'img' => 'EMS.jpg',
                         'details' => 'course_detailsEMS.php'
                     ],
+                    'Animation NC II' => [
+                        'img' => 'AN.jpg',
+                        'details' => 'course_detailsAN.php'
+                    ],
+                    'Illustration NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsILN.php'
+                    ],
+                    'Carpentry NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsCP.php'
+                    ],
+                    'Masonry NC I' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsMNI.php'
+                    ],
+                    'Masonry NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsMNII.php'
+                    ],
+                    'Plumbing NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsPB.php'
+                    ],
+                    'Electrical Installation & Maintenance NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsEIM.php'
+                    ],
+                    'Consumer Electronics NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsCE.php'
+                    ],
+                    'Cable Television (CATV) Installation NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsCATV.php'
+                    ],
+                    'Automotive Servicing NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsAS.php'
+                    ],
+                    'Gas Metal Arc Welding (GMAW) NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsGMAW.php'
+                    ],
+                    'Driving NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsDG.php'
+                    ],
+                    'Bookkeeping NC III' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsBG.php'
+                    ],
+                    'Front Office Services NC II' => [
+                        'img' => 'EMS.jpg',
+                        'details' => 'course_detailsFS.php'
+                    ],
                     // Add more courses as needed
                 ];
                 ?>
@@ -111,7 +167,14 @@ $result = $conn->query($sql);
                                         <p>Duration: <?php echo htmlspecialchars($row['duration']); ?></p>
                                         <p>Slots available: <?php echo htmlspecialchars($row['slots_available']); ?></p>
                                     </div>
-                                    <a href="course_detailsCSS.php?id=<?php echo $row['course_id']; ?>"
+                                    <?php
+                                    // Default details file
+                                    $detailsFile = 'course_detailsCSS.php';
+                                    if (isset($courseAssets[$row['course_name']]['details'])) {
+                                        $detailsFile = $courseAssets[$row['course_name']]['details'];
+                                    }
+                                    ?>
+                                    <a href="<?php echo $detailsFile; ?>?id=<?php echo $row['course_id']; ?>"
                                         class="btn btn-view btn-sm">View Details</a>
                                 </div>
                             </div>
