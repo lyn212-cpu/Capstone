@@ -119,10 +119,10 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                                 <a style="color: #190960" class="nav-link fw-bold" href="#">Courses</a>
                             </li>
                             <li class="nav-item">
-                                <a style="color: #190960" class="nav-link fw-bold" href="./pages/contact_us.php">Contact Us</a>
+                                <a style="color: #190960" class="nav-link fw-bold" href="./contact_us.php">Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a style="color: #190960" class="nav-link fw-bold" href="#">About us</a>
+                                <a style="color: #190960" class="nav-link fw-bold" href="./about_us.php">About us</a>
                             </li>
                         </ul>
                     </div>
@@ -133,34 +133,30 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
 
 
     <div class="container my-5">
-        <h4 class="fw-bold text-primary mb-4">My Feedbacks</h4>
+        <h4 class="fw-bold text-primary mb-4">My Feedback</h4>
         <div class="table-responsive">
             <table class="table table-bordered align-middle text-white" style="background-color: #18015b;">
                 <thead class="text-white text-uppercase" style="background-color: #12004a;">
                 <tr>
                     <th scope="col">Date Submitted</th>
-                    <th scope="col">Rating</th>
                     <th scope="col">Message</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>01/10/2025</td>
-                    <td>5/5</td>
                     <td>
                         "The instructors were amazing, and the course content was highly relevant. I feel more confident in my skills now!"
                     </td>
                 </tr>
                 <tr>
                     <td>04/15/2025</td>
-                    <td>4.5/5</td>
                     <td>
                         "The sessions were well-organized, but the seating arrangements could be more comfortable for long lectures."
                     </td>
                 </tr>
                 <tr>
                     <td>06/26/2025</td>
-                    <td>4/5</td>
                     <td>
                         "I appreciated the hands-on activities and the interactive teaching approach. It made learning so much fun!"
                     </td>

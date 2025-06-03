@@ -104,7 +104,7 @@
             <div class="col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <a href="tesda_training_Center_Info.php" class="card-title text-primary fw-bold">
+                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">
                             <?php echo htmlspecialchars($row['center_name']); ?>
                         </a>
                         <p class="mb-1 text-muted small">
