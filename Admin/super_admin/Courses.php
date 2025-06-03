@@ -1,8 +1,10 @@
 <?php
+include '../../Backend/connect.php'; // <-- fixed directory
 session_start();
 ?>
+
 <!doctype html>
-<html lang="en">    
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +12,7 @@ session_start();
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/Dashboard.css">
+    <link rel="stylesheet" href="../../JS_CSS_Admin/courses.css">
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
@@ -29,68 +31,38 @@ session_start();
                 </div>
                 <div class="modal-body">
                     <form id="editForm">
+                        <input type="hidden" id="editCourseId" name="course_id">
                         <div class="mb-3">
                             <label for="editCourseName" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="editCourseName" placeholder="Enter course name">
+                            <input type="text" class="form-control" id="editCourseName" name="course_name">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editTrainingCenterName" class="form-label">Training Center Name</label>
+                            <input type="text" class="form-control" id="editTrainingCenterName" name="training_center_name">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Duration</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editDuration" class="form-label">Duration</label>
+                            <input type="text" class="form-control" id="editDuration" name="duration">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Slots Available</label>
-                            <input type="number" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editSlotsAvailable" class="form-label">Slots Available</label>
+                            <input type="number" class="form-control" id="editSlotsAvailable" name="slots_available">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="editLocation" name="location">
                         </div>
                         <div class="mb-3">
-                            <label for="contactInformation" class="form-label">Contact Information</label>
-                            <div>
-                                <input type="tel" class="form-control mb-2" id="contactNumber"
-                                    placeholder="Enter contact number">
-                                <input type="email" class="form-control" id="contactEmail"
-                                    placeholder="Enter email address">
-                            </div>
+                            <label for="editContactInfo" class="form-label">Contact Information</label>
+                            <input type="text" class="form-control" id="editContactInfo" name="contact_info">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter available slot">
+                            <label for="editCourseDescription" class="form-label">Course Description</label>
+                            <input type="text" class="form-control" id="editCourseDescription" name="course_description">
                         </div>
                         <div class="mb-3">
                             <label for="editRequirements" class="form-label">Requirements</label>
-                            <select multiple class="form-select" id="editRequirements"
-                                onchange="toggleOtherRequirementEdit()">
-                                <option value="form_137">Form 137</option>
-                                <option value="birth_certificate">Birth Certificate</option>
-                                <option value="barangay_clearance">Barangay Clearance</option>
-                                <option value="nbi_clearance">NBI Clearance</option>
-                                <option value="high_school_diploma">High School Diploma</option>
-                                <option value="other">Other (specify below)</option>
-                            </select>
-                            <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
-                            <!-- Other Requirement Field (hidden by default) -->
-                            <div class="form-floating mt-2" id="otherRequirementEditDiv" style="display: none;">
-                                <input type="text" class="form-control mb-2" id="otherRequirementEdit"
-                                    placeholder="Other Requirement">
-                                <label for="otherRequirementEdit">Specify Other Requirement</label>
-                                <button type="button" class="btn btn-secondary mt-2" id="addRequirementEditBtn">Add
-                                    Another Requirement</button>
-                            </div>
-
-                            <!-- Container for additional requirements -->
-                            <div id="additionalRequirementsEdit" class="mt-2"></div>
+                            <input type="text" class="form-control" id="editRequirements" name="requirements">
                         </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
@@ -156,7 +128,8 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -207,7 +180,38 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- No sample data, only column headers remain -->
+                        <?php
+                        $sql = "SELECT * FROM nc_course";
+                        $result = $conn->query($sql);
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['duration']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['slots_available']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['contact_info']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['course_description']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
+                                echo "<td>
+            <button class='btn btn-primary btn-sm edit-btn'
+    data-course_id='" . htmlspecialchars($row['course_id'], ENT_QUOTES) . "'
+    data-course_name='" . htmlspecialchars($row['course_name'], ENT_QUOTES) . "'
+    data-training_center_name='" . htmlspecialchars($row['training_center_name'], ENT_QUOTES) . "'
+    data-duration='" . htmlspecialchars($row['duration'], ENT_QUOTES) . "'
+    data-slots_available='" . htmlspecialchars($row['slots_available'], ENT_QUOTES) . "'
+    data-location='" . htmlspecialchars($row['location'], ENT_QUOTES) . "'
+    data-contact_info='" . htmlspecialchars($row['contact_info'], ENT_QUOTES) . "'
+    data-course_description='" . htmlspecialchars($row['course_description'], ENT_QUOTES) . "'
+    data-requirements='" . htmlspecialchars($row['requirements'], ENT_QUOTES) . "'
+>Edit</button>
+            <button class='btn btn-danger btn-sm delete-btn'>Delete</button>
+        </td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -300,14 +304,19 @@ session_start();
                 </div>
 
                 <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/Capstone/JavaScript_Admin/js_courses.js"></script>
+    <script src="/Capstone/JS_CSS_Admin/js_courses.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 </body>
