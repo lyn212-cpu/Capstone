@@ -1,3 +1,11 @@
+<?php
+include '../../Backend/connect.php';
+
+// Fetch courses from the database
+$sql = "SELECT * FROM nc_course";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +15,7 @@
 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/style.css">
+    <link rel="stylesheet" href="../../css/find_course.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <style>
@@ -152,142 +160,142 @@
         </div>
     </div>
 
-    <!-- Course Section -->
-    <div class="courses-wrapper">
-        <h4>Courses</h4>
+        <!-- Course Section -->
+        <div class="courses-wrapper">
+            <h4>Courses</h4>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            <!-- Card 1 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../css.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Computer System Servicing NC II</h5>
-                            <p>Mindtech Training and Development Institute Inc.</p>
-                            <p>Duration: 3 months</p>
-                            <p>Slots available: 9</p>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="coursesRow">
+                <!-- Card 1 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/css.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Computer System Servicing NC II</h5>
+                                <p>Mindtech Training and Development Institute Inc.</p>
+                                <p>Duration: 3 months</p>
+                                <p>Slots available: 9</p>
+                            </div>
+                            <a href="course_detailsCSS.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../TD.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Technical Drafting NC II</h5>
-                            <p>Pasay City Man Power Training Center</p>
-                            <p>Duration: 1 month</p>
-                            <p>Slots available: 6</p>
+                <!-- Card 2 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/TD.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Technical Drafting NC II</h5>
+                                <p>Pasay City Man Power Training Center</p>
+                                <p>Duration: 1 month</p>
+                                <p>Slots available: 6</p>
+                            </div>
+                            <a href="course_detailsTD.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../EPAS.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Electronics Products Assembly NC II</h5>
-                            <p>TECHVOCH Skills Incorporated</p>
-                            <p>Duration: 2 months</p>
-                            <p>Slots available: 7</p>
+                <!-- Card 3 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/EPAS.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Electronics Products Assembly NC II</h5>
+                                <p>TECHVOCH Skills Incorporated</p>
+                                <p>Duration: 2 months</p>
+                                <p>Slots available: 7</p>
+                            </div>
+                            <a href="course_detailsEPAS.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../JAVA.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Java Programming NC III</h5>
-                            <p>Aureate Training and Assessment Center, Inc.</p>
-                            <p>Duration: 3 months</p>
-                            <p>Slots available: 12</p>
+                <!-- Card 4 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/JAVA.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Java Programming NC III</h5>
+                                <p>Aureate Training and Assessment Center, Inc.</p>
+                                <p>Duration: 3 months</p>
+                                <p>Slots available: 12</p>
+                            </div>
+                            <a href="course_detailsJAVA.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 5 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../MCS.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Mechatronics Servicing NC III</h5>
-                            <p>St. Paul Technical Institute</p>
-                            <p>Duration: 5 months</p>
-                            <p>Slots available: 8</p>
+                <!-- Card 5 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/MCS.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Mechatronics Servicing NC III</h5>
+                                <p>St. Paul Technical Institute</p>
+                                <p>Duration: 5 months</p>
+                                <p>Slots available: 8</p>
+                            </div>
+                            <a href="course_detailsMS.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 6 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../AMS.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Automotive Servicing NC II</h5>
-                            <p>Mindtech Training and Development Institute Inc.</p>
-                            <p>Duration: 2 months</p>
-                            <p>Slots available: 6</p>
+                <!-- Card 6 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/AMS.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Automotive Servicing NC II</h5>
+                                <p>Mindtech Training and Development Institute Inc.</p>
+                                <p>Duration: 2 months</p>
+                                <p>Slots available: 6</p>
+                            </div>
+                            <a href="course_detailsAMS.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 7 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../SMAW.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Shielded Metal Arc Welding NC II</h5>
-                            <p>Asian College of Science and Technology Foundation, Inc.</p>
-                            <p>Duration: 5 months</p>
-                            <p>Slots available: 14</p>
+                <!-- Card 7 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/SMAW.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Shielded Metal Arc Welding NC II</h5>
+                                <p>Asian College of Science and Technology Foundation, Inc.</p>
+                                <p>Duration: 5 months</p>
+                                <p>Slots available: 14</p>
+                            </div>
+                            <a href="course_detailsSMAW.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 8 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../EMS.jpg" class="card-img-top" alt="Course Image">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title">Event Management Services NC III</h5>
-                            <p>Mindtech Training and Development Institute Inc.</p>
-                            <p>Duration: 2 months</p>
-                            <p>Slots available: 6</p>
+                <!-- Card 8 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../../Assets/COURSE_BG/EMS.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Event Management Services NC III</h5>
+                                <p>Mindtech Training and Development Institute Inc.</p>
+                                <p>Duration: 2 months</p>
+                                <p>Slots available: 6</p>
+                            </div>
+                            <a href="course_detailsEMS.php" class="btn btn-view btn-sm">View Details</a>
                         </div>
-                        <a href="#" class="btn btn-view btn-sm">View Details</a>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 
 </body>
 </html>

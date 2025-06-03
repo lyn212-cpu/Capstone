@@ -431,31 +431,6 @@
         </div>
     </section>
 
-    <!--  About Page -->
-    <section id="topTraining"
-        class="container-fluid d-flex flex-column gap-3 justify-content-center align-items-center p-5">
-
-        <h1 class="text-center fw-bold text-light">About Us</h1>
-        <div id="About_us" class="container d-lg-flex justify-content-center align-items-center">
-            <p style="color: #c5bdbd">
-                Here is the transcribed text from the image:
-                Welcome to TESDA Tracker, a dedicated platform created for PUP ITECH students to simplify the search for
-                TESDA-accredited courses and training centers.
-                We understand the challenges students face when navigating TESDA’s offerings, from scattered information
-                to difficulty finding courses that fit their skills, interests, and location. Our website bridges this
-                gap, providing a centralized, user-friendly solution designed with students’ needs in mind.
-                TESDA Tracker offers comprehensive details about TESDA programs, including course duration,
-                prerequisites, costs, and certification opportunities.
-                With intuitive filters and a clean interface, students can efficiently explore courses based on their
-                field of study, skill level, or location. We aim to support students in pursuing technical and
-                vocational training, empowering them with the skills needed for personal growth and future employment.
-            </p>
-            <img class="img-fluid col-lg-6"
-                src="https://www.tesdaguides.com/wp-content/uploads/2015/06/tesda-online.jpg" alt="image">
-        </div>
-    </section>
-
-
     <!-- Modal for login -->
     <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">

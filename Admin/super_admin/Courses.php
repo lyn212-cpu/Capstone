@@ -1,10 +1,17 @@
 <?php
 session_start();
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+include '../Backend/connect.php';
+=======
+>>>>>>> Stashed changes
 include '../../Backend/connect.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: Sign_in.php");
     exit();
 }
+>>>>>>> b058c2f137eaa309b9f7124148aa8577e467b5fd
 ?>
 <!doctype html>
 <html lang="en">
