@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../pages/FindCourse.php">Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
                         <li class="nav-item"><a class="nav-link active" href="about_us.php">About Us</a></li>
                     </ul>

@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
                             <a style="color: #190960" class="nav-link fw-bold" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="#">Courses</a>
+                            <a style="color: #190960" class="nav-link fw-bold" href="pages/FindCourse.php">Courses</a>
                         </li>
                         <li class="nav-item">
                             <a style="color: #190960" class="nav-link fw-bold" href="./pages/contact_us.php">Contact

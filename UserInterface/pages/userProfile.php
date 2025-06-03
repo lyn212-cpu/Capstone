@@ -121,7 +121,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                                     <a style="color: #190960" class="nav-link fw-bold" href="../index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #190960" class="nav-link fw-bold" href="#">Courses</a>
+                                    <a style="color: #190960" class="nav-link fw-bold" href="FindCourse.php">Courses</a>
                                 </li>
                                 <li class="nav-item">
                                     <a style="color: #190960" class="nav-link fw-bold" href="./contact_us.php">Contact

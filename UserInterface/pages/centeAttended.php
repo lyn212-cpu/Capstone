@@ -117,17 +117,17 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav me-auto justify-content-end  mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a style="color: #190960" class="nav-link fw-bold" href="#">HOME</a>
+                                    <a style="color: #190960" class="nav-link fw-bold" href="#">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #190960" class="nav-link fw-bold" href="#">Courses</a>
+                                    <a style="color: #190960" class="nav-link fw-bold" href="FindCourse.php">Courses</a>
                                 </li>
                                 <li class="nav-item">
                                     <a style="color: #190960" class="nav-link fw-bold"
-                                        href="./pages/contact_us.php">Contact Us</a>
+                                        href="contact_us.php">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #190960" class="nav-link fw-bold" href="#">About us</a>
+                                    <a style="color: #190960" class="nav-link fw-bold" href="about_us.php">About us</a>
                                 </li>
                             </ul>
                         </div>
