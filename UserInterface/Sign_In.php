@@ -10,6 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $school_number = $_POST['school_number'] ?? '';
     $password = $_POST['password'] ?? '';
 
+    // Hardcoded super admin check
+    if ($school_number === '0000-11111-MN-0' && $password === '123456') {
+        $_SESSION['user_id'] = 'super_admin';
+        header("Location: ../Admin/super_admin/Dashboard.php");
+        exit;
+    }
+
     if ($school_number && $password) {
         $stmt = $conn->prepare("SELECT user_id, password FROM users WHERE school_number = ?");
         $stmt->bind_param("s", $school_number);

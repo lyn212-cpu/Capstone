@@ -1,6 +1,8 @@
 <?php
+include '../../Backend/connect.php'; // <-- fixed directory
 session_start();
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -18,109 +20,45 @@ session_start();
 </head>
 
 <body>
-    <!-- Add the modals here -->
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Course</h5>
+                    <h5 class="modal-title" id="editModalLabel">Edit Training Center</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="editForm">
+                        <input type="hidden" id="editCenterId" name="center_id">
                         <div class="mb-3">
-                            <label for="editCourseName" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editTrainingCenter"
-                                placeholder="Enter course name">
+                            <label for="editCenterName" class="form-label">Training Center Name</label>
+                            <input type="text" class="form-control" id="editCenterName" name="center_name">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="editLocation" placeholder="Enter New Location">
+                            <label for="editLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="editLocation" name="location">
                         </div>
                         <div class="mb-3">
-                            <label for="contactInformation" class="form-label">Contact Information</label>
-                            <div>
-                                <input type="tel" class="form-control mb-2" id="contactNumber"
-                                    placeholder="Enter contact number">
-                                <input type="email" class="form-control" id="contactEmail"
-                                    placeholder="Enter email address">
-                            </div>
+                            <label for="editContactInfo" class="form-label">Contact Information</label>
+                            <input type="text" class="form-control" id="editContactInfo" name="contact_info">
                         </div>
                         <div class="mb-3">
                             <label for="editRequirements" class="form-label">Requirements</label>
-                            <select multiple class="form-select" id="editRequirements"
-                                onchange="toggleOtherRequirementEdit()">
-                                <option value="form_137">Form 137</option>
-                                <option value="birth_certificate">Birth Certificate</option>
-                                <option value="barangay_clearance">Barangay Clearance</option>
-                                <option value="nbi_clearance">NBI Clearance</option>
-                                <option value="high_school_diploma">High School Diploma</option>
-                                <option value="other">Other (specify below)</option>
-                            </select>
-                            <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
-                            <!-- Other Requirement Field (hidden by default) -->
-                            <div class="form-floating mt-2" id="otherRequirementEditDiv" style="display: none;">
-                                <input type="text" class="form-control mb-2" id="otherRequirementEdit"
-                                    placeholder="Other Requirement">
-                                <label for="otherRequirementEdit">Specify Other Requirement</label>
-                                <button type="button" class="btn btn-secondary mt-2" id="addRequirementEditBtn">Add
-                                    Another Requirement</button>
-                            </div>
-
-                            <!-- Container for additional requirements -->
-                            <div id="additionalRequirementsEdit" class="mt-2"></div>
+                            <input type="text" class="form-control" id="editRequirements" name="requirements">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Operation Hours</label>
-                            <input type="text" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter New Operation Hours">
+                            <label for="editOperationHours" class="form-label">Operation Hours</label>
+                            <input type="text" class="form-control" id="editOperationHours" name="operation_hours">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableCourses" class="form-label">Available Courses</label>
-                            <div id="editAvailableCourses">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"
-                                        value="Computer System Servicing NC II" id="course1">
-                                    <label class="form-check-label" for="course1">
-                                        Computer System Servicing NC II
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Visual Graphic Design NC III"
-                                        id="course2">
-                                    <label class="form-check-label" for="course2">
-                                        Visual Graphic Design NC III
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="2D Animation NC II"
-                                        id="course3">
-                                    <label class="form-check-label" for="course3">
-                                        2D Animation NC II
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Programming NC III"
-                                        id="course4">
-                                    <label class="form-check-label" for="course4">
-                                        Programming NC III
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"
-                                        value="Electrical Installation and Maintenance NC II" id="course5">
-                                    <label class="form-check-label" for="course5">
-                                        Electrical Installation and Maintenance NC II
-                                    </label>
-                                </div>
-                            </div>
+                            <label for="editAvailableCoursesInput" class="form-label">Available Courses</label>
+                            <input type="text" class="form-control" id="editAvailableCoursesInput"
+                                name="available_courses">
                         </div>
                         <div class="mb-3">
-                            <label for="editAvailableSlot" class="form-label">Student Slot</label>
-                            <input type="number" class="form-control" id="editAvailableSlot"
-                                placeholder="Enter New Available Slot">
+                            <label for="editStudentSlot" class="form-label">Student Slot</label>
+                            <input type="number" class="form-control" id="editStudentSlot" name="student_slot">
                         </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
@@ -186,7 +124,8 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -210,7 +149,7 @@ session_start();
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
-                class="btn text-light">New Course</button>
+                class="btn text-light">New Training Center</button>
         </nav>
 
         <!-- User list table -->
@@ -234,35 +173,65 @@ session_start();
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <!-- No sample data, only column headers remain -->
+                        <?php
+                        $sql = "SELECT * FROM training_center";
+                        $result = $conn->query($sql);
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['center_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['contact_info']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['operation_hours']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['available_courses']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['student_slot']) . "</td>";
+                                echo "<td>
+            <button class='btn btn-primary btn-sm edit-btn'
+                data-center_id='" . htmlspecialchars($row['center_id'], ENT_QUOTES) . "'
+                data-center_name='" . htmlspecialchars($row['center_name'], ENT_QUOTES) . "'
+                data-location='" . htmlspecialchars($row['location'], ENT_QUOTES) . "'
+                data-contact_info='" . htmlspecialchars($row['contact_info'], ENT_QUOTES) . "'
+                data-requirements='" . htmlspecialchars($row['requirements'], ENT_QUOTES) . "'
+                data-operation_hours='" . htmlspecialchars($row['operation_hours'], ENT_QUOTES) . "'
+                data-available_courses='" . htmlspecialchars($row['available_courses'], ENT_QUOTES) . "'
+                data-student_slot='" . htmlspecialchars($row['student_slot'], ENT_QUOTES) . "'
+            >Edit</button>
+            <button class='btn btn-danger btn-sm delete-btn'>Delete</button>
+        </td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
 
-    <!-- Modal For adding New Course -->
+    <!-- Modal For adding New Training Center -->
     <div class="modal fade" id="newCenter_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">New Course</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">New Training Center</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body row g-3 px-3">
                     <!-- Training Center Name -->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="courseName" placeholder="Course Name">
-                        <label for="courseName">Training Center Name</label>
+                        <input type="text" class="form-control" id="centerName" placeholder="Training Center Name">
+                        <label for="centerName">Training Center Name</label>
                     </div>
 
                     <!-- Location -->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="centerName" placeholder="Training Center Name">
-                        <label for="centerName">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Location">
+                        <label for="location">Location</label>
                     </div>
 
                     <!-- Contact Number -->
@@ -303,69 +272,32 @@ session_start();
 
                     <!-- Operation Hours-->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="slotAvailability" placeholder="Slot Availability">
-                        <label for="slotAvailability">Operation Hours</label>
+                        <input type="text" class="form-control" id="operationHours" placeholder="Operation Hours">
+                        <label for="operationHours">Operation Hours</label>
                     </div>
 
                     <!-- Available Courses -->
-                    <div class="mb-3">
-                        <label for="editAvailableCourses" class="form-label">Available Courses</label>
-                        <div id="editAvailableCourses">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Computer System Servicing NC II"
-                                    id="course1">
-                                <label class="form-check-label" for="course1">
-                                    Computer System Servicing NC II
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Visual Graphic Design NC III"
-                                    id="course2">
-                                <label class="form-check-label" for="course2">
-                                    Visual Graphic Design NC III
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2D Animation NC II" id="course3">
-                                <label class="form-check-label" for="course3">
-                                    2D Animation NC II
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Programming NC III" id="course4">
-                                <label class="form-check-label" for="course4">
-                                    Programming NC III
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
-                                    value="Electrical Installation and Maintenance NC II" id="course5">
-                                <label class="form-check-label" for="course5">
-                                    Electrical Installation and Maintenance NC II
-                                </label>
-                            </div>
-                        </div>
+                    <div class="form-floating col-md-6">
+                        <input type="text" class="form-control" id="availableCourses" placeholder="Available Courses">
+                        <label for="availableCourses">Available Courses</label>
                     </div>
 
                     <!-- Student Slot -->
                     <div class="form-floating col-md-6">
-                        <input type="text" class="form-control" id="location" placeholder="Location">
-                        <label for="location">Student Slot</label>
+                        <input type="number" class="form-control" id="studentSlot" placeholder="Student Slot">
+                        <label for="studentSlot">Student Slot</label>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
+                        <button style="background-color: #190960" type="submit" class="btn text-light">Add Now</button>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
-
         <script src="/Capstone/JS_CSS_Admin/js_training_center.js"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
             crossorigin="anonymous"></script>
 </body>

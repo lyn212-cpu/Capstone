@@ -1,133 +1,148 @@
-// Document Objective Model and DataTable script
-window.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', function () {
+    // DataTable initialization
     const datatablesSimple = document.getElementById('datatablesSimple');
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }
-});
 
-const Nav = document.getElementById('collapseExample');
-const btn_menu = document.getElementById('btn_menu');
+    // Sidebar menu toggle
+    const Nav = document.getElementById('collapseExample');
+    const btn_menu = document.getElementById('btn_menu');
+    if (btn_menu && Nav) {
+        btn_menu.addEventListener('click', () => {
+            Nav.classList.toggle('d-none');
+            Nav.classList.add('nav_active');
+        });
 
-btn_menu.addEventListener('click', () => {
-    Nav.classList.toggle('d-none');
-    Nav.classList.add('nav_active');
-});
+        if (window.innerWidth < 768) {
+            Nav.classList.add('d-none');
+        }
+    }
 
-if (window.innerWidth < 768) {
-    Nav.classList.add('d-none');
-}
-
-// Toggle visibility of action buttons
-document.addEventListener('DOMContentLoaded', () => {
+    // Toggle visibility of action buttons
     const toggleActionsBtn = document.getElementById('toggleActionsBtn');
     if (toggleActionsBtn) {
         toggleActionsBtn.addEventListener('click', () => {
             const actionButtons = document.querySelectorAll('.edit-btn, .delete-btn');
             actionButtons.forEach(button => {
-                button.classList.toggle('d-none'); // Add or remove the 'd-none' class to hide/show buttons
+                button.classList.toggle('d-none');
             });
         });
     }
-});
 
-// JavaScript to show/hide the 'Other Requirement' input and add more fields
-function toggleOtherRequirement() {
-    const requirements = document.getElementById('requirements');
-    const otherDiv = document.getElementById('otherRequirementDiv');
+    // Show/hide the 'Other Requirement' input and add more fields (Add Modal)
+    window.toggleOtherRequirement = function () {
+        const requirements = document.getElementById('requirements');
+        const otherDiv = document.getElementById('otherRequirementDiv');
+        const addRequirementBtn = document.getElementById('addRequirementBtn');
+        const selected = Array.from(requirements.selectedOptions).map(opt => opt.value);
+
+        if (selected.includes("other")) {
+            otherDiv.style.display = "block";
+            addRequirementBtn.style.display = "inline-block";
+        } else {
+            otherDiv.style.display = "none";
+            addRequirementBtn.style.display = "none";
+            document.getElementById("otherRequirement").value = "";
+            document.getElementById("additionalRequirements").innerHTML = "";
+        }
+    };
+
+    // Add functionality to dynamically add more "Other Requirement" fields (Add Modal)
     const addRequirementBtn = document.getElementById('addRequirementBtn');
-    const selected = Array.from(requirements.selectedOptions).map(opt => opt.value);
-
-    if (selected.includes("other")) {
-        otherDiv.style.display = "block";
-        addRequirementBtn.style.display = "inline-block"; // Show the "Add Another Requirement" button
-    } else {
-        otherDiv.style.display = "none";
-        addRequirementBtn.style.display = "none";
-        document.getElementById("otherRequirement").value = "";
-        document.getElementById("additionalRequirements").innerHTML = ""; // Clear additional fields
+    if (addRequirementBtn) {
+        addRequirementBtn.addEventListener('click', () => {
+            const additionalRequirements = document.getElementById('additionalRequirements');
+            const newField = document.createElement('div');
+            newField.classList.add('form-floating', 'mt-2');
+            newField.innerHTML = `
+                <input type="text" class="form-control" placeholder="Other Requirement">
+                <label>Specify Another Requirement</label>
+            `;
+            additionalRequirements.appendChild(newField);
+        });
     }
-}
 
-// Add functionality to dynamically add more "Other Requirement" fields
-const addRequirementBtn = document.getElementById('addRequirementBtn');
-if (addRequirementBtn) {
-    addRequirementBtn.addEventListener('click', () => {
-        const additionalRequirements = document.getElementById('additionalRequirements');
-        const newField = document.createElement('div');
-        newField.classList.add('form-floating', 'mt-2');
-        newField.innerHTML = `
-            <input type="text" class="form-control" placeholder="Other Requirement">
-            <label>Specify Another Requirement</label>
-        `;
-        additionalRequirements.appendChild(newField);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Handle Edit Button Click
-    document.querySelectorAll('.edit-btn').forEach(editButton => {
-        editButton.addEventListener('click', (event) => {
-            const row = event.target.closest('tr'); // Get the row of the clicked button
-            const TrainingCenter = row.querySelector('td:nth-child(1)').textContent; // Get course name
-            const Location = row.querySelector('td:nth-child(2)').textContent; // Get available slot
-
-            // Populate the Edit Modal fields
-            document.getElementById('editTrainingCenter').value = TrainingCenter;
-            document.getElementById('editLocation').value = Location;
+    // Edit button click
+    document.querySelectorAll(".edit-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            document.getElementById("editCenterId").value = btn.getAttribute("data-center_id");
+            document.getElementById("editCenterName").value = btn.getAttribute("data-center_name");
+            document.getElementById("editLocation").value = btn.getAttribute("data-location");
+            document.getElementById("editContactInfo").value = btn.getAttribute("data-contact_info");
+            document.getElementById("editRequirements").value = btn.getAttribute("data-requirements");
+            document.getElementById("editOperationHours").value = btn.getAttribute("data-operation_hours");
+            document.getElementById("editAvailableCoursesInput").value = btn.getAttribute("data-available_courses");
+            document.getElementById("editStudentSlot").value = btn.getAttribute("data-student_slot");
+            var editModal = new bootstrap.Modal(document.getElementById("editModal"));
+            editModal.show();
         });
     });
 
-    // Handle Delete Button Click
-    document.querySelectorAll('.delete-btn').forEach(deleteButton => {
-        deleteButton.addEventListener('click', (event) => {
-            const row = event.target.closest('tr'); // Get the row of the clicked button
-            const courseName = row.querySelector('td:nth-child(1)').textContent; // Get course name
+    // Edit form submit
+    const editForm = document.getElementById("editForm");
+    if (editForm) {
+        editForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            fetch("editTrainingCenter.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    alert(data.message);
+                    if (data.success) location.reload();
+                })
+                .catch(() => alert("An error occurred."));
+        });
+    }
 
-            // Optionally, display the course name in the delete confirmation modal
-            const deleteModalBody = document.querySelector('#deleteModal .modal-body');
-            deleteModalBody.textContent = `Are you sure you want to delete this training center "${courseName}"?`;
-
-            // Handle Confirm Delete
-            const confirmDeleteBtn = document.getElementById('confirmDelete');
-            if (confirmDeleteBtn) {
-                confirmDeleteBtn.addEventListener('click', () => {
-                    // Remove the row from the table
-                    row.remove();
-
-                    // Hide the Delete Modal
-                    const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
-                    deleteModal.hide();
-                }, { once: true }); // Ensure the event listener is only triggered once
-            }
+    // Delete button click
+    let centerIdToDelete = null;
+    document.querySelectorAll(".delete-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            centerIdToDelete = btn.closest("tr").querySelector(".edit-btn").getAttribute("data-center_id");
+            var deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+            deleteModal.show();
         });
     });
-});
 
-
-// Function to toggle the visibility of the "Other Requirement" input in the Edit Modal
-function toggleOtherRequirementEdit() {
-    const editRequirements = document.getElementById('editRequirements');
-    const otherRequirementEditDiv = document.getElementById('otherRequirementEditDiv');
-    const selected = Array.from(editRequirements.selectedOptions).map(opt => opt.value);
-
-    if (selected.includes("other")) {
-        otherRequirementEditDiv.style.display = "block";
-    } else {
-        otherRequirementEditDiv.style.display = "none";
-        document.getElementById("otherRequirementEdit").value = ""; // Clear the input field
-        document.getElementById("additionalRequirementsEdit").innerHTML = ""; // Clear additional fields
+    // Confirm delete
+    const confirmDeleteBtn = document.getElementById("confirmDelete");
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener("click", function () {
+            if (!centerIdToDelete) return;
+            fetch("deleteTrainingCenter.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "center_id=" + encodeURIComponent(centerIdToDelete),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    alert(data.message);
+                    if (data.success) location.reload();
+                })
+                .catch(() => alert("An error occurred."));
+        });
     }
-}
 
-// Add functionality to dynamically add more "Other Requirement" fields
-document.getElementById('addRequirementEditBtn').addEventListener('click', () => {
-    const additionalRequirementsEdit = document.getElementById('additionalRequirementsEdit');
-    const newField = document.createElement('div');
-    newField.classList.add('form-floating', 'mt-2');
-    newField.innerHTML = `
-        <input type="text" class="form-control" placeholder="Additional Requirement">
-        <label>Specify Another Requirement</label>
-    `;
-    additionalRequirementsEdit.appendChild(newField);
+    // Add Center form submit (Add Modal)
+    const addCenterForm = document.getElementById("addCenterForm");
+    if (addCenterForm) {
+        addCenterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch("addTrainingCenter.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.success) location.reload();
+                })
+                .catch(() => alert("An error occurred."));
+        });
+    }
 });
