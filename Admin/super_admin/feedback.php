@@ -1,11 +1,8 @@
 <?php
 session_start();
 include '../../Backend/connect.php';
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
-}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -61,7 +58,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -96,14 +94,29 @@ if (!isset($_SESSION['user_id'])) {
                 <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Username</th>
+                            <th>Fullname</th>
                             <th>Course</th>
                             <th>Feedback</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- No sample data, only column headers remain -->
+                        <?php
+                        $sql = "SELECT feedback_id, username, course_id, feedback FROM feedback";
+                        $result = $conn->query($sql);
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['username']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['course_id']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['feedback']) . "</td>";
+                                echo "<td>
+            <button class='btn btn-danger btn-sm delete-btn' data-feedback_id='" . htmlspecialchars($row['feedback_id'], ENT_QUOTES) . "'>Delete</button>
+        </td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -131,7 +144,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
+    <script src="../../JavaScript_Admin/js_feedback.js"></script>
 </body>
 
 </html>

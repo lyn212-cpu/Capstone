@@ -1,10 +1,6 @@
 <?php
 session_start();
 include '../../Backend/connect.php';
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,7 +12,6 @@ if (!isset($_SESSION['user_id'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <title>Super Admin</title>
@@ -61,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
                     // Show submit button after file is selected
                     const fileInput = document.getElementById('ncExcelInput');
                     const submitBtn = document.getElementById('submitNcExcelBtn');
-                    fileInput.addEventListener('change', function() {
+                    fileInput.addEventListener('change', function () {
                         if (fileInput.files.length > 0) {
                             submitBtn.classList.remove('d-none');
                         } else {
@@ -129,11 +124,28 @@ if (!isset($_SESSION['user_id'])) {
                             <th>Email</th>
                             <th>National Certificate</th>
                             <th>Certificate No.</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- No sample data, only column headers remain -->
+                        <?php
+                        $sql = "SELECT certificate_id, full_name, section_code, email, national_certificate, certificate_no FROM nc_certificate";
+                        $result = $conn->query($sql);
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['section_code']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['national_certificate']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['certificate_no']) . "</td>";
+                                echo "<td>
+                                    <button class='btn btn-danger btn-sm delete-btn' data-certificate_id='" . htmlspecialchars($row['certificate_id'], ENT_QUOTES) . "'>Delete</button>
+                                </td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -161,12 +173,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="/Capstone/JS_CSS_Admin/js_nc.js"></script>
-    <script>
-        // Initialize the Simple-DataTables library for the table
-        const table = document.querySelector('#datatablesSimple');
-        const dataTable = new simpleDatatables.DataTable(table);
-    </script>
+    <script src="../../JS_CSS_Admin/js_nc.js"></script>
 </body>
 
 </html>
