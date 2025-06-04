@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
         body {
             background-repeat: no-repeat;
             background-size: cover;
-            background-image: url("../../Assets/bg.jpg");
+            background-image: url("../../Assets/BACKGROUND/blur_1.jpg");
         }
 
         .card {
@@ -95,7 +95,7 @@ if (!isset($_SESSION['user_id'])) {
     <section class="container mt-5">
         <div class="card bg-transparent p-3 mb-4 rounded col-lg-12">
             <div class="card-body">
-                <h5 class="card-title fw-bold text-primary mb-3">Connect with Us!</h5>
+                <h5 class="card-title fw-bold text-primary mb-3" style="color: #ffffff;">Connect with Us!</h5>
 
                 <div class="d-flex align-items-center mb-2">
                     <i class="bi bi-instagram me-2 text-primary"></i>
@@ -125,7 +125,7 @@ if (!isset($_SESSION['user_id'])) {
                 <img src="../../Assets/FORMAL_PICTURES/Ramon,%20Jefte.jpeg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Ramon, Jefte Jr.</h6>
-                <small class="text-white-50">Project Manager</small>
+                <small class="text-white-100">Project Manager</small>
             </div>
 
             <div class="col text-center">
@@ -133,49 +133,49 @@ if (!isset($_SESSION['user_id'])) {
                     class="rounded-circle img-fluid mb-2" style="width: 50px; height: 50px; object-fit: cover;"
                     alt="avatar">
                 <h6 class="mb-0 text-white">De Asis, Rhea Lyn</h6>
-                <small class="text-white-50">Back-end Developer</small>
+                <small class="text-white-100">Back-end Developer</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Cadorna,%20Jade.jpg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Cadorna, Jade</h6>
-                <small class="text-white-50">Front-end Developer</small>
+                <small class="text-white-100">Front-end Developer</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Cruz,%20Ronn.jpg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Cruz, Ronn Andrei</h6>
-                <small class="text-white-50">Front-end Developer</small>
+                <small class="text-white-100">Front-end Developer</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Malasaga,Merlyn.jpg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Malasaga, Merlyn</h6>
-                <small class="text-white-50">Front-end Developer</small>
+                <small class="text-white-100">Front-end Developer</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Potolin,%20Shahad.JPG" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Potolin, Shahad</h6>
-                <small class="text-white-50">Coordinator</small>
+                <small class="text-white-100">Coordinator</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Donato,%20Hans.jpg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Donato, Kenneth Hans</h6>
-                <small class="text-white-50">Coordinator</small>
+                <small class="text-white-100">Coordinator</small>
             </div>
 
             <div class="col text-center">
                 <img src="../../Assets/FORMAL_PICTURES/Rayo,%20Kim.jpg" class="rounded-circle img-fluid mb-2"
                     style="width: 50px; height: 50px; object-fit: cover;" alt="avatar">
                 <h6 class="mb-0 text-white">Rayo, Kimberly</h6>
-                <small class="text-white-50">Quality Assurance</small>
+                <small class="text-white-100">Quality Assurance</small>
             </div>
 
         </div>
