@@ -60,7 +60,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -132,8 +133,22 @@ if (!isset($_SESSION['user_id'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- No sample data, only column headers remain -->
-                </tbody>
+                    <?php
+                    $sql = "SELECT user_id, school_number, full_name, course, year_level FROM users";
+                    $result = $conn->query($sql);
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . htmlspecialchars($row['user_id'], ENT_QUOTES) . "'></td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['course']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['year_level']) . "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+                </tbody>s
             </table>
         </form>
     </main>
@@ -162,11 +177,9 @@ if (!isset($_SESSION['user_id'])) {
     <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<<<<<<< Updated upstream
-=======
 
     <script>
-        document.getElementById('deleteButton').addEventListener('click', function() {
+        document.getElementById('deleteButton').addEventListener('click', function () {
             const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]:checked');
             if (checkboxes.length > 0) {
                 const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
@@ -176,11 +189,10 @@ if (!isset($_SESSION['user_id'])) {
             }
         });
 
-        document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+        document.getElementById('confirmDeleteButton').addEventListener('click', function () {
             document.getElementById('deleteForm').submit();
         });
     </script>
->>>>>>> Stashed changes
 </body>
 
 </html>
