@@ -77,10 +77,23 @@
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
             </ul>
-            <div class="d-flex align-items-center">
-                <a class="btn btn-light rounded-circle p-0" href="#" style="width: 44px; height: 44px;">
-                    <i class="fa-solid fa-user-tie text-secondary d-block m-auto"></i>
-                </a>
+           <div class="d-flex align-items-center justify-content-end p-2">
+                        <div class="dropdown">
+                            <a class="btn btn-light d-flex align-items-center rounded-circle p-0 border-0" href="#"
+                                role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="width: 44px; height: 44px;">
+                                <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="userProfile.php"><i
+                                            class="fa fa-user me-2"></i>Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i
+                                            class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-include '../../Backend/connect.php'; // <-- fixed directory
+include '../../Backend/connect.php'; 
 session_start();
 ?>
 
