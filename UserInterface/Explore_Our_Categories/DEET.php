@@ -1,3 +1,14 @@
+<?php
+    // Place this PHP block before your HTML or at the top of the file
+    $conn = new mysqli("localhost", "root", "", "nc_finder");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // Fetch the first center_name as an example
+    $sql = "SELECT center_name FROM training_center LIMIT 1";
+    $result = $conn->query($sql);
+    $center = $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
+?>
 <!doctype html>
 <html lang="en">
 
@@ -82,51 +93,42 @@
 
         <!-- Cards -->
         <div class="row g-3">
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">Asian Institute
-                            of Computer Studies</a>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II, Programming IV ...</p>
-                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>AICS Bldg., P. Noval St. Cor. España,
-                            Sampaloc Manila</p>
-                        <p class="mb-0"><i class="fas fa-phone me-2"></i>0993 456 1034</p>
-                    </div>
-                </div>
-            </div>
+            <?php
+            // Fetch all training centers from the database
+            $sql = "SELECT center_name, available_courses, location, contact_info FROM Training_Center";
+            $result = $conn->query($sql);
 
+            if ($result && $result->num_rows > 0):
+                while ($row = $result->fetch_assoc()):
+            ?>
             <div class="col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Don Bosco Youth Center - Tondo Inc.</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Bo. Magsaysay, Tondo, Manila</p>
-                        <p class="mb-0"><i class="fas fa-phone me-2"></i>0942 3484 932</p>
+                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">
+                            <?php echo htmlspecialchars($row['center_name']); ?>
+                        </a>
+                        <p class="mb-1 text-muted small">
+                            <?php echo htmlspecialchars($row['available_courses']); ?>
+                        </p>
+                        <p class="mb-1">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <?php echo htmlspecialchars($row['location']); ?>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-phone me-2"></i>
+                            <?php echo htmlspecialchars($row['contact_info']); ?>
+                        </p>
                     </div>
                 </div>
             </div>
-
+            <?php
+                endwhile;
+            else:
+            ?>
             <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Guzman College of Science and Technology</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>GCST Bldg., 509 Z. P. De Guzman
-                            Street, Quiapo, Manila</p>
-                        <p class="mb-0"><i class="fas fa-phone me-2"></i>0993 3234 0230</p>
-                    </div>
-                </div>
+                <div class="alert alert-warning">No training centers found.</div>
             </div>
-
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">STI College - Recto</h5>
-                        <p class="mb-1 text-muted small">Computer Hardware Servicing NC II ...</p>
-                        <!-- You can add address and contact here if available -->
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 
