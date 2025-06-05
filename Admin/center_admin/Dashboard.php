@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -17,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <title>Read-Only Admin</title>
+    <title>Training Center Admin</title>
 </head>
 
 <body>
@@ -29,13 +30,13 @@ if (!isset($_SESSION['user_id'])) {
                     alt="administrator-male--v1" />
             </picture>
             <div>
-                <h5 class="">Read-Only Admin</h5>
+                <h5 class="">Training Center Admin</h5>
             </div>
         </div>
 
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/read_sideBar.php';
+        include_once '../../include/centerAdmin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -60,7 +61,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
+                        <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -69,6 +71,7 @@ if (!isset($_SESSION['user_id'])) {
     <main class="container-fluid d-flex flex-column gap-3 p-2">
         <header class="shadow-sm border-bottom border-2 rounded-3 p-2">
             <div class="d-flex gap-3">
+
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
@@ -115,31 +118,82 @@ if (!isset($_SESSION['user_id'])) {
         </section>
 
         <!--User list table-->
-        <div class="card mb-4 bg-transparent">
-            <div class="card-body">
-                <table id="datatablesSimple" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>School Number</th>
-                            <th>Full Name</th>
-                            <th>Course</th>
-                            <th>Year Level</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- No sample data, only column headers remain -->
-                    </tbody>
-                </table>
+        <form id="deleteForm" action="deleteUser.php" method="POST">
+            <table id="datatablesSimple" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <button type="button" class="btn btn-danger btn-sm" id="deleteButton">
+                                Delete
+                            </button>
+                        </th>
+                        <th>School Number</th>
+                        <th>Full Name</th>
+                        <th>Course</th>
+                        <th>Year Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT user_id, school_number, full_name, course, year_level FROM users";
+                    $result = $conn->query($sql);
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . htmlspecialchars($row['user_id'], ENT_QUOTES) . "'></td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['course']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['year_level']) . "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </form>
+    </main>
+
+    <!-- Modal for Delete Confirmation -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the selected user/s?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-
-    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('deleteButton').addEventListener('click', function () {
+            const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]:checked');
+            if (checkboxes.length > 0) {
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                deleteModal.show();
+            } else {
+                alert('Please select at least one user to delete.');
+            }
+        });
+
+        document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+            document.getElementById('deleteForm').submit();
+        });
+    </script>
 </body>
 
 </html>
