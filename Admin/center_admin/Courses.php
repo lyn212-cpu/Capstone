@@ -112,7 +112,7 @@ session_start();
             <!-- Logout Button -->
             <button class="btn text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75"
                 data-bs-toggle="modal" data-bs-target="#logoutModal">
-                Logout
+                Logouts
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
         </div>
@@ -155,7 +155,7 @@ session_start();
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
-                class="btn text-light">New Course</button>
+                class="btn text-light">Post</button>
         </nav>
 
         <!-- User list table -->
@@ -177,7 +177,7 @@ session_start();
                             <th>Contact Information</th>
                             <th>Course Description</th>
                             <th>Requirements</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -305,12 +305,8 @@ session_start();
                 </div>
 
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
-
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button style="background-color: #190960" type="button" class="btn text-light">Add Now</button>
+                    <button style="background-color: #190960" type="button" class="btn text-light">Post Now</button>
 
                 </div>
             </div>
