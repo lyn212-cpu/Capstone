@@ -9,16 +9,8 @@
             <a class="nav-link active  text-light" aria-current="page" href="./Courses.php">Manage Courses</a>
         </li>
         <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
-            <i class="fa-solid fa-school-circle-check text-light"></i>
-            <a class="nav-link active text-light" aria-current="page" href="./TrainingCenter.php">Training Center</a>
-        </li>
-        <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
             <i class="fa-solid fa-comment text-light"></i>
             <a class="nav-link active  text-light" aria-current="page" href="./Feedback.php">Manage Feedback</a>
-        </li>
-        <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
-            <i class="fa-solid fa-comment text-light"></i>
-            <a class="nav-link active  text-light" aria-current="page" href="./NC.php">Manage NC Form</a>
         </li>
 
     </ul>
