@@ -16,7 +16,7 @@ session_start();
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <title>Super Admin</title>
+    <title>Training Center Admin</title>
 </head>
 
 <body>
@@ -100,7 +100,7 @@ session_start();
                     alt="administrator-male--v1" />
             </picture>
             <div>
-                <h5 class="">Super Admin</h5>
+                <h5 class="">Training Center Admin</h5>
             </div>
         </div>
         <!-- SideBar--------------------------------------------------------------->
@@ -144,14 +144,14 @@ session_start();
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
-                <h3 style="color: #190960" class="fw-bold">Manage Courses</h3>
+                <h3 style="color: #190960" class="fw-bold">Dashboard</h3>
             </div>
         </header>
 
         <nav class="container-fluid d-flex justify-content-between align-items-center">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Course Management</li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
