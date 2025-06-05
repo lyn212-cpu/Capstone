@@ -68,31 +68,39 @@ if (!isset($_SESSION['user_id'])) {
 
 <!-- NAVBAR -->
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../../Assets/nc_finder_logo_transparent.png" alt="logo" height="40">
+                <img src="../../Assets/nc_finder_logo_transparent.png" height="40" alt="Logo">
             </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link fw-semibold text-dark" href="../index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold text-dark" href="FindCourse.php">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold text-dark" href="contact_us.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold text-dark" href="about_us.php">About Us</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/FindCourse.php">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about_us.php">About Us</a></li>
                 </ul>
-                <div class="dropdown ms-3">
-                    <a class="btn btn-outline-secondary rounded-circle" href="#" data-bs-toggle="dropdown" style="width: 44px; height: 44px;">
-                        <i class="fa-solid fa-user-tie m-auto"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-user me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-cog me-2"></i>Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
-                    </ul>
+                <div class="d-flex align-items-center justify-content-end p-2">
+                    <div class="dropdown">
+                        <a class="btn btn-light d-flex align-items-center rounded-circle p-0 border-0" href="#"
+                           role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"
+                           style="width: 44px; height: 44px;">
+                            <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="userProfile.php"><i
+                                            class="fa fa-user me-2"></i>Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i
+                                            class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
