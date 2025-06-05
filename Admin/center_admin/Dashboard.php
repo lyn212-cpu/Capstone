@@ -17,7 +17,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <title>Super Admin</title>
+    <title>Training Center Admin</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_id'])) {
                     alt="administrator-male--v1" />
             </picture>
             <div>
-                <h5 class="">Super Admin</h5>
+                <h5 class="">Training Center Admin</h5>
             </div>
         </div>
 
