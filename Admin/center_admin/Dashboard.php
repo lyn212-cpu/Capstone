@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/centerAdmin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -148,7 +149,7 @@ if (!isset($_SESSION['user_id'])) {
                         }
                     }
                     ?>
-                </tbody>s
+                </tbody>
             </table>
         </form>
     </main>

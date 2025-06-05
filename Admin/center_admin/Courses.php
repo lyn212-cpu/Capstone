@@ -1,5 +1,5 @@
 <?php
-include '../../Backend/connect.php'; 
+include '../../Backend/connect.php';
 session_start();
 ?>
 
@@ -38,7 +38,8 @@ session_start();
                         </div>
                         <div class="mb-3">
                             <label for="editTrainingCenterName" class="form-label">Training Center Name</label>
-                            <input type="text" class="form-control" id="editTrainingCenterName" name="training_center_name">
+                            <input type="text" class="form-control" id="editTrainingCenterName"
+                                name="training_center_name">
                         </div>
                         <div class="mb-3">
                             <label for="editDuration" class="form-label">Duration</label>
@@ -58,7 +59,8 @@ session_start();
                         </div>
                         <div class="mb-3">
                             <label for="editCourseDescription" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editCourseDescription" name="course_description">
+                            <input type="text" class="form-control" id="editCourseDescription"
+                                name="course_description">
                         </div>
                         <div class="mb-3">
                             <label for="editRequirements" class="form-label">Requirements</label>
@@ -103,7 +105,7 @@ session_start();
         </div>
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/centerAdmin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
