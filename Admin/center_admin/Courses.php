@@ -151,7 +151,6 @@ session_start();
         <nav class="container-fluid d-flex justify-content-between align-items-center">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Course Management</li>
                 </ol>
             </nav>
