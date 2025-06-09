@@ -83,7 +83,8 @@ if (!isset($_SESSION['user_id'])) {
                 Advance your career with TESDA's accredited courses. Gain the skills that matter.
             </p>
             <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
-                <a href="pages/FindCourse.php" class="btn btn-primary px-4 py-2 fw-semibold" style="background-color: #190960; border: none;">
+                <a href="pages/FindCourse.php" class="btn btn-primary px-4 py-2 fw-semibold"
+                    style="background-color: #190960; border: none;">
                     Find Course
                 </a>
                 <button class="btn btn-light px-4 py-2 fw-semibold">
@@ -439,9 +440,11 @@ if (!isset($_SESSION['user_id'])) {
             <div class="container text-center">
                 <div class="row mb-2">
                     <div class="col-12">
-                        <a href="./pages/contact_us.php" class="text-white text-decoration-underline mx-2">Contact Us</a>
-                        <a href="./pages/privacy_and_policy.php" class="text-white text-decoration-underline mx-2">Privacy Policy</a>
-                        <a href="./pages/terms_and_condation.php" class="text-white text-decoration-underline mx-2">
+                        <a href="./pages/contact_us.php" class="text-white text-decoration-underline mx-2">Contact
+                            Us</a>
+                        <a href="./pages/privacy_and_policy.php"
+                            class="text-white text-decoration-underline mx-2">Privacy Policy</a>
+                        <a href="./pages/terms_and_condition.php" class="text-white text-decoration-underline mx-2">
                             Terms and Conditions
                         </a>
                     </div>
