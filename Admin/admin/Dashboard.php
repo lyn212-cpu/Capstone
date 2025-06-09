@@ -1,11 +1,19 @@
 <?php
-session_start();
 include '../../Backend/connect.php';
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
+session_start();
+
+$course_count = 0;
+
+// Query the database to get the total number of courses
+$course_query = "SELECT COUNT(course_id) AS total_courses FROM nc_course";
+$course_result = $conn->query($course_query);
+
+if ($course_result && $row = $course_result->fetch_assoc()) {
+    $course_count = $row['total_courses'];
 }
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +43,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/admin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -84,23 +92,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h5>Available Courses</h5>
-                            <h3>200</h3>
+                            <h3><?= $course_count ?></h3>
                         </div>
                         <i class="fa-solid fa-bookmark text-light"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-10 col-sm-12">
-                <div style="background-color: #190960" class="card text-light p-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5>Training Center</h5>
-                            <h3>20</h3>
-                        </div>
-                        <i class="fa-solid fa-school-circle-check text-light"></i>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="col-lg-3 col-md-10 col-sm-12">
                 <div style="background-color: #190960" class="card text-light p-3">
@@ -133,7 +131,24 @@ if (!isset($_SESSION['user_id'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- No sample data, only column headers remain -->
+                    <?php
+                    $sql = "SELECT school_number, full_name, course, year_level FROM users";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . $row['school_number'] . "'></td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['course']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['year_level']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' class='text-center'>No users found.</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </form>
