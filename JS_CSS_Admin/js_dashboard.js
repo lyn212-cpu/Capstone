@@ -24,7 +24,15 @@ if (window.innerWidth < 768) {
   Nav.classList.add("d-none");
 }
 
-// Delete button notification
 function confirmDelete() {
+  var checkboxes = document.querySelectorAll(
+    "input[name='delete_ids[]']:checked"
+  );
+
+  if (checkboxes.length === 0) {
+    alert("Please select at least one record to delete.");
+    return false;
+  }
+
   return confirm("Are you sure you want to delete the selected user(s)?");
 }
