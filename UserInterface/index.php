@@ -325,7 +325,7 @@ if (!isset($_SESSION['user_id'])) {
                     first step towards a brighter career.
                 </p>
 
-                <a href="#" class="container-fluid row gap-3">
+                <div href="#" class="container-fluid row gap-3">
                     <div class="col-lg-6 d-lg-flex gap-3">
                         <i class="fa-solid fs-1 text-light fa-book"></i>
                         <div>
@@ -362,7 +362,7 @@ if (!isset($_SESSION['user_id'])) {
                             </p>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
     </section>
 
@@ -439,10 +439,11 @@ if (!isset($_SESSION['user_id'])) {
             <div class="container text-center">
                 <div class="row mb-2">
                     <div class="col-12">
-                        <a href="" class="text-white text-decoration-underline mx-2">Contact Us</a>
-                        <a href="/privacy-policy" class="text-white text-decoration-underline mx-2">Privacy Policy</a>
-                        <a href="/terms-of-service" class="text-white text-decoration-underline mx-2">Terms of
-                            Service</a>
+                        <a href="./pages/contact_us.php" class="text-white text-decoration-underline mx-2">Contact Us</a>
+                        <a href="./pages/privacy_and_policy.php" class="text-white text-decoration-underline mx-2">Privacy Policy</a>
+                        <a href="./pages/terms_and_condation.php" class="text-white text-decoration-underline mx-2">
+                            Terms and Conditions
+                        </a>
                     </div>
                 </div>
                 <div class="row">
