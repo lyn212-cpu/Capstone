@@ -4,7 +4,7 @@
             <div class="col-12">
                 <a href="./contact_us.php" class="text-white text-decoration-underline mx-2">Contact Us</a>
                 <a href="./privacy_and_policy.php" class="text-white text-decoration-underline mx-2">Privacy Policy</a>
-                <a href="./terms_and_condation.php" class="text-white text-decoration-underline mx-2">Terms and
+                <a href="./terms_and_condition.php" class="text-white text-decoration-underline mx-2">Terms and
                     Conditions</a>
             </div>
         </div>
