@@ -87,7 +87,7 @@ session_start();
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
-                class="btn text-light">Post</button>
+                class="btn text-light">Add Course</button>
         </nav>
 
         <!-- User list table -->
@@ -109,7 +109,7 @@ session_start();
                             <th>Duration</th>
                             <th>Slots Available</th>
                             <th>Location</th>
-                            <th>Contact Information</th>
+                            <th>Contact Number</th> <!-- Changed from "Contact Information" -->
                             <th>Course Description</th>
                             <th>Requirements</th>
                         </tr>
@@ -120,12 +120,31 @@ session_start();
                         $result = $conn->query($sql);
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
+                                // Merge location fields if they exist, otherwise use the 'location' column
+                                if (
+                                    isset($row['blockLot']) || isset($row['street']) || isset($row['subdivision']) ||
+                                    isset($row['barangay']) || isset($row['city']) || isset($row['province']) || isset($row['zipCode'])
+                                ) {
+                                    $location_parts = [
+                                        $row['blockLot'] ?? '',
+                                        $row['street'] ?? '',
+                                        $row['subdivision'] ?? '',
+                                        $row['barangay'] ?? '',
+                                        $row['city'] ?? '',
+                                        $row['province'] ?? '',
+                                        $row['zipCode'] ?? ''
+                                    ];
+                                    $location = implode(', ', array_filter($location_parts));
+                                } else {
+                                    $location = $row['location'] ?? '';
+                                }
+
                                 echo "<tr>";
                                 echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['duration']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['slots_available']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                echo "<td>" . htmlspecialchars($location) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['contact_info']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['course_description']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
@@ -153,57 +172,90 @@ session_start();
                     <div class="modal-body row g-3 px-3">
                         <!-- Course Name -->
                         <div class="form-floating col-md-6">
-                            <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Course Name">
+                            <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Course Name" required>
                             <label for="courseName">Course Name</label>
                         </div>
 
                         <!-- Training Center Name -->
                         <div class="form-floating col-md-6">
-                            <input type="text" class="form-control" id="centerName" name="centerName" placeholder="Training Center Name">
+                            <input type="text" class="form-control" id="centerName" name="centerName" placeholder="Training Center Name" required>
                             <label for="centerName">Training Center Name</label>
                         </div>
 
                         <!-- Duration -->
-                        <div class="form-floating col-md-6">
-                            <input type="text" class="form-control" id="duration" name="duration" placeholder="Duration">
-                            <label for="duration">Duration (e.g., 35 Days)</label>
+                        <div class="form-floating col-md-6 d-flex align-items-center">
+                            <select class="form-select" id="duration" name="duration" style="width:auto;" required>
+                                <?php for ($i = 1; $i <= 100; $i++): ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php endfor; ?>
+                            </select>
+                            <label for="duration" class="ms-2 mb-0">Duration</label>
+                            <span class="ms-2">Days</span>
                         </div>
 
-                        <!-- Location -->
+                        <!-- Slot Availability (dropdown 1-50) -->
                         <div class="form-floating col-md-6">
-                            <input type="text" class="form-control" id="location" name="location" placeholder="Location">
-                            <label for="location">Location</label>
-                        </div>
-
-                        <!-- Contact Number -->
-                        <div class="form-floating col-md-6">
-                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" placeholder="Contact Number">
-                            <label for="contactNumber">Contact Number</label>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="form-floating col-md-6">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                            <label for="email">Email</label>
-                        </div>
-
-                        <!-- Slot Availability (typable) -->
-                        <div class="form-floating col-md-6">
-                            <input type="text" class="form-control" id="slotAvailability" name="slotAvailability" placeholder="Slot Availability">
+                            <select class="form-select" id="slotAvailability" name="slotAvailability" required>
+                                <?php for ($i = 1; $i <= 50; $i++): ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php endfor; ?>
+                            </select>
                             <label for="slotAvailability">Slot Availability</label>
                         </div>
 
-                        <!-- Course Description -->
-                        <div class="form-floating col-12">
-                            <textarea class="form-control" placeholder="Leave a course description here"
-                                id="courseDescription" name="courseDescription" style="height: 100px"></textarea>
-                            <label for="courseDescription">Course Description</label>
+                        <!-- Block and Lot Number -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="blockLot" name="blockLot" placeholder="Block and Lot Number" required>
+                            <label for="blockLot">Block and Lot Number</label>
+                        </div>
+
+                        <!-- Street -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="street" name="street" placeholder="Street" required>
+                            <label for="street">Street</label>
+                        </div>
+
+                        <!-- Subdivision Name -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="subdivision" name="subdivision" placeholder="Subdivision Name">
+                            <label for="subdivision">Subdivision Name</label>
+                        </div>
+
+                        <!-- Barangay -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="barangay" name="barangay" placeholder="Barangay" required>
+                            <label for="barangay">Barangay</label>
+                        </div>
+
+                        <!-- City/Municipal Name -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City/Municipal Name" required>
+                            <label for="city">City/Municipal Name</label>
+                        </div>
+
+                        <!-- Province -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="province" name="province" placeholder="Province" required>
+                            <label for="province">Province</label>
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="form-floating col-md-6">
+                            <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Zip Code" required>
+                            <label for="zipCode">Postal Code</label>
+                        </div>
+
+
+                        <!-- Email -->
+                        <div class="form-floating col-md-6">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            <label for="email">Email</label>
                         </div>
 
                         <!-- Requirements -->
                         <div class="col-12">
                             <label class="form-label">Requirements</label>
-                            <select multiple class="form-select" id="requirements" name="requirements[]" onchange="toggleOtherRequirement()">
+                            <select multiple class="form-select" id="requirements" name="requirements[]" onchange="toggleOtherRequirement()" required>
                                 <option value="form_137">Form 137</option>
                                 <option value="birth_certificate">Birth Certificate</option>
                                 <option value="barangay_clearance">Barangay Clearance</option>
@@ -212,17 +264,24 @@ session_start();
                                 <option value="other">Other (specify below)</option>
                             </select>
                             <div class="form-text">Hold Ctrl (Windows) or Command (Mac) to select multiple.</div>
-
                             <!-- Other Requirement Field (hidden by default) -->
                             <div class="form-floating mt-2" id="otherRequirementDiv" style="display: none;">
                                 <input type="text" class="form-control" id="otherRequirement" name="otherRequirement"
                                     placeholder="Other Requirement">
                                 <label for="otherRequirement">Specify Other Requirement</label>
                             </div>
-                            <div id="additionalRequirements"></div> <!-- Container for additional fields -->
+                            <div id="additionalRequirements"></div>
                             <button type="button" class="btn btn-secondary mt-2" id="addRequirementBtn"
                                 style="display: none;">Add Another Requirement</button>
                         </div>
+
+                        <!-- Course Description -->
+                        <div class="form-floating col-12">
+                            <textarea class="form-control" placeholder="Leave a course description here"
+                                id="courseDescription" name="courseDescription" style="height: 100px" required></textarea>
+                            <label for="courseDescription">Course Description</label>
+                        </div>
+                 
                     </div>
 
                     <div class="modal-footer">
