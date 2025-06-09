@@ -1,15 +1,15 @@
 <?php
 include '../../Backend/connect.php';
 
-if (isset($_GET['course_name'])) {
-    $course_name = mysqli_real_escape_string($conn, $_GET['course_name']);
-    $sql = "DELETE FROM nc_course WHERE course_name = '$course_name'";
+if (isset($_GET['course_id'])) {
+    $course_id = mysqli_real_escape_string($conn, $_GET['course_id']);
+    $sql = "DELETE FROM nc_course WHERE course_id = '$course_id'";
 
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Course has been removed from the database'); window.location.href='admin_dashboard.php';</script>";
+        echo "<script>alert('Post has been disapproved'); window.location.href='Courses.php';</script>";
     } else {
-        echo "<script>alert('Error removing course'); window.location.href='admin_dashboard.php';</script>";
+        echo "<script>alert('Error removing course'); window.location.href='Courses.php';</script>";
     }
 } else {
-    echo "<script>alert('Invalid course selection'); window.location.href='admin_dashboard.php';</script>";
+    echo "<script>alert('Invalid course selection'); window.location.href='Courses.php';</script>";
 }

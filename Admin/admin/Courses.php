@@ -111,7 +111,7 @@ include '../../Backend/connect.php';
                     <tbody>
                         <?php
                         // Fetch data from nc_course table
-                        $sql = "SELECT course_name, training_center_name, duration, slots_available, location, contact_info, course_description, requirements, status FROM nc_course";
+                        $sql = "SELECT course_id, course_name, training_center_name, duration, slots_available, location, contact_info, course_description, requirements, status FROM nc_course";
                         $result = mysqli_query($conn, $sql);
 
                         // Check if there are records
@@ -131,8 +131,8 @@ include '../../Backend/connect.php';
 
                                 // Show Approve button only if status is "pending"
                                 if ($row['status'] === 'pending') {
-                                    echo "<button class='btn btn-success btn-sm' onclick='approveCourse(\"" . $row['course_name'] . "\")'>Approve</button> ";
-                                    echo "<button class='btn btn-danger btn-sm' onclick='disapproveCourse(\"" . $row['course_name'] . "\")'>Disapprove</button>";
+                                    echo "<button class='btn btn-success btn-sm' onclick='approveCourse(\"" . $row['course_id'] . "\")'>Approve</button> ";
+                                    echo "<button class='btn btn-danger btn-sm' onclick='disapproveCourse(\"" . $row['course_id'] . "\")'>Disapprove</button>";
                                 }
 
                                 echo "</td>";

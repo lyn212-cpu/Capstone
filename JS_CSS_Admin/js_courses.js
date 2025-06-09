@@ -19,24 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function approveCourse(courseName) {
-  if (
-    confirm("Are you sure you want to approve this course: " + courseName + "?")
-  ) {
+function approveCourse(courseId) {
+  if (confirm("Are you sure you want to approve this course?")) {
     window.location.href =
-      "updateCourseStatus.php?course_name=" +
-      encodeURIComponent(courseName) +
+      "updateCourseStatus.php?course_id=" +
+      encodeURIComponent(courseId) +
       "&status=approved";
   }
 }
 
-function disapproveCourse(courseName) {
-  if (
-    confirm(
-      "Are you sure you want to **remove** this course from the database?"
-    )
-  ) {
+function disapproveCourse(courseId) {
+  if (confirm("Are you sure you want to **disapprove** this post?")) {
     window.location.href =
-      "deleteCourse.php?course_name=" + encodeURIComponent(courseName);
+      "deleteCourse.php?course_id=" + encodeURIComponent(courseId);
   }
 }
