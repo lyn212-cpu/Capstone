@@ -38,24 +38,24 @@ $result = $conn->query($sql);
                     <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="about_us.php">About Us</a></li>
                 </ul>
-                    <div class="d-flex align-items-center justify-content-end p-2">
-                        <div class="dropdown">
-                            <a class="btn btn-light d-flex align-items-center rounded-circle p-0 border-0" href="#"
-                                role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"
-                                style="width: 44px; height: 44px;">
-                                <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
-                                <li><a class="dropdown-item" href="userProfile.php"><i
-                                            class="fa fa-user me-2"></i>Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i
-                                            class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
-                            </ul>
-                        </div>
+                <div class="d-flex align-items-center justify-content-end p-2">
+                    <div class="dropdown">
+                        <a class="btn btn-light d-flex align-items-center rounded-circle p-0 border-0" href="#"
+                            role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="width: 44px; height: 44px;">
+                            <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="userProfile.php"><i
+                                        class="fa fa-user me-2"></i>Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i
+                                        class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
                     </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -166,41 +166,40 @@ $result = $conn->query($sql);
                 ?>
                 <?php if ($result && $result->num_rows > 0): ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="../../Assets/nc_finder_logo_transparent.png" class="card-img-top course-logo"
-                                    alt="Course Image">
-                                <div class="card-body">
-                                    <div>
-                                        <h5 class="card-title"><?php echo htmlspecialchars($row['course_name']); ?></h5>
-                                        <p><?php echo htmlspecialchars($row['training_center_name']); ?></p>
-                                        <p>Duration: <?php echo htmlspecialchars($row['duration']); ?></p>
-                                        <p>Slots available: <?php echo htmlspecialchars($row['slots_available']); ?></p>
+                        <?php if (isset($row['status']) && strtolower($row['status']) === 'approved'): ?>
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="../../Assets/nc_finder_logo_transparent.png" class="card-img-top course-logo"
+                                        alt="Course Image">
+                                    <div class="card-body">
+                                        <div>
+                                            <h5 class="card-title"><?php echo htmlspecialchars($row['course_name']); ?></h5>
+                                            <p><?php echo htmlspecialchars($row['training_center_name']); ?></p>
+                                            <p>Duration: <?php echo htmlspecialchars($row['duration']); ?></p>
+                                            <p>Slots available: <?php echo htmlspecialchars($row['slots_available']); ?></p>
+                                        </div>
+                                        <?php
+
+                                        ?>
+                                        <a href="course_details.php?id=<?php echo $row['course_id']; ?>" class="btn btn-view btn-sm">View Details</a>
+
                                     </div>
-                                    <?php
-                                    // Default details file
-                                    $detailsFile = 'course_detailsCSS.php';
-                                    if (isset($courseAssets[$row['course_name']]['details'])) {
-                                        $detailsFile = $courseAssets[$row['course_name']]['details'];
-                                    }
-                                    ?>
-                                    <a href="<?php echo $detailsFile; ?>?id=<?php echo $row['course_id']; ?>"
-                                        class="btn btn-view btn-sm">View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <div class="col">
                         <div class="alert alert-info w-100">No courses found.</div>
                     </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('courseSearch').addEventListener('input', function () {
+        document.getElementById('courseSearch').addEventListener('input', function() {
             const search = this.value.toLowerCase();
             const cards = document.querySelectorAll('#coursesRow .col');
             cards.forEach(card => {
