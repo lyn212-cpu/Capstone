@@ -13,7 +13,10 @@
     <title>privacy and policy</title>
 
     <style>
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap");
         body {
+            font-family: "Work Sans", sans-serif;
             background-repeat: no-repeat;
             background-size: cover;
             background-image: url("../../Assets/bg.jpg");
@@ -65,6 +68,9 @@
                         <li class="nav-item">
                             <a style="color: #190960" class="nav-link fw-bold" href="contact_us.php">Contact Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a style="color: #190960" class="nav-link fw-bold" href="./about_us.php">About Us</a>
+                        </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">
                         <div class="dropdown">
@@ -74,13 +80,14 @@
                                 <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-user me-2"></i>Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-cog me-2"></i>Settings</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="./userProfile.php"><i class="fa fa-user me-2"></i>Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="#"><i
-                                            class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -88,20 +95,9 @@
             </div>
         </nav>
     </header>
-    <!--<section class="container my-5">-->
-    <!--    <div class="row justify-content-center">-->
-    <!--        <div class="col-lg-8">-->
-    <!--            <h2 class="fw-bold mb-4">Privacy Policy</h2>-->
-    <!--            <p>At NC Finder, we prioritize your privacy and are committed to protecting your personal information. When you visit our website, we may collect data such as your name, email address, and phone number if you provide it through registration forms, inquiries, or feedback submissions.</p>-->
-    <!--            <p>We also gather usage data like your IP address, browser type, and pages visited to improve our website’s performance. To enhance your browsing experience, we use cookies that remember your preferences.</p>-->
-    <!--            <p>Your information is used solely to provide and improve our services, personalize your experience, and respond to inquiries. We implement security measures such as data encryption and regular audits to protect your information, but we also encourage you to maintain strong passwords for added safety.</p>-->
-    <!--            <p>While we do not sell or rent your data, we may share it with trusted third-party services for analytics, hosting, or communication purposes. You have the right to access, update, or request the deletion of your data by contacting us.</p>-->
-    <!--            <p>Our website may contain links to external sites, and we advise you to review their privacy policies as we are not responsible for their practices. We retain your data only as long as necessary and may update this Privacy Policy when needed.</p>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
+
     <section class="position-relative min-vh-100 d-flex justify-content-center align-items-center"
-        style="background: url('your-bg-image.jpg') no-repeat center center / cover;">
+        style="background: url('../../Assets/BACKGROUND/raw_2.jpg') no-repeat center center / cover;">
         <div class="bg-white bg-opacity-75 p-5 rounded-4 shadow-lg" style="max-width: 800px; width: 90%;">
             <h2 class="fw-bold text-center mb-4">Privacy Policy</h2>
 

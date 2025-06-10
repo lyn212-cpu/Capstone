@@ -107,7 +107,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
 
-                <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+                <nav class="navbar navbar-expand-lg bg-transparent sticky-top">
                     <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -172,7 +172,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 
-    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>

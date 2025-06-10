@@ -34,7 +34,7 @@ $result = $conn->query($sql);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./FindCourse.php">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="about_us.php">About Us</a></li>
                 </ul>
@@ -72,7 +72,7 @@ $result = $conn->query($sql);
 
         <!-- Course Section -->
         <div class="courses-wrapper">
-            <h4>Courses</h4>
+            <h1 class="text-center text-light">Courses</h1>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="coursesRow">
                 <?php

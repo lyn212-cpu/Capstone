@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_id'])) {
                                 Us</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="./pages/about_us.php">About us</a>
+                            <a style="color: #190960" class="nav-link fw-bold" href="./pages/about_us.php">About Us</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">

@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <style>
         body {
-            background-image: url("../../Assets/background/raw 2.jpg");
+            background-image: url("../../Assets/background/raw_2.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -67,9 +67,6 @@ if (!isset($_SESSION['user_id'])) {
             background-color: #ffffff !important;
         }
 
-        .navbar .nav-link {
-            color: #000 !important;
-        }
 
         .navbar .nav-link.active {
             font-weight: bold;
@@ -120,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
     </header>
 
     <!-- About Page -->
-    <section id="topTraining" class="container">
+    <section id="topTraining" class="container mt-3">
     <h1 class="text-center fw-bold mb-5 display-4" style="letter-spacing: 2px; color:rgb(255, 255, 255);">ABOUT US</h1>
     
     <div class="card p-5">
@@ -149,14 +146,8 @@ if (!isset($_SESSION['user_id'])) {
         </form>
     </div>
 </section>
-
-    <footer id="footer">
-        <div class="container">
-            <a href="contact_us.php">Contact Us</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <p class="mt-2">&copy; 2025 NC Finder. All rights reserved.</p>
-        </div>
-    </footer>
+    <div>
+        <?php include_once '../../include/footer.php'; ?>
+    </div>
 </body>
 </html>

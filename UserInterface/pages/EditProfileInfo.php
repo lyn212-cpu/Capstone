@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/Dashboard.css">
-    <link rel="stylesheet" href="../Assets/style.css">
+    <link rel="stylesheet" href="../../Assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <title>Profile</title>
 </head>
@@ -124,21 +124,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
             </button>
 
-            <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+            <nav class="navbar navbar-expand-lg bg-transparent sticky-top">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse bg-transparent" id="navbarNav">
                         <ul class="navbar-nav me-auto justify-content-end  mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a style="color: #190960" class="nav-link fw-bold" href="../index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a style="color: #190960" class="nav-link fw-bold" href="#">Courses</a>
+                                <a style="color: #190960" class="nav-link fw-bold" href="./FindCourse.php">Courses</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color: #190960" class="nav-link fw-bold" href="./contact_us.php">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: #190960" class="nav-link fw-bold" href="./about_us.php">About Us</a>
                             </li>
                         </ul>
                     </div>
@@ -191,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 
-<script src="../../JavaScript_Admin/js_dashboard.js"></script>
+<script src="../../JS_CSS_Admin/js_dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>
