@@ -112,6 +112,7 @@ session_start();
                             <th>Contact Number</th> <!-- Changed from "Contact Information" -->
                             <th>Course Description</th>
                             <th>Requirements</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -148,6 +149,7 @@ session_start();
                                 echo "<td>" . htmlspecialchars($row['contact_info']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['course_description']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                                 echo "</tr>";
                             }
                         }
