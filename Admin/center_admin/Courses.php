@@ -44,7 +44,7 @@ session_start();
             <!-- Logout Button -->
             <button class="btn text-light bg-danger p-2 rounded-5 col-lg-9 text-center bg-opacity-75"
                 data-bs-toggle="modal" data-bs-target="#logoutModal">
-                Logouts
+                Logout
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
         </div>
@@ -63,7 +63,7 @@ session_start();
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
-                        <!-- Redirects to login.php -->
+
                     </div>
                 </div>
             </div>
