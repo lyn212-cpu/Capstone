@@ -87,7 +87,7 @@ session_start();
                 </ol>
             </nav>
             <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
-                class="btn text-light">Add Course</button>
+                class="btn text-light">Post Course</button>
         </nav>
 
         <!-- User list table -->
@@ -281,7 +281,7 @@ session_start();
                                 id="courseDescription" name="courseDescription" style="height: 100px" required></textarea>
                             <label for="courseDescription">Course Description</label>
                         </div>
-                 
+
                     </div>
 
                     <div class="modal-footer">
