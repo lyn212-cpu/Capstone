@@ -37,7 +37,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                 <img width="50" height="50" src="https://img.icons8.com/ios/50/administrator-male--v1.png"
                     alt="administrator-male--v1" />
             </picture>
-             <div>
+            <div>
                 <?php
                 if ($user) {
                     echo "<h5 class=''>" . htmlspecialchars($user['full_name']) . "</h5>";
@@ -150,26 +150,43 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                             <th scope="col">Date Attended</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Mindtech Training and Development Institute Inc.</td>
-                            <td>Tutuban Center C.M. Recto Avenue Tondo, Manila</td>
-                            <td>Computer System Servicing NC II</td>
-                            <td>01/02/2025</td>
-                        </tr>
-                        <tr>
-                            <td>Pasay City Man Power Training Center</td>
-                            <td>Pasay City</td>
-                            <td>Technical Drafting NC II</td>
-                            <td>03/05/2025</td>
-                        </tr>
-                        <tr>
-                            <td>Auratec Training and Assessment Center, Inc.</td>
-                            <td>Quezon City</td>
-                            <td>Java Programming NC III</td>
-                            <td>05/10/2025</td>
-                        </tr>
-                    </tbody>
+                    <?php
+                    $query = "
+    SELECT 
+        nc.training_center_name,
+        nc.location,
+        nc.course_name,
+        r.registered_at
+    FROM 
+        registrations r
+    JOIN 
+        nc_course nc ON r.course_id = nc.course_id
+    WHERE 
+        r.user_id = ?
+    ORDER BY 
+        r.registered_at DESC
+";
+
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("i", $id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
+                            echo "<td>" . date("m/d/Y", strtotime($row['registered_at'])) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center'>No registered courses yet.</td></tr>";
+                    }
+                    ?>
+
+
                 </table>
             </div>
         </div>
