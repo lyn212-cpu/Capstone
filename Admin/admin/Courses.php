@@ -111,18 +111,37 @@ include '../../Backend/connect.php';
                     <tbody>
                         <?php
                         // Fetch data from nc_course table
-                        $sql = "SELECT course_id, course_name, training_center_name, duration, slots_available, location, contact_info, course_description, requirements, status FROM nc_course";
+                        $sql = "SELECT course_id, course_name, training_center_name, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, location, contact_info, course_description, requirements, status FROM nc_course";
                         $result = mysqli_query($conn, $sql);
 
                         // Check if there are records
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
+                                // Merge location fields if they exist, otherwise use the 'location' column
+                                if (
+                                    isset($row['blockLot']) || isset($row['street']) || isset($row['subdivision']) ||
+                                    isset($row['barangay']) || isset($row['city']) || isset($row['province']) || isset($row['zipCode'])
+                                ) {
+                                    $location_parts = [
+                                        $row['blockLot'] ?? '',
+                                        $row['street'] ?? '',
+                                        $row['subdivision'] ?? '',
+                                        $row['barangay'] ?? '',
+                                        $row['city'] ?? '',
+                                        $row['province'] ?? '',
+                                        $row['zipCode'] ?? ''
+                                    ];
+                                    $location = implode(', ', array_filter($location_parts));
+                                } else {
+                                    $location = $row['location'] ?? '';
+                                }
+
                                 echo "<tr>";
                                 echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['duration']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['slots_available']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                echo "<td>" . htmlspecialchars($location) . "</td>"; // Fixed Location Display
                                 echo "<td>" . htmlspecialchars($row['contact_info']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['course_description']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
