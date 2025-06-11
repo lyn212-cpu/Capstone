@@ -90,3 +90,31 @@ body {
   justify-content: flex-end;
   width: 100%;
 }
+
+.feedback-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #190960;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: #341a8a;
+  text-decoration: none;
+  color: white;
+}
+
+.feedback-button img {
+  width: 20px;
+  height: 20px;
+}

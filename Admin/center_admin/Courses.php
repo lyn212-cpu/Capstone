@@ -106,10 +106,11 @@ session_start();
                         <tr>
                             <th>Course Name</th>
                             <th>Training Center Name</th>
+                            <th>Department</th> <!-- Added Department column -->
                             <th>Duration</th>
                             <th>Slots Available</th>
                             <th>Location</th>
-                            <th>Contact Number</th> <!-- Changed from "Contact Information" -->
+                            <th>Contact Information</th>
                             <th>Course Description</th>
                             <th>Requirements</th>
                             <th>Status</th>
@@ -143,6 +144,7 @@ session_start();
                                 echo "<tr>";
                                 echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['department']) . "</td>"; // Show department from DB
                                 echo "<td>" . htmlspecialchars($row['duration']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['slots_available']) . "</td>";
                                 echo "<td>" . htmlspecialchars($location) . "</td>";
@@ -208,7 +210,7 @@ session_start();
                         <!-- Block and Lot Number -->
                         <div class="form-floating col-md-6">
                             <input type="text" class="form-control" id="blockLot" name="blockLot" placeholder="Block and Lot Number" required>
-                            <label for="blockLot">Block and Lot Number</label>
+                            <label for="blockLot">Block and/or Lot Number</label>
                         </div>
 
                         <!-- Street -->
@@ -252,6 +254,24 @@ session_start();
                         <div class="form-floating col-md-6">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                             <label for="email">Email</label>
+                        </div>
+
+                        <!-- Department Dropdown (multiple select, enlarged box) -->
+                        <div class="form-floating col-md-6">
+                            <select class="form-select" id="department" name="department[]" multiple required size="8" style="min-height: 220px;">
+                                <option value="Diploma in Information Technology">Diploma in Information Technology</option>
+                                <option value="Diploma in Computer Engineering Technology">Diploma in Computer Engineering Technology</option>
+                                <option value="Diploma in Office Management Technology">Diploma in Office Management Technology</option>
+                                <option value="Diploma in Electronics Engineering Technology">Diploma in Electronics Engineering Technology</option>
+                                <option value="Diploma in Electrical Technology">Diploma in Electrical Technology</option>
+                                <option value="Diploma in Mechanical Engineering Technology">Diploma in Mechanical Engineering Technology</option>
+                                <option value="Diploma in Civil Engineering Technology">Diploma in Civil Engineering Technology</option>
+                                <option value="Diploma in Railway Engineering Technology">Diploma in Railway Engineering Technology</option>
+                            </select>
+                            <label for="department">Recommended Department</label>
+                        </div>
+                        <div class="form-text mb-3" style="margin-left:12px;">
+                            Hold Ctrl (Windows) or Command (Mac) to select multiple.
                         </div>
 
                         <!-- Requirements -->
