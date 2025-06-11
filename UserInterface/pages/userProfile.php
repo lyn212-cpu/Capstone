@@ -141,7 +141,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
             <div class="card shadow-sm rounded-4 border-0">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="fw-bold text-dark mb-0">👩‍🎓 Student Profile</h3>
+                        <h3 class="fw-bold text-dark mb-0">Student Profile</h3>
                         <a href="./EditProfileInfo.php" class="btn btn-primary fw-semibold px-4">Edit Profile</a>
                     </div>
 
@@ -181,23 +181,11 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                         </div>
                     </div>
 
-                    <hr class="my-4">
 
-                    <h5 class="fw-semibold mb-3 text-secondary">🏠 Address Details</h5>
-                    <div class="row g-4">
-                        <div class="col-md-4 col-sm-6">
-                            <small class="text-muted">Address</small>
-                            <div class="fw-medium text-dark">
-                                <?php
-                                echo $user ? htmlspecialchars($user['address']) : "User not found";
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </main>
 

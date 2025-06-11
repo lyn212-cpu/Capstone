@@ -61,7 +61,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                 </li>
                 <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
                     <i class="fa-solid fa-school-circle-check text-light"></i>
-                    <a class="nav-link active text-light" aria-current="page" href="./centeAttended.php">Centers
+                    <a class="nav-link active text-light" aria-current="page" href="./centeAttended.php">Center
                         Attended</a>
                 </li>
                 <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
@@ -138,7 +138,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
 
 
         <div class="container my-5">
-            <h4 class="fw-bold text-primary mb-4">Centers Attended</h4>
+            <h4 class="fw-bold text-primary mb-4">Training Center Attended</h4>
 
             <div class="table-responsive">
                 <table class="table table-bordered align-middle text-white" style="background-color: #18015b;">
