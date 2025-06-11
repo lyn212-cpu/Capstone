@@ -243,7 +243,7 @@ if (!isset($_SESSION['user_id'])) {
             <!--  category card end  -->
 
             <!--  category card start  -->
-            <a href="Explore_Our_Categories/DOMT.php" class="card col-lg-2">
+            <a href="Explore_Our_Categories/DRET.php" class="card col-lg-2">
                 <div class="p-2">
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">

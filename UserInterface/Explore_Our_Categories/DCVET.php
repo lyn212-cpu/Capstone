@@ -1,13 +1,14 @@
 <?php
-    // Place this PHP block before your HTML or at the top of the file
+    // Connect to the database
     $conn = new mysqli("localhost", "root", "", "nc_finder");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Fetch the first center_name as an example
-    $sql = "SELECT center_name FROM training_center LIMIT 1";
+    // Fetch all courses under the department "Diploma in Civil Engineering Technology"
+    $sql = "SELECT course_id, course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements 
+            FROM nc_course 
+            WHERE department LIKE '%Diploma in Civil Engineering Technology%' AND status = 'approved'";
     $result = $conn->query($sql);
-    $center = $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,10 +22,7 @@
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../Assets/style.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <title>DCVET</title>
+    <title>Diploma in Civil Engineering Technology Courses</title>
 </head>
 
 <body>
@@ -76,12 +74,12 @@
         </nav>
     </header>
 
-    <div class="container-fluid py-4">
+    <div class="container py-4">
         <!-- Header and Search -->
         <div class="text-center mb-4">
             <div class="d-flex justify-content-center align-items-center mb-2">
-                <i class="fas fa-desktop fa-2x text-primary me-2"></i>
-                <h2 class="fw-bold mb-0">Diploma in Civil Engineering Technology</h2>
+                <i class="fas fa-building fa-2x text-primary me-2"></i>
+                <h2 class="fw-bold mb-0">Diploma in Civil Engineering Technology Courses</h2>
             </div>
             <div class="input-group mt-3 w-50 mx-auto">
                 <input type="text" class="form-control" placeholder="Search">
@@ -94,30 +92,57 @@
         <!-- Cards -->
         <div class="row g-3">
             <?php
-            // Fetch all training centers from the database
-            $sql = "SELECT center_name, available_courses, location, contact_info FROM Training_Center";
-            $result = $conn->query($sql);
-
             if ($result && $result->num_rows > 0):
                 while ($row = $result->fetch_assoc()):
             ?>
-            <div class="col-12">
-                <div class="card shadow-sm">
+            <div class="col-md-6 col-lg-4">
+                <div class="card course-card shadow-sm h-100">
                     <div class="card-body">
-                        <a href="../pages/tesda_training_Center_Info.php" class="card-title text-primary fw-bold">
-                            <?php echo htmlspecialchars($row['center_name']); ?>
-                        </a>
-                        <p class="mb-1 text-muted small">
-                            <?php echo htmlspecialchars($row['available_courses']); ?>
-                        </p>
-                        <p class="mb-1">
-                            <i class="fas fa-map-marker-alt me-2"></i>
-                            <?php echo htmlspecialchars($row['location']); ?>
-                        </p>
-                        <p class="mb-0">
-                            <i class="fas fa-phone me-2"></i>
+                        <div class="course-title mb-2">
+                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>" 
+                               class="text-decoration-none" style="color: #190960;">
+                                <?php echo htmlspecialchars($row['course_name']); ?>
+                            </a>
+                        </div>
+                        <div class="course-meta mb-1">
+                            <span class="course-label">Training Center:</span>
+                            <?php echo htmlspecialchars($row['training_center_name']); ?>
+                        </div>
+                        <div class="course-meta mb-1">
+                            <span class="course-label">Duration:</span>
+                            <?php echo htmlspecialchars($row['duration']); ?> days
+                        </div>
+                        <div class="course-meta mb-1">
+                            <span class="course-label">Slots Available:</span>
+                            <?php echo htmlspecialchars($row['slots_available']); ?>
+                        </div>
+                        <div class="course-meta mb-1">
+                            <span class="course-label"><i class="fas fa-map-marker-alt me-1"></i>Location:</span>
+                            <?php
+                                $location = [
+                                    $row['blockLot'],
+                                    $row['street'],
+                                    $row['subdivision'],
+                                    $row['barangay'],
+                                    $row['city'],
+                                    $row['province'],
+                                    $row['zipCode']
+                                ];
+                                echo htmlspecialchars(implode(', ', array_filter($location)));
+                            ?>
+                        </div>
+                        <div class="course-meta mb-1">
+                            <span class="course-label"><i class="fas fa-phone me-1"></i>Contact:</span>
                             <?php echo htmlspecialchars($row['contact_info']); ?>
-                        </p>
+                        </div>
+                        <div class="course-meta">
+                            <span class="course-label">Description:</span>
+                            <?php echo htmlspecialchars($row['course_description']); ?>
+                        </div>
+                        <div class="course-meta">
+                            <span class="course-label">Requirements:</span>
+                            <?php echo htmlspecialchars($row['requirements']); ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,15 +151,10 @@
             else:
             ?>
             <div class="col-12">
-                <div class="alert alert-warning">No training centers found.</div>
+                <div class="alert alert-warning">No courses found for this department.</div>
             </div>
             <?php endif; ?>
         </div>
     </div>
-
-
-
-
 </body>
-
 </html>
