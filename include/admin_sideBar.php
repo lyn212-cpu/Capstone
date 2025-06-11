@@ -12,6 +12,10 @@
             <i class="fa-solid fa-comment text-light"></i>
             <a class="nav-link active  text-light" aria-current="page" href="./Feedback.php">Manage Feedback</a>
         </li>
+        <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
+            <i class="fa-solid fa-comment text-light"></i>
+            <a class="nav-link active  text-light" aria-current="page" href="./NC.php">Manage National Certificates</a>
+        </li>
 
     </ul>
 </div>

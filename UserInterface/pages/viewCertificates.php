@@ -145,7 +145,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <input type="text" name="certificate_name" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="certificate_file" class="form-label">Upload Certificate (Image or PDF)</label>
+                    <label for="certificate_file" class="form-label">Upload Certificate (JPG or PDF Only)</label>
                     <input type="file" name="certificate_file" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Upload</button>
@@ -154,7 +154,7 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
 
 
         <?php
-        $stmt = $conn->prepare("SELECT * FROM certificates WHERE user_id = ?");
+        $stmt = $conn->prepare("SELECT * FROM certificates WHERE user_id = ? AND status = 'approved'");
         $stmt->bind_param("i", $id); // Fixed this line
         $stmt->execute();
         $certificates = $stmt->get_result();

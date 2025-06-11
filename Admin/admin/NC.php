@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/sideBar.php';
+        include_once '../../include/admin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -92,51 +92,74 @@ if (!isset($_SESSION['user_id'])) {
                 <i class="fas fa-table me-1"></i>
                 National Certificate Form List
             </div>
-            <div class="card-body">
-                <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
 
-                <!-- Upload .xlsx Button Only (moved below toggle button) -->
-                <div class="mb-3 d-flex justify-content-start">
-                    <form action="upload_nc_excel.php" method="post" enctype="multipart/form-data"
-                        class="d-flex align-items-center gap-2">
-                        <input type="file" name="nc_excel" accept=".xlsx" class="form-control d-none" id="ncExcelInput"
-                            required>
-                        <button type="button" class="btn btn-primary"
-                            onclick="document.getElementById('ncExcelInput').click();">
-                            Upload .xlsx
-                        </button>
-                        <button type="submit" class="btn btn-success d-none" id="submitNcExcelBtn">Submit</button>
-                    </form>
-                </div>
-                <script>
-                    // Show submit button after file is selected
-                    const fileInput = document.getElementById('ncExcelInput');
-                    const submitBtn = document.getElementById('submitNcExcelBtn');
-                    fileInput.addEventListener('change', function () {
-                        if (fileInput.files.length > 0) {
-                            submitBtn.classList.remove('d-none');
-                        } else {
-                            submitBtn.classList.add('d-none');
+            <table id="datatablesSimple" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Section Code</th>
+                        <th>School Number</th>
+                        <th>National Certificate</th>
+                        <th>Upload Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT 
+    u.full_name, 
+    u.school_number, 
+    CONCAT(u.course, ' - ', u.year_level) AS section_code,
+    c.certificate_name, 
+    c.upload_date,
+    c.status,
+    c.file_path
+FROM users u
+LEFT JOIN certificates c ON u.user_id = c.user_id
+WHERE c.status IS NOT NULL
+ORDER BY u.full_name ASC";
+
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['section_code']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+
+                            if (!empty($row['file_path']) && file_exists('../../' . $row['file_path'])) {
+                                $certificateDisplay = htmlspecialchars(pathinfo($row['file_path'], PATHINFO_FILENAME));
+                                echo "<td><a href='../../" . htmlspecialchars($row['file_path']) . "' target='_blank'>" . $certificateDisplay . "</a></td>";
+                            } else {
+                                echo "<td><em>No certificate</em></td>";
+                            }
+
+                            echo "<td>" . (!empty($row['upload_date']) ? htmlspecialchars($row['upload_date']) : '<em>--</em>') . "</td>";
+                            echo "<td>";
+                            if (!empty($row['certificate_name']) && $row['status'] === 'pending') {
+                                echo '<form action="handleCertificateStatus.php" method="post" class="d-flex gap-1">';
+                                echo '<input type="hidden" name="certificate_name" value="' . htmlspecialchars($row['certificate_name']) . '">';
+                                echo '<button name="action" value="approve" class="btn btn-success btn-sm">Approve</button>';
+                                echo '<button name="action" value="disapprove" class="btn btn-danger btn-sm">Disapprove</button>';
+                                echo '</form>';
+                            } elseif ($row['status'] === 'approved') {
+                                echo '<span class="text-success">Approved</span>';
+                            } elseif ($row['status'] === 'disapproved') {
+                                echo '<span class="text-danger">Disapproved</span>';
+                            } else {
+                                echo '<em>--</em>';
+                            }
+                            echo "</td>";
+                            echo "</tr>";
                         }
-                    });
-                </script>
-
-                <table id="datatablesSimple" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Full Name</th>
-                            <th>Section Code</th>
-                            <th>Email</th>
-                            <th>National Certificate</th>
-                            <th>Certificate No.</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- No sample data, only column headers remain -->
-                    </tbody>
-                </table>
-            </div>
+                    } else {
+                        echo "<tr><td colspan='6' class='text-center'>No data found.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
         </div>
     </main>
 
@@ -161,7 +184,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="/Capstone/JavaScript_Admin/js_nc.js"></script>
+    <script src="/Capstone/JS_CSS_Admin/js_nc.js"></script>
     <script>
         // Initialize the Simple-DataTables library for the table
         const table = document.querySelector('#datatablesSimple');
