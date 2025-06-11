@@ -272,46 +272,13 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="container row gap-3 mt-5 justify-content-center align-items-center">
             <!--    card start-->
-            <div class="card col-lg-3 p-0">
-                <img class="card-img-top" src="../Assets/tesda.jpg" alt="">
-                <div class="card-body">
-                    <h5 style="color: #190960" class="card-title fw-bold">
-                        University of Ghana
-                    </h5>
-                    <p>
-                        The University of Ghana is a premier institution offering a wide range of academic programs and
-                        research opportunities.
-                    </p>
-                </div>
-            </div>
+
             <!--    card end-->
             <!--    card start-->
-            <div class="card col-lg-3 p-0">
-                <img class="card-img-top" src="../Assets/tesda.jpg" alt="">
-                <div class="card-body">
-                    <h5 style="color: #190960" class="card-title fw-bold">
-                        University of Ghana
-                    </h5>
-                    <p>
-                        The University of Ghana is a premier institution offering a wide range of academic programs and
-                        research opportunities.
-                    </p>
-                </div>
-            </div>
+
             <!--    card end-->
             <!--    card start-->
-            <div class="card col-lg-3 p-0">
-                <img class="card-img-top" src="../Assets/tesda.jpg" alt="">
-                <div class="card-body">
-                    <h5 style="color: #190960" class="card-title fw-bold">
-                        University of Ghana
-                    </h5>
-                    <p>
-                        The University of Ghana is a premier institution offering a wide range of academic programs and
-                        research opportunities.
-                    </p>
-                </div>
-            </div>
+
             <!--    card end-->
         </div>
 
@@ -457,6 +424,12 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </footer>
     </div>
+
+    <a href="feedback.php" class="feedback-button" title="Send Feedback">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/feedback.png" alt="Feedback Icon" />
+        Feedback
+    </a>
+
 </body>
 
 </html>
