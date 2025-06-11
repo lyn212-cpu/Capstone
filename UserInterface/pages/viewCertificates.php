@@ -137,35 +137,64 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
         </header>
 
 
-        <div class="container my-5">
-            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-                <h4 class="fw-bold text-primary mb-0">Certificates</h4>
-                <button class="btn btn-link text-decoration-none fs-3 p-0">
-                    <span class="text-primary">+</span>
-                </button>
-            </div>
+        <div class="card p-4 shadow-sm mb-4">
+            <h5 class="card-title mb-3">Upload New Certificate</h5>
+            <form action="upload_certificate.php" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="certificate_name" class="form-label">Certificate Name</label>
+                    <input type="text" name="certificate_name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="certificate_file" class="form-label">Upload Certificate (Image or PDF)</label>
+                    <input type="file" name="certificate_file" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
 
+
+        <?php
+        $stmt = $conn->prepare("SELECT * FROM certificates WHERE user_id = ?");
+        $stmt->bind_param("i", $id); // Fixed this line
+        $stmt->execute();
+        $certificates = $stmt->get_result();
+
+        if ($certificates->num_rows > 0): ?>
             <div class="row g-4">
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="text-center">
-                        <img src="../../Assets/404eeb58d79a8428d0aa978abe90fb06.jpg"
-                            alt="Computer System Servicing NC II" class="img-fluid border rounded shadow-sm mb-2"
-                            style="max-height: 300px; object-fit: contain;">
-                        <div class="fw-semibold">Computer System Servicing<br><span class="fw-normal">NC II</span></div>
-                    </div>
-                </div>
+                <?php while ($cert = $certificates->fetch_assoc()):
+                    $file_path = "../../" . $cert['file_path'];
+                    $is_image = preg_match('/\.(jpg|jpeg|png)$/i', $file_path);
+                ?>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <?php if ($is_image): ?>
+                                <a href="<?php echo htmlspecialchars($file_path); ?>" target="_blank">
+                                    <img src="<?php echo htmlspecialchars($file_path); ?>"
+                                        class="card-img-top img-fluid"
+                                        alt="<?php echo htmlspecialchars($cert['certificate_name']); ?>"
+                                        style="height: 200px; object-fit: cover;">
+                                </a>
 
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="text-center">
-                        <img src="../../Assets/404eeb58d79a8428d0aa978abe90fb06.jpg" alt="Visual Graphic Design NC II"
-                            class="img-fluid border rounded shadow-sm mb-2"
-                            style="max-height: 300px; object-fit: contain;">
-                        <div class="fw-semibold">Visual Graphic Design<br><span class="fw-normal">NC II</span></div>
+                            <?php else: ?>
+                                <div class="card-body d-flex align-items-center justify-content-center" style="height: 200px;">
+                                    <a href="<?php echo htmlspecialchars($file_path); ?>" target="_blank" class="btn btn-outline-primary">
+                                        View PDF
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <div class="card-body text-center">
+                                <h6 class="card-title mb-1"><?php echo htmlspecialchars($cert['certificate_name']); ?></h6>
+                                <span class="badge bg-secondary"><?php echo ucfirst($cert['status']); ?></span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Add more certificates here -->
+                <?php endwhile; ?>
             </div>
+        <?php else: ?>
+            <p class="text-muted text-center">No certificates uploaded yet.</p>
+        <?php endif; ?>
+
+
         </div>
     </main>
 
