@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <style>
         body {
-            background-image: url("../../Assets/BACKGROUND/blur_1.jpg");
+            background-image: url("../../Assets/background/raw_2.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             font-family: 'Segoe UI', sans-serif;
