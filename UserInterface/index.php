@@ -424,6 +424,12 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </footer>
     </div>
+
+    <a href="feedback.php" class="feedback-button" title="Send Feedback">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/feedback.png" alt="Feedback Icon" />
+        Feedback
+    </a>
+
 </body>
 
 </html>
