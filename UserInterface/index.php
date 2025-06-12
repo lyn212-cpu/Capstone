@@ -5,6 +5,34 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: Sign_in.php");
     exit();
 }
+
+
+if (isset($_POST['submit_feedback'])) {
+    $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
+    $user_id = $_SESSION['user_id'];
+
+    // Get student info from nc_course
+    $info_query = "SELECT full_name, school_number, course FROM users WHERE school_number = (SELECT school_number FROM users WHERE user_id = '$user_id')";
+    $info_result = mysqli_query($conn, $info_query);
+
+    if ($info_result && mysqli_num_rows($info_result) > 0) {
+        $info = mysqli_fetch_assoc($info_result);
+        $full_name = $info['full_name'];
+        $school_number = $info['school_number'];
+        $course = $info['course'];
+
+        // Insert into feedback table
+        $insert = "INSERT INTO feedback (feedback, created_at) VALUES ('$feedback', NOW())";
+        if (mysqli_query($conn, $insert)) {
+            echo "<script>alert('Thank you for your feedback!');</script>";
+        } else {
+            echo "<script>alert('Something went wrong while saving your feedback.');</script>";
+        }
+    } else {
+        echo "<script>alert('User information not found in nc_course table.');</script>";
+    }
+}
+
 ?>
 
 <!doctype html>
@@ -425,10 +453,30 @@ if (!isset($_SESSION['user_id'])) {
         </footer>
     </div>
 
-    <a href="feedback.php" class="feedback-button" title="Send Feedback">
+    <!-- Sticky Feedback Button -->
+    <button class="feedback-button" data-bs-toggle="modal" data-bs-target="#feedbackModal">
         <img src="https://img.icons8.com/ios-filled/24/ffffff/feedback.png" alt="Feedback Icon" />
         Feedback
-    </a>
+    </button>
+
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="post" action="" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModalLabel">Got Thoughts? Tell Us!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea name="feedback" class="form-control" rows="5" required placeholder="Enter your feedback here..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="submit_feedback" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
 </body>
 
