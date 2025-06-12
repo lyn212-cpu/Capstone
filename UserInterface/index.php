@@ -11,27 +11,32 @@ if (isset($_POST['submit_feedback'])) {
     $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
     $user_id = $_SESSION['user_id'];
 
-    // Get student info from nc_course
-    $info_query = "SELECT full_name, school_number, course FROM users WHERE school_number = (SELECT school_number FROM users WHERE user_id = '$user_id')";
+    // Get student info
+    $info_query = "SELECT full_name, school_number FROM users WHERE user_id = '$user_id'";
     $info_result = mysqli_query($conn, $info_query);
 
     if ($info_result && mysqli_num_rows($info_result) > 0) {
         $info = mysqli_fetch_assoc($info_result);
-        $full_name = $info['full_name'];
         $school_number = $info['school_number'];
-        $course = $info['course'];
 
-        // Insert into feedback table
-        $insert = "INSERT INTO feedback (school_number, feedback, created_at) VALUES ('$school_number', '$feedback', NOW())";
-        if (mysqli_query($conn, $insert)) {
-            echo "<script>alert('Thank you for your feedback!');</script>";
+        // Check if feedback already exists
+        $check = "SELECT * FROM feedback WHERE school_number = '$school_number'";
+        $check_result = mysqli_query($conn, $check);
+
+        if (mysqli_num_rows($check_result) == 0) {
+            // Insert feedback
+            $insert = "INSERT INTO feedback (school_number, feedback, created_at) VALUES ('$school_number', '$feedback', NOW())";
+            if (mysqli_query($conn, $insert)) {
+                echo "<script>alert('Thank you for your feedback!');</script>";
+            } else {
+                echo "<script>alert('Something went wrong while saving your feedback.');</script>";
+            }
         } else {
-            echo "<script>alert('Something went wrong while saving your feedback.');</script>";
+            echo "<script>alert('You have already submitted feedback.');</script>";
         }
-    } else {
-        echo "<script>alert('User information not found in nc_course table.');</script>";
     }
 }
+
 
 ?>
 
@@ -311,15 +316,6 @@ if (isset($_POST['submit_feedback'])) {
         class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">
 
         <div class="container row gap-3 mt-5 justify-content-center align-items-center">
-            <!--    card start-->
-
-            <!--    card end-->
-            <!--    card start-->
-
-            <!--    card end-->
-            <!--    card start-->
-
-            <!--    card end-->
         </div>
 
         <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
