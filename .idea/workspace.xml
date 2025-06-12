@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a751ea8-a09e-4376-ac8a-0faa6079ac3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/Admin Access/Delete_User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Admin Access/Delete_User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserInterface/pages/categoryInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/connect.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +44,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "L:/Downloads/Tesda(capastone)",
+    "git-widget-placeholder": "home",
+    "last_opened_file_path": "C:/xampp/htdocs/Capstone",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -134,6 +131,7 @@
       <workItem from="1748530797871" duration="4881000" />
       <workItem from="1748580159724" duration="1401000" />
       <workItem from="1748602365227" duration="5000000" />
+      <workItem from="1749705392425" duration="20000" />
     </task>
     <servers />
   </component>
