@@ -10,44 +10,51 @@
     <link rel="stylesheet" href="../../Assets/style.css">
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <title>privacy and policy</title>
+    <title>Privacy Policy</title>
 
     <style>
-
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap");
-        body {
+
+        html, body {
+            height: 100%;
+            margin: 0;
             font-family: "Work Sans", sans-serif;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url("../../Assets/bg.jpg");
-            width: 100%;
-            height: 100vh;
+            background: url("../../Assets/BACKGROUND/raw_2.jpg") no-repeat center center / cover;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        footer {
+            flex-shrink: 0;
         }
 
         .card {
-            /* From https://css.glass */
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85));
+            backdrop-filter: blur(4px);
+            color: #1a1a1a;
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(3.3px);
-            -webkit-backdrop-filter: blur(3.3px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
         }
 
-        #our_team {
-            /* From https://css.glass */
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(3.3px);
-            -webkit-backdrop-filter: blur(3.3px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        h2 {
+            font-weight: 700;
         }
     </style>
 </head>
 
 <body>
     <header>
+        <!-- your navbar code here (unchanged) -->
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -59,18 +66,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto justify-content-end  mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="../index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="./FindCourse.php">Courses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="contact_us.php">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="./about_us.php">About Us</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="../index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="./FindCourse.php">Courses</a></li>
+                        <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="contact_us.php">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="./about_us.php">About Us</a></li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">
                         <div class="dropdown">
@@ -80,14 +79,9 @@
                                 <i class="fa-solid fa-user-tie text-secondary m-auto"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
-                                <li>
-                                    <a class="dropdown-item" href="./userProfile.php"><i class="fa fa-user me-2"></i>Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
-                                </li>
+                                <li><a class="dropdown-item" href="./userProfile.php"><i class="fa fa-user me-2"></i>Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,11 +90,9 @@
         </nav>
     </header>
 
-    <section class="position-relative min-vh-100 d-flex justify-content-center align-items-center"
-        style="background: url('../../Assets/BACKGROUND/raw_2.jpg') no-repeat center center / cover;">
-        <div class="bg-white bg-opacity-75 p-5 rounded-4 shadow-lg" style="max-width: 800px; width: 90%;">
-            <h2 class="fw-bold text-center mb-4">Privacy Policy</h2>
-
+    <main>
+        <div class="card">
+            <h2 class="text-center mb-4">Privacy Policy</h2>
             <p>
                 At NC Finder, we prioritize your privacy and are committed to protecting your personal information. When
                 you visit our website, we may collect data such as your name, email address, and phone number if you
@@ -130,12 +122,11 @@
                 this Privacy Policy when needed.
             </p>
         </div>
-    </section>
-    <div>
-        <?php
-        include_once '../../include/footer.php'
-            ?>
-    </div>
+    </main>
+
+    <footer>
+        <?php include_once '../../include/footer.php'; ?>
+    </footer>
 </body>
 
 </html>
