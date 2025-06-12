@@ -1,25 +1,28 @@
 <?php
-include '../Backend/connect.php';
+include 'db_connection.php'; // adjust based on your actual connection file
 
-// Subquery gets the latest feedback per user
 $query = "
-SELECT f1.feedback, f1.created_at, u.full_name
-FROM feedback f1
-JOIN (
-    SELECT school_number, MAX(created_at) AS latest
-    FROM feedback
-    GROUP BY school_number
-) f2 ON f1.school_number = f2.school_number AND f1.created_at = f2.latest
-JOIN users u ON f1.school_number = u.school_number
-ORDER BY RAND()
-LIMIT 3
+    SELECT 
+        feedback.feedback_id, 
+        users.full_name, 
+        users.course, 
+        feedback.feedback 
+    FROM 
+        feedback 
+    INNER JOIN users ON feedback.user_id = users.user_id
+    WHERE feedback.status = 'approved'
+    ORDER BY feedback.created_at DESC
+    LIMIT 3
 ";
 
-$result = $conn->query($query);
+$result = mysqli_query($conn, $query);
 $feedbacks = [];
 
-while ($row = $result->fetch_assoc()) {
-    $feedbacks[] = $row;
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $feedbacks[] = $row;
+    }
 }
 
+header('Content-Type: application/json');
 echo json_encode($feedbacks);

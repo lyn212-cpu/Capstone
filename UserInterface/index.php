@@ -24,8 +24,9 @@ if (isset($_POST['submit_feedback'])) {
         $check_result = mysqli_query($conn, $check);
 
         if (mysqli_num_rows($check_result) == 0) {
-            // Insert feedback
-            $insert = "INSERT INTO feedback (school_number, feedback, created_at) VALUES ('$school_number', '$feedback', NOW())";
+            // ✅ Corrected insert statement
+            $insert = "INSERT INTO feedback (school_number, feedback, user_id, created_at) VALUES ('$school_number', '$feedback', '$user_id', NOW())";
+
             if (mysqli_query($conn, $insert)) {
                 echo "<script>alert('Thank you for your feedback!');</script>";
             } else {
@@ -36,6 +37,7 @@ if (isset($_POST['submit_feedback'])) {
         }
     }
 }
+
 
 
 ?>
@@ -316,6 +318,7 @@ if (isset($_POST['submit_feedback'])) {
         class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">
 
         <div class="container row gap-3 mt-5 justify-content-center align-items-center">
+
         </div>
 
         <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
@@ -462,15 +465,16 @@ if (isset($_POST['submit_feedback'])) {
                     container.innerHTML = '';
                     data.forEach(item => {
                         container.innerHTML += `
-                        <div class="col-lg-4">
-                            <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
-                                <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                                     class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
-                                <h5>${item.full_name}</h5>
-                                <p class="mt-3">"${item.feedback}"</p>
-                            </div>
-                        </div>`;
+    <div class="col-lg-4">
+        <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
+            <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                 class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
+            <h5>${item.full_name}</h5>
+            <p class="mt-3">"${item.feedback}"</p>
+        </div>
+    </div>`;
                     });
+
                 });
         }
 

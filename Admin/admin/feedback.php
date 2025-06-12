@@ -88,7 +88,6 @@ include '../../Backend/connect.php';
                 Feedback List
             </div>
             <div class="card-body">
-                <button id="toggleActionsBtn" class="btn btn-secondary mb-3">Toggle Action</button>
                 <table id="datatablesSimple" class="table table-bordered">
                     <thead>
                         <tr>
@@ -99,8 +98,44 @@ include '../../Backend/connect.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- No sample data, only column headers remain -->
+                        <?php
+                        $query = "
+    SELECT 
+        feedback.feedback_id, 
+        users.full_name, 
+        users.course, 
+        feedback.feedback, 
+        feedback.status 
+    FROM 
+        feedback 
+    INNER JOIN users ON feedback.user_id = users.user_id
+";
+
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['full_name'] . "</td>";
+                            echo "<td>" . $row['course'] . "</td>";
+                            echo "<td>" . $row['feedback'] . "</td>";
+                            echo "<td>
+            <form method='post' action='feedback_action.php' style='display:inline-block;'>
+    <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
+    <input type='hidden' name='action' value='approve'>
+    <button type='submit' class='btn btn-success btn-sm'>Approve</button>
+</form>
+<form method='post' action='feedback_action.php' style='display:inline-block; margin-left: 5px;'>
+    <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
+    <input type='hidden' name='action' value='disapprove'>
+    <button type='submit' class='btn btn-danger btn-sm'>Disapprove</button>
+</form>
+
+
+        </td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
