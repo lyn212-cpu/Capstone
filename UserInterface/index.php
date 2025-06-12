@@ -309,7 +309,6 @@ if (isset($_POST['submit_feedback'])) {
     <!--  Training Center  -->
     <section id="topTraining"
         class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">
-        <h1 class="fw-bold">Training Center</h1>
 
         <div class="container row gap-3 mt-5 justify-content-center align-items-center">
             <!--    card start-->
