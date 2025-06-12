@@ -22,7 +22,7 @@ if (isset($_POST['submit_feedback'])) {
         $course = $info['course'];
 
         // Insert into feedback table
-        $insert = "INSERT INTO feedback (feedback, created_at) VALUES ('$feedback', NOW())";
+        $insert = "INSERT INTO feedback (school_number, feedback, created_at) VALUES ('$school_number', '$feedback', NOW())";
         if (mysqli_query($conn, $insert)) {
             echo "<script>alert('Thank you for your feedback!');</script>";
         } else {
@@ -208,7 +208,7 @@ if (isset($_POST['submit_feedback'])) {
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    Diploma in Office Management Technology 
+                    Diploma in Office Management Technology
                 </h5>
             </div>
         </a>
@@ -378,42 +378,10 @@ if (isset($_POST['submit_feedback'])) {
     <section class="container-fluid p-5 mt-5">
         <div class="text-center">
             <h3>Students Feedback</h3>
-            <p>Honest Review From Real Student</p>
+            <p>Honest Review From Real Students</p>
         </div>
-        <div class="row justify-content-center mt-5 g-4">
-            <div class="col-lg-4">
-                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
-                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
-                    <h5>John Doe</h5>
-                    <p class="mt-3">
-                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                        recommend this platform to all students looking to enhance their skills."
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
-                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
-                    <h5>John Doe</h5>
-                    <p class="mt-3">
-                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                        recommend this platform to all students looking to enhance their skills."
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
-                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                        class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
-                    <h5>John Doe</h5>
-                    <p class="mt-3">
-                        "I was able to find the perfect course for me with the help of TESDA Finder. I highly
-                        recommend this platform to all students looking to enhance their skills."
-                    </p>
-                </div>
-            </div>
+        <div class="row justify-content-center mt-5 g-4" id="feedbackContainer">
+            <!-- Dynamic feedback will go here -->
         </div>
     </section>
 
@@ -477,7 +445,7 @@ if (isset($_POST['submit_feedback'])) {
         <div class="modal-dialog">
             <form method="post" action="" class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="feedbackModalLabel">Got Thoughts? Tell Us!</h5>
+                    <h5 class="modal-title" id="feedbackModalLabel">Send Feedback</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -489,6 +457,32 @@ if (isset($_POST['submit_feedback'])) {
             </form>
         </div>
     </div>
+
+    <script>
+        function fetchFeedback() {
+            fetch('fetch_feedback.php')
+                .then(res => res.json())
+                .then(data => {
+                    const container = document.getElementById('feedbackContainer');
+                    container.innerHTML = '';
+                    data.forEach(item => {
+                        container.innerHTML += `
+                        <div class="col-lg-4">
+                            <div class="shadow-sm rounded-3 h-100 p-4 text-center bg-white">
+                                <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                                     class="rounded-circle img-thumbnail mb-3" style="height: 50px; width: 50px;" alt="image">
+                                <h5>${item.full_name}</h5>
+                                <p class="mt-3">"${item.feedback}"</p>
+                            </div>
+                        </div>`;
+                    });
+                });
+        }
+
+        fetchFeedback(); // Initial load
+        setInterval(fetchFeedback, 60000); // Refresh every 1 min
+    </script>
+
 
 
 </body>
