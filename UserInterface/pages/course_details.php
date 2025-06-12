@@ -180,8 +180,6 @@ if (isset($_GET['id'])) {
 
     <!-- Course Details Section -->
     <div class="container py-5">
-        <a href="findcourse.php" class="btn btn-light-blue mb-4">← Back to Courses</a>
-
         <div class="course-box text-white shadow-lg rounded-4 p-4 p-md-5">
             <div class="row g-4 align-items-center">
                 <!-- Left Column -->

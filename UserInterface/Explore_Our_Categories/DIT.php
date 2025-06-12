@@ -5,9 +5,9 @@
         die("Connection failed: " . $conn->connect_error);
     }
     // Fetch all courses under the department "Diploma in Information Technology"
-    $sql = "SELECT course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements 
+    $sql = "SELECT course_id, course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements 
             FROM nc_course 
-            WHERE department LIKE '%Diploma in Information Technology%' AND status = 'active'";
+            WHERE department LIKE '%Diploma in Information Technology%' AND status = 'approved'";
     $result = $conn->query($sql);
 ?>
 <!doctype html>
@@ -32,10 +32,11 @@
         .course-card:hover {
             box-shadow: 0 4px 24px rgba(25,9,96,0.08);
         }
-        .course-title {
+        .course-title a {
             color: #190960;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            text-decoration: none;
         }
         .course-meta {
             font-size: 0.95rem;
@@ -121,18 +122,13 @@
                 <div class="card course-card shadow-sm h-100">
                     <div class="card-body">
                         <div class="course-title mb-2">
-                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>" 
-                               class="text-decoration-none" style="color: #190960;">
+                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>">
                                 <?php echo htmlspecialchars($row['course_name']); ?>
                             </a>
                         </div>
                         <div class="course-meta mb-1">
                             <span class="course-label">Training Center:</span>
                             <?php echo htmlspecialchars($row['training_center_name']); ?>
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label">Department:</span>
-                            <?php echo htmlspecialchars($row['department']); ?>
                         </div>
                         <div class="course-meta mb-1">
                             <span class="course-label">Duration:</span>

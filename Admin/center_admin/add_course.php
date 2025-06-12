@@ -23,6 +23,10 @@ if (in_array('other', $requirements) && !empty($_POST['otherRequirement'])) {
 $requirements = array_filter($requirements, fn($r) => $r !== 'other');
 $requirements_str = implode(', ', $requirements);
 
+// Handle multiple departments
+$departments = $_POST['department'] ?? [];
+$department_str = is_array($departments) ? implode(', ', $departments) : $departments;
+
 // Insert into database with status = pending
 $sql = "INSERT INTO nc_course 
     (course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements, status)
@@ -43,16 +47,12 @@ $center_stmt->close();
 $form_email = $_POST['email'] ?? '';
 $contact_info = trim($form_email);
 
-// Fetch and handle multiple departments
-$department = $_POST['department'] ?? [];
-$department_str = is_array($department) ? implode(', ', $department) : $department;
-
 $stmt = $conn->prepare($sql);
 $stmt->bind_param(
     "sssssssssssssss",
     $course_name,
     $training_center_name,
-    $department_str,
+    $department_str, // Use the string of selected departments
     $duration,
     $slots_available,
     $blockLot,

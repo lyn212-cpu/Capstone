@@ -122,7 +122,7 @@
                     <div class="card-body">
                         <div class="course-title mb-2">
                             <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>" 
-                               class="text-decoration-none" style="color: #190960;">
+                               class="text-decoration-none fw-bold" style="color: #190960; font-size: 1.75rem;">
                                 <?php echo htmlspecialchars($row['course_name']); ?>
                             </a>
                         </div>

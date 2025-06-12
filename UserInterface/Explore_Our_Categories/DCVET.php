@@ -23,6 +23,29 @@
     <link rel="stylesheet" href="../../Assets/style.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <title>Diploma in Civil Engineering Technology Courses</title>
+    <style>
+        .course-card {
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.2s;
+        }
+        .course-card:hover {
+            box-shadow: 0 4px 24px rgba(25,9,96,0.08);
+        }
+        .course-title a {
+            color: #190960;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        .course-meta {
+            font-size: 0.95rem;
+        }
+        .course-label {
+            font-weight: 500;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -99,8 +122,7 @@
                 <div class="card course-card shadow-sm h-100">
                     <div class="card-body">
                         <div class="course-title mb-2">
-                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>" 
-                               class="text-decoration-none" style="color: #190960;">
+                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>">
                                 <?php echo htmlspecialchars($row['course_name']); ?>
                             </a>
                         </div>

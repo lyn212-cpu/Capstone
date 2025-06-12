@@ -174,6 +174,29 @@ if (!isset($_SESSION['user_id'])) {
         <!--  category card end  -->
 
         <!--  category card start  -->
+        <a href="Explore_Our_Categories/DOMT.php" class="card col-lg-2">
+            <div class="p-2">
+                <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="73" height="73" fill="url(#pattern0_133_29)" />
+                    <defs>
+                        <pattern id="pattern0_133_29" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_133_29" transform="scale(0.015625)" />
+                        </pattern>
+                        <image id="image0_133_29" width="64" height="64"
+                            xlink:href="data:image/png;base64,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" />
+                    </defs>
+                </svg>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Diploma in Office Management Technology 
+                </h5>
+            </div>
+        </a>
+        <!--  category card end  -->
+
+        <!--  category card start  -->
         <a href="Explore_Our_Categories/DCVET.php" class="card col-lg-2">
             <div class="p-2">
                 <svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg"

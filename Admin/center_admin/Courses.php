@@ -263,7 +263,7 @@ session_start();
                                 <option value="Diploma in Computer Engineering Technology">Diploma in Computer Engineering Technology</option>
                                 <option value="Diploma in Office Management Technology">Diploma in Office Management Technology</option>
                                 <option value="Diploma in Electronics Engineering Technology">Diploma in Electronics Engineering Technology</option>
-                                <option value="Diploma in Electrical Technology">Diploma in Electrical Technology</option>
+                                <option value="Diploma in Electrical Engineering Technology">Diploma in Electrical Engineering Technology </option>
                                 <option value="Diploma in Mechanical Engineering Technology">Diploma in Mechanical Engineering Technology</option>
                                 <option value="Diploma in Civil Engineering Technology">Diploma in Civil Engineering Technology</option>
                                 <option value="Diploma in Railway Engineering Technology">Diploma in Railway Engineering Technology</option>
