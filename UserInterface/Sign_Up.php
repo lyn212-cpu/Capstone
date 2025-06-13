@@ -2,11 +2,8 @@
 include '../Backend/connect.php';
 session_start();
 
-
-
-$success = ""; // <-- Add this
-$error = "";   // <-- And this
-
+$success = ""; // For success messages
+$error = "";   // For error messages
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data safely
@@ -21,22 +18,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match($pattern, $school_number)) {
         $error = "Invalid school number format. Use: 20XX-12345-MN-X";
     } elseif ($school_number && $full_name && $course && $year_level && $password) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $role = 'Student';
-        $stmt = $conn->prepare("INSERT INTO users (school_number, full_name, course, year_level, password, role) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $school_number, $full_name, $course, $year_level, $hashed_password, $role);
+        // ✅ Step 1: Check if school number already exists
+        $checkStmt = $conn->prepare("SELECT user_id FROM users WHERE school_number = ?");
+        $checkStmt->bind_param("s", $school_number);
+        $checkStmt->execute();
+        $checkStmt->store_result();
 
-        if ($stmt->execute()) {
-            $success = "Account created successfully!";
+        if ($checkStmt->num_rows > 0) {
+            $error = "School number already exists.";
         } else {
-            $error = "Error: " . $stmt->error;
+            // ✅ Step 2: Proceed to insert
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $role = 'Student';
+            $stmt = $conn->prepare("INSERT INTO users (school_number, full_name, course, year_level, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $school_number, $full_name, $course, $year_level, $hashed_password, $role);
+
+            if ($stmt->execute()) {
+                $success = "Account created successfully!";
+            } else {
+                $error = "Error: " . $stmt->error;
+            }
+            $stmt->close();
         }
-        $stmt->close();
+
+        $checkStmt->close();
     } else {
         $error = "All fields are required.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,20 +68,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <?php if ($success): ?>
                 <div id="successMsg" class="bg-green-500 text-white p-2 rounded mb-2 w-full text-center">
-                    <?= $success ?>
+                    <?= htmlspecialchars($success) ?>
                 </div>
-                <script>
-                    setTimeout(function () {
-                        var msg = document.getElementById('successMsg');
-                        if (msg) msg.style.display = 'none';
-                    }, 3000); // 3000ms = 3 seconds
-                </script>
             <?php endif; ?>
+
             <?php if ($error): ?>
-                <div class="bg-red-500 text-white p-2 rounded mb-2 w-full text-center">
-                    <?= $error ?>
+                <div id="errorMsg" class="bg-red-500 text-white p-2 rounded mb-2 w-full text-center">
+                    <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>
+
+            <script>
+                setTimeout(function () {
+                    var success = document.getElementById('successMsg');
+                    var error = document.getElementById('errorMsg');
+                    if (success) success.style.display = 'none';
+                    if (error) error.style.display = 'none';
+                }, 3000); // hide after 3 seconds
+            </script>
 
             <form class="space-y-4" method="POST" action="">
                 <!-- Student Number -->
