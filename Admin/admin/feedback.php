@@ -94,9 +94,11 @@ include '../../Backend/connect.php';
                             <th>Username</th>
                             <th>Course</th>
                             <th>Feedback</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php
                         $query = "
@@ -117,20 +119,19 @@ include '../../Backend/connect.php';
                             echo "<td>" . $row['full_name'] . "</td>";
                             echo "<td>" . $row['course'] . "</td>";
                             echo "<td>" . $row['feedback'] . "</td>";
+                            echo "<td>" . ucfirst($row['status']) . "</td>";
                             echo "<td>
-            <form method='post' action='feedback_action.php' style='display:inline-block;'>
-    <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
-    <input type='hidden' name='action' value='approve'>
-    <button type='submit' class='btn btn-success btn-sm'>Approve</button>
-</form>
-<form method='post' action='feedback_action.php' style='display:inline-block; margin-left: 5px;'>
-    <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
-    <input type='hidden' name='action' value='disapprove'>
-    <button type='submit' class='btn btn-danger btn-sm'>Disapprove</button>
-</form>
-
-
-        </td>";
+        <form method='post' action='feedback_action.php' style='display:inline-block;'>
+            <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
+            <input type='hidden' name='action' value='approve'>
+            <button type='submit' class='btn btn-success btn-sm'>Approve</button>
+        </form>
+        <form method='post' action='feedback_action.php' style='display:inline-block; margin-left: 5px;'>
+            <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
+            <input type='hidden' name='action' value='disapprove'>
+            <button type='submit' class='btn btn-danger btn-sm'>Disapprove</button>
+        </form>
+    </td>";
                             echo "</tr>";
                         }
                         ?>
@@ -162,7 +163,7 @@ include '../../Backend/connect.php';
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="../../JavaScript_Admin/js_dashboard.js"></script>
+    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
 </body>
 
 </html>

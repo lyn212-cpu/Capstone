@@ -149,10 +149,10 @@ include '../../Backend/connect.php';
                                 echo "<td>";
 
                                 // Show Approve button only if status is "pending"
-                                if ($row['status'] === 'pending') {
-                                    echo "<button class='btn btn-success btn-sm' onclick='approveCourse(\"" . $row['course_id'] . "\")'>Approve</button> ";
-                                    echo "<button class='btn btn-danger btn-sm' onclick='disapproveCourse(\"" . $row['course_id'] . "\")'>Disapprove</button>";
-                                }
+
+                                echo "<button class='btn btn-success btn-sm' onclick='approveCourse(\"" . $row['course_id'] . "\")'>Approve</button> ";
+                                echo "<button class='btn btn-danger btn-sm' onclick='disapproveCourse(\"" . $row['course_id'] . "\")'>Disapprove</button>";
+
 
                                 echo "</td>";
                                 echo "</tr>";

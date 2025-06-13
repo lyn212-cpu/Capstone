@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php'; // adjust based on your actual connection file
+include '../Backend/connect.php'; // adjust based on your actual connection file
 
 $query = "
     SELECT 
