@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year_level = $_POST['year_level'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Simple validation
-    if ($school_number && $full_name && $course && $year_level && $password) {
-        // Hash the password for security
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $pattern = '/^20\d{2}-\d{5}-MN-\d$/';
 
-        // Prepare and execute insert
+    if (!preg_match($pattern, $school_number)) {
+        $error = "Invalid school number format. Use: 20XX-12345-MN-X";
+    } elseif ($school_number && $full_name && $course && $year_level && $password) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $role = 'Student';
         $stmt = $conn->prepare("INSERT INTO users (school_number, full_name, course, year_level, password, role) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $school_number, $full_name, $course, $year_level, $hashed_password, $role);
