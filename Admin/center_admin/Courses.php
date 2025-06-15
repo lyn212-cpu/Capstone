@@ -207,6 +207,19 @@ session_start();
                             <label for="slotAvailability">Slot Availability</label>
                         </div>
 
+                        <!-- Start Date -->
+                        <div class="form-floating col-md-6">
+                            <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" required>
+                            <label for="start_date">Start Date</label>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="form-floating col-md-6">
+                            <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End Date" required>
+                            <label for="end_date">End Date</label>
+                        </div>
+
+
                         <!-- Block and Lot Number -->
                         <div class="form-floating col-md-6">
                             <input type="text" class="form-control" id="blockLot" name="blockLot" placeholder="Block and Lot Number" required>

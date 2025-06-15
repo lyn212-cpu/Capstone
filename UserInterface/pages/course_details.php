@@ -188,6 +188,8 @@ if (isset($_GET['id'])) {
                     <p class="fw-semibold mb-1"><?php echo htmlspecialchars($course['training_center_name']); ?></p>
                     <p><strong>Duration:</strong> <?php echo htmlspecialchars($course['duration']); ?></p>
                     <p><strong>Slots Available:</strong> <?php echo htmlspecialchars($course['slots_available']); ?></p>
+                    <p><strong>Start Date:</strong> <?php echo htmlspecialchars($course['start_date']); ?></p>
+                    <p><strong>End Date:</strong> <?php echo htmlspecialchars($course['end_date']); ?></p>
                     <p><strong>Location:</strong> <?php echo htmlspecialchars($course['location']); ?></p>
                     <p><strong>Contact:</strong> <?php echo htmlspecialchars($course['contact_info']); ?></p>
 

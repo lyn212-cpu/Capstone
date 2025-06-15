@@ -14,6 +14,8 @@ $province = $_POST['province'] ?? '';
 $zipCode = $_POST['zipCode'] ?? '';
 $slots_available = $_POST['slotAvailability'] ?? '';
 $course_description = $_POST['courseDescription'] ?? '';
+$start_date = $_POST['start_date'] ?? '';
+$end_date = $_POST['end_date'] ?? '';
 
 // Handle multiple requirements
 $requirements = $_POST['requirements'] ?? [];
@@ -27,32 +29,21 @@ $requirements_str = implode(', ', $requirements);
 $departments = $_POST['department'] ?? [];
 $department_str = is_array($departments) ? implode(', ', $departments) : $departments;
 
-// Insert into database with status = pending
-$sql = "INSERT INTO nc_course 
-    (course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements, status)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
-
-// Fetch contact info from the database for the training center
-$center_contact = '';
-$center_stmt = $conn->prepare("SELECT contact_info FROM nc_course WHERE training_center_name = ?");
-$center_stmt->bind_param("s", $training_center_name);
-$center_stmt->execute();
-$center_stmt->bind_result($db_contact_info);
-if ($center_stmt->fetch()) {
-    $center_contact = $db_contact_info;
-}
-$center_stmt->close();
-
-// Combine email from form with any existing contact info (if needed)
+// Combine email from form
 $form_email = $_POST['email'] ?? '';
 $contact_info = trim($form_email);
 
+// Insert into database with status = pending, including start_date and end_date
+$sql = "INSERT INTO nc_course 
+    (course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements, status, start_date, end_date)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)";
+
 $stmt = $conn->prepare($sql);
 $stmt->bind_param(
-    "sssssssssssssss",
+    "sssssssssssssssss",
     $course_name,
     $training_center_name,
-    $department_str, // Use the string of selected departments
+    $department_str,
     $duration,
     $slots_available,
     $blockLot,
@@ -62,9 +53,11 @@ $stmt->bind_param(
     $city,
     $province,
     $zipCode,
-    $contact_info, // now just the email
+    $contact_info,
     $course_description,
-    $requirements_str
+    $requirements_str,
+    $start_date,
+    $end_date
 );
 
 if ($stmt->execute()) {
