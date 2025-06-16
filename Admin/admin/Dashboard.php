@@ -3,6 +3,7 @@ include '../../Backend/connect.php';
 session_start();
 
 $course_count = 0;
+$feedback_count = 0;
 
 // Query the database to get the total number of courses
 $course_query = "SELECT COUNT(course_id) AS total_courses FROM nc_course";
@@ -11,6 +12,15 @@ $course_result = $conn->query($course_query);
 if ($course_result && $row = $course_result->fetch_assoc()) {
     $course_count = $row['total_courses'];
 }
+
+// Query the database to get the total number of approved feedback
+$feedback_query = "SELECT COUNT(feedback_id) AS total_feedback FROM feedback WHERE status = 'approved'";
+$feedback_result = $conn->query($feedback_query);
+
+if ($feedback_result && $row = $feedback_result->fetch_assoc()) {
+    $feedback_count = $row['total_feedback'];
+}
+
 
 ?>
 
@@ -105,7 +115,7 @@ if ($course_result && $row = $course_result->fetch_assoc()) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h5>Feedback</h5>
-                            <h3>100</h3>
+                            <h3><?= $feedback_count ?></h3>
                         </div>
                         <i class="fa-solid fa-comment"></i>
                     </div>

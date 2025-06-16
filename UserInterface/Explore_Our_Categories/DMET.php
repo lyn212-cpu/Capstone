@@ -1,14 +1,14 @@
 <?php
-    // Connect to the database
-    $conn = new mysqli("localhost", "root", "", "nc_finder");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    // Fetch all courses under the department "Diploma in Mechanical Engineering Technology"
-    $sql = "SELECT course_id, course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements 
+// Connect to the database
+$conn = new mysqli("localhost", "root", "", "nc_finder");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// Fetch all courses under the department "Diploma in Mechanical Engineering Technology"
+$sql = "SELECT course_id, course_name, training_center_name, department, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, contact_info, course_description, requirements 
             FROM nc_course 
             WHERE department LIKE '%Diploma in Mechanical Engineering Technology%' AND status = 'approved'";
-    $result = $conn->query($sql);
+$result = $conn->query($sql);
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,18 +29,22 @@
             border: 1px solid #e0e0e0;
             transition: box-shadow 0.2s;
         }
+
         .course-card:hover {
-            box-shadow: 0 4px 24px rgba(25,9,96,0.08);
+            box-shadow: 0 4px 24px rgba(25, 9, 96, 0.08);
         }
+
         .course-title a {
             color: #190960;
             font-weight: bold;
             font-size: 1.5rem;
             text-decoration: none;
         }
+
         .course-meta {
             font-size: 0.95rem;
         }
+
         .course-label {
             font-weight: 500;
             color: #555;
@@ -68,10 +72,10 @@
                             <a style="color: #190960" class="nav-link fw-bold" href="../pages/FindCourse.php">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="contact_us.php">Contact Us</a>
+                            <a style="color: #190960" class="nav-link fw-bold" href="../pages/contact_us.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: #190960" class="nav-link fw-bold" href="about_us.php">About Us</a>
+                            <a style="color: #190960" class="nav-link fw-bold" href="../pages/about_us.php">About Us</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">
@@ -118,65 +122,66 @@
             if ($result && $result->num_rows > 0):
                 while ($row = $result->fetch_assoc()):
             ?>
-            <div class="col-md-6 col-lg-4">
-                <div class="card course-card shadow-sm h-100">
-                    <div class="card-body">
-                        <div class="course-title mb-2">
-                            <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>">
-                                <?php echo htmlspecialchars($row['course_name']); ?>
-                            </a>
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label">Training Center:</span>
-                            <?php echo htmlspecialchars($row['training_center_name']); ?>
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label">Duration:</span>
-                            <?php echo htmlspecialchars($row['duration']); ?> days
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label">Slots Available:</span>
-                            <?php echo htmlspecialchars($row['slots_available']); ?>
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label"><i class="fas fa-map-marker-alt me-1"></i>Location:</span>
-                            <?php
-                                $location = [
-                                    $row['blockLot'],
-                                    $row['street'],
-                                    $row['subdivision'],
-                                    $row['barangay'],
-                                    $row['city'],
-                                    $row['province'],
-                                    $row['zipCode']
-                                ];
-                                echo htmlspecialchars(implode(', ', array_filter($location)));
-                            ?>
-                        </div>
-                        <div class="course-meta mb-1">
-                            <span class="course-label"><i class="fas fa-phone me-1"></i>Contact:</span>
-                            <?php echo htmlspecialchars($row['contact_info']); ?>
-                        </div>
-                        <div class="course-meta">
-                            <span class="course-label">Description:</span>
-                            <?php echo htmlspecialchars($row['course_description']); ?>
-                        </div>
-                        <div class="course-meta">
-                            <span class="course-label">Requirements:</span>
-                            <?php echo htmlspecialchars($row['requirements']); ?>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card course-card shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="course-title mb-2">
+                                    <a href="../pages/course_details.php?id=<?php echo urlencode($row['course_id']); ?>">
+                                        <?php echo htmlspecialchars($row['course_name']); ?>
+                                    </a>
+                                </div>
+                                <div class="course-meta mb-1">
+                                    <span class="course-label">Training Center:</span>
+                                    <?php echo htmlspecialchars($row['training_center_name']); ?>
+                                </div>
+                                <div class="course-meta mb-1">
+                                    <span class="course-label">Duration:</span>
+                                    <?php echo htmlspecialchars($row['duration']); ?> days
+                                </div>
+                                <div class="course-meta mb-1">
+                                    <span class="course-label">Slots Available:</span>
+                                    <?php echo htmlspecialchars($row['slots_available']); ?>
+                                </div>
+                                <div class="course-meta mb-1">
+                                    <span class="course-label"><i class="fas fa-map-marker-alt me-1"></i>Location:</span>
+                                    <?php
+                                    $location = [
+                                        $row['blockLot'],
+                                        $row['street'],
+                                        $row['subdivision'],
+                                        $row['barangay'],
+                                        $row['city'],
+                                        $row['province'],
+                                        $row['zipCode']
+                                    ];
+                                    echo htmlspecialchars(implode(', ', array_filter($location)));
+                                    ?>
+                                </div>
+                                <div class="course-meta mb-1">
+                                    <span class="course-label"><i class="fas fa-phone me-1"></i>Contact:</span>
+                                    <?php echo htmlspecialchars($row['contact_info']); ?>
+                                </div>
+                                <div class="course-meta">
+                                    <span class="course-label">Description:</span>
+                                    <?php echo htmlspecialchars($row['course_description']); ?>
+                                </div>
+                                <div class="course-meta">
+                                    <span class="course-label">Requirements:</span>
+                                    <?php echo htmlspecialchars($row['requirements']); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php
+                <?php
                 endwhile;
             else:
-            ?>
-            <div class="col-12">
-                <div class="alert alert-warning">No courses found for this department.</div>
-            </div>
+                ?>
+                <div class="col-12">
+                    <div class="alert alert-warning">No courses found for this department.</div>
+                </div>
             <?php endif; ?>
         </div>
     </div>
 </body>
+
 </html>
