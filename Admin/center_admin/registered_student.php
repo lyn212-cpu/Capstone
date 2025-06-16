@@ -86,8 +86,6 @@ session_start();
                     <li class="breadcrumb-item active" aria-current="page">Registered Students</li>
                 </ol>
             </nav>
-            <button data-bs-target="#newCenter_modal" data-bs-toggle="modal" style="background-color: #190960"
-                class="btn text-light">Post Course</button>
         </nav>
 
         <!-- User list table -->
