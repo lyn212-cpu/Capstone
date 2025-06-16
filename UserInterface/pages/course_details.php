@@ -248,11 +248,33 @@ if (isset($_GET['id'])) {
             const modal = new bootstrap.Modal(document.getElementById('successModal'));
             window.onload = () => modal.show();
         </script>
-    <?php elseif (!empty($error)): ?>
+    <?php endif; ?>
+
+    <?php if (!empty($error)): ?>
+        <!-- Error Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-danger">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="errorModalLabel">Registration Failed</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php echo htmlspecialchars($error); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
-            alert("<?php echo $error; ?>");
+            const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            window.onload = () => errorModal.show();
         </script>
     <?php endif; ?>
+
 
 </body>
 
