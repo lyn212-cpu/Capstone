@@ -15,7 +15,8 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap");
 
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             font-family: "Work Sans", sans-serif;
@@ -44,7 +45,8 @@
             padding: 40px;
             max-width: 800px;
             width: 100%;
-            font-size: 1.1rem; /* Increased from 0.95rem */
+            font-size: 1.1rem;
+            /* Increased from 0.95rem */
         }
 
         h2 {
@@ -85,8 +87,10 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
                                 <li><a class="dropdown-item" href="./userProfile.php"><i class="fa fa-user me-2"></i>Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
                             </ul>
                         </div>
                     </div>
