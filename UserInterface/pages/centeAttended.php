@@ -64,10 +64,6 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <a class="nav-link active text-light" aria-current="page" href="./centeAttended.php">Center
                         Attended</a>
                 </li>
-                <li class="nav-item  p-2 mb-2 d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-comment text-light"></i>
-                    <a class="nav-link active  text-light" aria-current="page" href="./myFeedback.php">My FeedBack</a>
-                </li>
             </ul>
         </div>
         <!-- SideBar--------------------------------------------------------------->
