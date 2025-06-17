@@ -4,42 +4,51 @@ session_start();
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $school_number = $_POST['school_number'] ?? '';
-    $password = $_POST['password'] ?? '';
+$school_number = trim($_POST['school_number'] ?? '');
+$password = trim($_POST['password'] ?? '');
 
-    // Hardcoded super admin check
-    if ($school_number === '0000-11111-MN-0' && $password === '123456') {
-        $_SESSION['user_id'] = 'super_admin';
-        header("Location: ../Admin/super_admin/Dashboard.php");
-        exit;
-    }
+if ($school_number && $password) {
+    $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE school_number = ?");
+    $stmt->bind_param("s", $school_number);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($school_number && $password) {
-        $stmt = $conn->prepare("SELECT user_id, password FROM users WHERE school_number = ?");
-        $stmt->bind_param("s", $school_number);
-        $stmt->execute();
-        $stmt->store_result();
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($user_id, $hashed_password, $role);
+        $stmt->fetch();
 
-        if ($stmt->num_rows === 1) {
-            $stmt->bind_result($user_id, $hashed_password);
-            $stmt->fetch();
-            if (password_verify($password, $hashed_password)) {
-                $_SESSION['user_id'] = $user_id;
-                header("Location: index.php");
-                exit;
-            } else {
-                $error = "Invalid school number or password.";
+        if (password_verify($password, $hashed_password)) {
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['role'] = $role;
+
+            switch ($school_number) {
+                case 'superadmin':
+                    header("Location: ../Admin/super_admin/Dashboard.php");
+                    break;
+                case 'staffadmin':
+                    header("Location: ../Admin/admin/Dashboard.php");
+                    break;
+                case 'centeradmin':
+                    header("Location: ../Admin/center_admin/Courses.php");
+                    break;
+                default:
+                    header("Location: index.php");
+                    break;
             }
+            exit;
         } else {
             $error = "Invalid school number or password.";
         }
-        $stmt->close();
     } else {
-        $error = "Please enter both school number and password.";
+        $error = "Invalid school number or password.";
     }
+    $stmt->close();
+} else {
+    $error = "Please enter both school number and password.";
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
