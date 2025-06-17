@@ -77,28 +77,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <!-- Password -->
                 <div class="flex items-center bg-white rounded-lg px-3 py-2 relative">
+                    <!-- Lock Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
                         class="h-5 w-5 text-black mr-2">
                         <path
                             d="M12 17a2 2 0 100-4 2 2 0 000 4zm6-6V9a6 6 0 00-12 0v2H4v10h16V11h-2zm-8-2a4 4 0 118 0v2H10V9z" />
                     </svg>
-                    <input type="password" name="password" id="password" placeholder="Password"
-                        class="w-full text-black focus:outline-none pr-10" required>
 
-                    <!-- Eye toggle button -->
-                    <button type="button" id="togglePassword" class="absolute right-3 focus:outline-none">
-                        <!-- Start with closed eye (hidden password) -->
-                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19
-                            c-5.523 0-10-5.373-10-7s4.477-7 10-7
-                            c1.176 0 2.296.24 3.324.675
-                            m3.351 2.349A9.964 9.964 0 0122 12
-                            c0 1.627-4.477 7-10 7a9.953 9.953 0 01-4.901-1.274
-                            M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <!-- Input -->
+                    <input type="password" name="password" id="signInPassword" placeholder="Password"
+                        class="w-full text-black focus:outline-none pr-10" required />
+
+                    <!-- Eye toggle -->
+                    <button type="button" id="signInTogglePassword" class="absolute right-3">
+                        <!-- Eye Slash (hidden password) -->
+                        <svg id="signInEyeSlash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" class="h-5 w-5 text-black">
+                            <path
+                                d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+                            <path
+                                d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+                            <path
+                                d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+                        </svg>
+
+                        <!-- Eye Open (visible password) -->
+                        <svg id="signInEyeOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" class="h-5 w-5 text-black hidden">
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                            <path fill-rule="evenodd"
+                                d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                                clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
+
 
                 <button type="submit"
                     class="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-lg font-semibold">
@@ -152,38 +165,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- JavaScript -->
         <script>
-            const passwordInput = document.getElementById('password');
-            const togglePassword = document.getElementById('togglePassword');
-            const eyeIcon = document.getElementById('eyeIcon');
+            const signInPassword = document.getElementById("signInPassword");
+            const signInToggle = document.getElementById("signInTogglePassword");
+            const eyeOpen = document.getElementById("signInEyeOpen");
+            const eyeSlash = document.getElementById("signInEyeSlash");
 
-            let isVisible = false;
-
-            togglePassword.addEventListener('click', () => {
-                isVisible = !isVisible;
-
-                if (isVisible) {
-                    passwordInput.type = 'text';
-                    // Eye Open Icon (👁️)
-                    eyeIcon.innerHTML = `
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z
-                    M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7
-                    c-1.274 4.057-5.065 7-9.542 7S3.732 16.057 2.458 12z" />
-            `;
-                } else {
-                    passwordInput.type = 'password';
-                    // Eye Closed/Slashed Icon (🙈)
-                    eyeIcon.innerHTML = `
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13.875 18.825A10.05 10.05 0 0112 19
-                    c-5.523 0-10-5.373-10-7s4.477-7 10-7
-                    c1.176 0 2.296.24 3.324.675
-                    m3.351 2.349A9.964 9.964 0 0122 12
-                    c0 1.627-4.477 7-10 7a9.953 9.953 0 01-4.901-1.274
-                    M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            `;
-                }
+            signInToggle.addEventListener("click", () => {
+                const isHidden = signInPassword.type === "password";
+                signInPassword.type = isHidden ? "text" : "password";
+                eyeOpen.classList.toggle("hidden", !isHidden);
+                eyeSlash.classList.toggle("hidden", isHidden);
             });
+
 
             // Terms Modal
             const openTerms = document.getElementById('openTerms');
