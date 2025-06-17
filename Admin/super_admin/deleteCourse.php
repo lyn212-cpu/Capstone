@@ -1,18 +1,15 @@
 <?php
 include '../../Backend/connect.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['course_id'])) {
-    $course_id = $_POST['course_id'];
-    $stmt = $conn->prepare("DELETE FROM nc_course WHERE course_id = ?");
-    $stmt->bind_param("i", $course_id);
+if (isset($_GET['course_id'])) {
+    $course_id = mysqli_real_escape_string($conn, $_GET['course_id']);
+    $sql = "DELETE FROM nc_course WHERE course_id = '$course_id'";
 
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true, 'message' => 'Course deleted successfully.']);
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Post has been disapproved'); window.location.href='Courses.php';</script>";
     } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to delete course.']);
+        echo "<script>alert('Error removing course'); window.location.href='Courses.php';</script>";
     }
-    $stmt->close();
-    $conn->close();
 } else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request.']);
+    echo "<script>alert('Invalid course selection'); window.location.href='Courses.php';</script>";
 }

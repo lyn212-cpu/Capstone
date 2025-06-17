@@ -1,11 +1,29 @@
 <?php
-session_start();
 include '../../Backend/connect.php';
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Sign_in.php");
-    exit();
+session_start();
+
+$course_count = 0;
+$feedback_count = 0;
+
+// Query the database to get the total number of courses
+$course_query = "SELECT COUNT(course_id) AS total_courses FROM nc_course";
+$course_result = $conn->query($course_query);
+
+if ($course_result && $row = $course_result->fetch_assoc()) {
+    $course_count = $row['total_courses'];
 }
+
+// Query the database to get the total number of approved feedback
+$feedback_query = "SELECT COUNT(feedback_id) AS total_feedback FROM feedback WHERE status = 'approved'";
+$feedback_result = $conn->query($feedback_query);
+
+if ($feedback_result && $row = $feedback_result->fetch_assoc()) {
+    $feedback_count = $row['total_feedback'];
+}
+
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +53,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <!-- SideBar--------------------------------------------------------------->
         <?php
-        include_once '../../include/superAdmin_sideBar.php';
+        include_once '../../include/admin_sideBar.php';
         ?>
         <!-- SideBar--------------------------------------------------------------->
         <div class="d-flex justify-content-evenly align-items-center p-2">
@@ -60,8 +78,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a>
-                        <!-- Redirects to login.php -->
+                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -85,30 +102,20 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h5>Available Courses</h5>
-                            <h3>200</h3>
+                            <h3><?= $course_count ?></h3>
                         </div>
                         <i class="fa-solid fa-bookmark text-light"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-10 col-sm-12">
-                <div style="background-color: #190960" class="card text-light p-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5>Training Center</h5>
-                            <h3>20</h3>
-                        </div>
-                        <i class="fa-solid fa-school-circle-check text-light"></i>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="col-lg-3 col-md-10 col-sm-12">
                 <div style="background-color: #190960" class="card text-light p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h5>Feedback</h5>
-                            <h3>100</h3>
+                            <h3><?= $feedback_count ?></h3>
                         </div>
                         <i class="fa-solid fa-comment"></i>
                     </div>
@@ -117,12 +124,13 @@ if (!isset($_SESSION['user_id'])) {
         </section>
 
         <!--User list table-->
-        <form id="deleteForm" action="deleteUser.php" method="POST">
+        <form id="deleteForm" action="deleteUser.php" method="POST" onsubmit="return confirmDelete();">
+
             <table id="datatablesSimple" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>
-                            <button type="button" class="btn btn-danger btn-sm" id="deleteButton">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete();">
                                 Delete
                             </button>
                         </th>
@@ -134,18 +142,21 @@ if (!isset($_SESSION['user_id'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT user_id, school_number, full_name, course, year_level FROM users";
-                    $result = $conn->query($sql);
-                    if ($result && $result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                    $sql = "SELECT school_number, full_name, course, year_level FROM users";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
-                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . htmlspecialchars($row['user_id'], ENT_QUOTES) . "'></td>";
+                            echo "<td><input type='checkbox' name='delete_ids[]' value='" . $row['school_number'] . "'></td>";
                             echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['course']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['year_level']) . "</td>";
                             echo "</tr>";
                         }
+                    } else {
+                        echo "<tr><td colspan='5' class='text-center'>No users found.</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -153,46 +164,12 @@ if (!isset($_SESSION['user_id'])) {
         </form>
     </main>
 
-    <!-- Modal for Delete Confirmation -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete the selected user/s?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
+
     <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-
-    <script>
-        document.getElementById('deleteButton').addEventListener('click', function () {
-            const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]:checked');
-            if (checkboxes.length > 0) {
-                const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-                deleteModal.show();
-            } else {
-                alert('Please select at least one user to delete.');
-            }
-        });
-
-        document.getElementById('confirmDeleteButton').addEventListener('click', function () {
-            document.getElementById('deleteForm').submit();
-        });
-    </script>
 </body>
 
 </html>

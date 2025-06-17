@@ -2,25 +2,20 @@
 include '../../Backend/connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_ids'])) {
-    $deleteIds = $_POST['delete_ids'];
+    $delete_ids = $_POST['delete_ids'];
 
-    if (!empty($deleteIds)) {
-        $placeholders = implode(',', array_fill(0, count($deleteIds), '?'));
-        $stmt = $conn->prepare("DELETE FROM users WHERE user_id IN ($placeholders)");
-
-        $stmt->bind_param(str_repeat('i', count($deleteIds)), ...$deleteIds);
-
-        if ($stmt->execute()) {
-            header('Location: Dashboard.php?success=Users deleted successfully');
-        } else {
-            header('Location: Dashboard.php?error=Failed to delete users');
-        }
-
-        $stmt->close();
-    } else {
-        header('Location: Dashboard.php?error=No users selected');
+    foreach ($delete_ids as $id) {
+        // Use prepared statements to avoid SQL injection
+        $stmt = $conn->prepare("DELETE FROM users WHERE school_number = ?");
+        $stmt->bind_param("s", $id); // "s" means string, assuming school_number is stored as string
+        $stmt->execute();
     }
+
+    // Redirect back to dashboard after deletion
+    header("Location: Dashboard.php");
+    exit();
 } else {
-    header('Location: Dashboard.php');
+    // If someone tries to access this page directly without POST data
+    header("Location: Dashboard.php");
+    exit();
 }
-?>

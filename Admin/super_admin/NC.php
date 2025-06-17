@@ -57,7 +57,7 @@ include '../../Backend/connect.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../../include/logout.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
+                        <a href="login.php" class="btn btn-danger">Logout</a> <!-- Redirects to login.php -->
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ include '../../Backend/connect.php';
                 <button class="btn" type="button" id="btn_menu">
                     <img style="height: 20px; width: 20px" src="../../Assets/menu.png" alt="menu">
                 </button>
-                <h3 style="color: #190960" class="fw-bold">Manage Feedback</h3>
+                <h3 style="color: #190960" class="fw-bold">Manage National Certificate Form</h3>
             </div>
         </header>
 
@@ -77,74 +77,85 @@ include '../../Backend/connect.php';
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="Dashboard.php">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Feedback Management</li>
+                    <li class="breadcrumb-item active" aria-current="page">NC Management</li>
                 </ol>
             </nav>
         </nav>
+
         <!--     User list table-->
         <div class="card mb-4 bg-transparent ">
             <div style="background-color: #190960" class="card-header text-light">
                 <i class="fas fa-table me-1"></i>
-                Feedback List
+                National Certificate Form List
             </div>
-            <div class="card-body">
-                <table id="datatablesSimple" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>School Number</th> <!-- Added -->
-                            <th>Course</th>
-                            <th>Feedback</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
 
+            <table id="datatablesSimple" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Section Code</th>
+                        <th>School Number</th>
+                        <th>National Certificate</th>
+                        <th>Upload Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT 
+    u.full_name, 
+    u.school_number, 
+    CONCAT(u.course, ' - ', u.year_level) AS section_code,
+    c.certificate_name, 
+    c.upload_date,
+    c.status,
+    c.file_path
+FROM users u
+LEFT JOIN certificates c ON u.user_id = c.user_id
+WHERE c.status IS NOT NULL
+ORDER BY u.full_name ASC";
 
-                    <tbody>
-                        <?php
-                        $query = "
-    SELECT 
-        feedback.feedback_id, 
-        users.full_name, 
-        users.course, 
-        users.school_number, 
-        feedback.feedback, 
-        feedback.status 
-    FROM 
-        feedback 
-    INNER JOIN users ON feedback.user_id = users.user_id
-";
+                    $result = mysqli_query($conn, $sql);
 
-
-                        $result = mysqli_query($conn, $query);
+                    if ($result && mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
-                            echo "<td>" . $row['full_name'] . "</td>";
-                            echo "<td>" . $row['school_number'] . "</td>"; // Added this line
-                            echo "<td>" . $row['course'] . "</td>";
-                            echo "<td>" . $row['feedback'] . "</td>";
-                            echo "<td>" . ucfirst($row['status']) . "</td>";
-                            echo "<td>
-        <form method='post' action='feedback_action.php' style='display:inline-block;'>
-            <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
-            <input type='hidden' name='action' value='approve'>
-            <button type='submit' class='btn btn-success btn-sm'>Approve</button>
-        </form>
-        <form method='post' action='feedback_action.php' style='display:inline-block; margin-left: 5px;'>
-            <input type='hidden' name='feedback_id' value='" . $row['feedback_id'] . "'>
-            <input type='hidden' name='action' value='disapprove'>
-            <button type='submit' class='btn btn-danger btn-sm'>Disapprove</button>
-        </form>
-    </td>";
+                            echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['section_code']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['school_number']) . "</td>";
+
+                            if (!empty($row['file_path']) && file_exists('../../' . $row['file_path'])) {
+                                $certificateDisplay = htmlspecialchars(pathinfo($row['file_path'], PATHINFO_FILENAME));
+                                echo "<td><a href='../../" . htmlspecialchars($row['file_path']) . "' target='_blank'>" . $certificateDisplay . "</a></td>";
+                            } else {
+                                echo "<td><em>No certificate</em></td>";
+                            }
+
+                            echo "<td>" . (!empty($row['upload_date']) ? htmlspecialchars($row['upload_date']) : '<em>--</em>') . "</td>";
+                            echo "<td>";
+                            if (!empty($row['certificate_name']) && $row['status'] === 'pending') {
+                                echo '<form action="handleCertificateStatus.php" method="post" class="d-flex gap-1">';
+                                echo '<input type="hidden" name="certificate_name" value="' . htmlspecialchars($row['certificate_name']) . '">';
+                                echo '<button name="action" value="approve" class="btn btn-success btn-sm">Approve</button>';
+                                echo '<button name="action" value="disapprove" class="btn btn-danger btn-sm">Disapprove</button>';
+                                echo '</form>';
+                            } elseif ($row['status'] === 'approved') {
+                                echo '<span class="text-success">Approved</span>';
+                            } elseif ($row['status'] === 'disapproved') {
+                                echo '<span class="text-danger">Disapproved</span>';
+                            } else {
+                                echo '<em>--</em>';
+                            }
+                            echo "</td>";
                             echo "</tr>";
                         }
-
-                        ?>
-                    </tbody>
-
-                </table>
-            </div>
+                    } else {
+                        echo "<tr><td colspan='6' class='text-center'>No data found.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
         </div>
     </main>
 
@@ -157,7 +168,7 @@ include '../../Backend/connect.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this feedback?
+                    Are you sure you want to delete this?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -169,7 +180,12 @@ include '../../Backend/connect.php';
 
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="../../JS_CSS_Admin/js_dashboard.js"></script>
+    <script src="/Capstone/JS_CSS_Admin/js_nc.js"></script>
+    <script>
+        // Initialize the Simple-DataTables library for the table
+        const table = document.querySelector('#datatablesSimple');
+        const dataTable = new simpleDatatables.DataTable(table);
+    </script>
 </body>
 
 </html>
