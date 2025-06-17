@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="min-h-screen bg-cover bg-center flex items-center justify-center"
-    style="background-image: url('background.jpg');">
+    style="background-image: url('background1.jpg');">
     <div class="bg-indigo-900 bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-sm w-full text-white">
         <div class="flex flex-col items-center mb-6">
             <img src="white logo.png" alt="NC Finder Logo" class="h-16 mb-2" />
@@ -199,14 +199,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 termsModal.classList.add('hidden');
                 termsModal.classList.remove('flex');
             }
-            document.querySelector('form').addEventListener('submit', function (e) {
+            document.querySelector('form').addEventListener('submit', function(e) {
                 const checkbox = document.getElementById('mainTermsCheckbox');
                 if (!checkbox.checked) {
                     e.preventDefault(); // Stop form submission
                     alert('You must agree to the Terms and Conditions before logging in.');
                 }
             });
-
         </script>
 
 </body>

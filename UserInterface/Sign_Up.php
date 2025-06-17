@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="min-h-screen bg-cover bg-center flex items-center justify-center"
-    style="background-image: url('background.jpg');">
+    style="background-image: url('background1.jpg');">
     <div class="bg-indigo-900 bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-sm w-full text-white">
         <div class="flex flex-col items-center mb-6">
 
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
             <script>
-                setTimeout(function () {
+                setTimeout(function() {
                     var success = document.getElementById('successMsg');
                     var error = document.getElementById('errorMsg');
                     if (success) success.style.display = 'none';
