@@ -92,12 +92,14 @@ include '../../Backend/connect.php';
                     <thead>
                         <tr>
                             <th>Username</th>
+                            <th>School Number</th> <!-- Added -->
                             <th>Course</th>
                             <th>Feedback</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
+
 
                     <tbody>
                         <?php
@@ -106,6 +108,7 @@ include '../../Backend/connect.php';
         feedback.feedback_id, 
         users.full_name, 
         users.course, 
+        users.school_number, 
         feedback.feedback, 
         feedback.status 
     FROM 
@@ -113,10 +116,12 @@ include '../../Backend/connect.php';
     INNER JOIN users ON feedback.user_id = users.user_id
 ";
 
+
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
                             echo "<td>" . $row['full_name'] . "</td>";
+                            echo "<td>" . $row['school_number'] . "</td>"; // Added this line
                             echo "<td>" . $row['course'] . "</td>";
                             echo "<td>" . $row['feedback'] . "</td>";
                             echo "<td>" . ucfirst($row['status']) . "</td>";
@@ -134,6 +139,7 @@ include '../../Backend/connect.php';
     </td>";
                             echo "</tr>";
                         }
+
                         ?>
                     </tbody>
 
