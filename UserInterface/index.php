@@ -313,75 +313,36 @@ if (isset($_POST['submit_feedback'])) {
             </a>
             <!--  category card end  -->
     </section>
-    <!--  Training Center  -->
-    <section id="topTraining"
-        class="container-fluid d-flex flex-column justify-content-center align-items-center p-5 text-light">
+            <!--  Training Center  -->
+            <section id="topTraining"
+                class="container-fluid d-flex flex-column justify-content-center align-items-center text-light"
+                style="min-height: 100vh; padding: 100px 0;">
 
-        <div class="container row gap-3 mt-5 justify-content-center align-items-center">
+                <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+                    <h2 class="fw-bold mb-4" style="font-size: 3.5rem;">Vision</h2>
+                    <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
+                        To empower PUP ITECH students with accessible, organized, and reliable information on skills training
+                        and certification opportunities that support academic and career success.
+                    </p>
 
-        </div>
-
-        <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
-            <div>
-                <h3>
-                    Discover TESDA Opportunities
-                    for PUP Students
-                </h3>
-                <p style="color: #c5bdbd" class="col-lg-6">
-                    Bridging your skills to success! Explore TESDA programmes tailored for PUP students and take the
-                    first step towards a brighter career.
-                </p>
-
-                <div href="#" class="container-fluid row gap-3">
-                    <div class="col-lg-6 d-lg-flex gap-3">
-                        <i class="fa-solid fs-1 text-light fa-book"></i>
-                        <div>
-                            <h5>Centralised Course Information</h5>
-                            <p style="color: #c5bdbd">
-                                TESDA Finder brings together all the necessary details about TESDA-accredited courses in
-                                one convenient platform. You can easily search and explore courses by location,
-                                specialisation, and schedule, all in one place.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 d-lg-flex gap-3 container-fluid-sm">
-                        <i class="fa-solid fs-1 text-l  ight fa-comments"></i>
-                        <div>
-                            <h5>Student Feedback and Reviews</h5>
-                            <p style="color: #c5bdbd">
-                                We make it easier for you to make informed decisions. Check out real feedback from
-                                fellow students about different training centres, helping you choose the right course
-                                based on trusted experiences.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-6 d-lg-flex gap-3">
-                        <i class="fa-solid text-light fs-1 fa-certificate"></i>
-                        <div>
-                            <h5>Course Legitimacy Verification</h5>
-                            <p style="color: #c5bdbd">
-                                To ensure the credibility of the training centres, we allow you to upload your
-                                Certificate of Completion (COC). This provides a secure way to validate the legitimacy
-                                of the courses and training centres you’re interested in.
-                            </p>
-                        </div>
-                    </div>
+                    <h2 class="fw-bold mt-5 mb-4" style="font-size: 3.5rem;">Mission</h2>
+                    <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
+                        Our mission is to provide a user-friendly platform that connects ITECH students to relevant
+                        TESDA-aligned courses and training centers, enabling them to fulfill graduation requirements and
+                        enhance their professional readiness.
+                    </p>
                 </div>
-            </div>
-    </section>
+            </section>
 
-    <section class="container-fluid p-5 mt-5">
-        <div class="text-center">
-            <h3>Students Feedback</h3>
-            <p>Honest Review From Real Students</p>
-        </div>
-        <div class="row justify-content-center mt-5 g-4" id="feedbackContainer">
-            <!-- Dynamic feedback will go here -->
-        </div>
-    </section>
+            <section class="container-fluid p-5 mt-5">
+                <div class="text-center">
+                    <h3>Students Feedback</h3>
+                    <p>Honest Review From Real Students</p>
+                </div>
+                <div class="row justify-content-center mt-5 g-4" id="feedbackContainer">
+                    <!-- Dynamic feedback will go here -->
+                </div>
+            </section>
 
     <!-- Modal for login -->
     <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
