@@ -142,7 +142,8 @@ if ($feedback_result && $row = $feedback_result->fetch_assoc()) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT school_number, full_name, course, year_level FROM users";
+                    // Only fetch users with role = 'Student'
+                    $sql = "SELECT school_number, full_name, course, year_level FROM users WHERE role = 'Student'";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result && mysqli_num_rows($result) > 0) {
@@ -160,6 +161,7 @@ if ($feedback_result && $row = $feedback_result->fetch_assoc()) {
                     }
                     ?>
                 </tbody>
+
             </table>
         </form>
     </main>
