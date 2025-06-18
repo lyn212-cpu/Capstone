@@ -7,55 +7,54 @@ $error = "";
 $school_number = trim($_POST['school_number'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
-if ($school_number && $password) {
-    $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE school_number = ?");
-    $stmt->bind_param("s", $school_number);
-    $stmt->execute();
-    $stmt->store_result();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($school_number && $password) {
+        $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE school_number = ?");
+        $stmt->bind_param("s", $school_number);
+        $stmt->execute();
+        $stmt->store_result();
 
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($user_id, $hashed_password, $role);
-        $stmt->fetch();
+        if ($stmt->num_rows === 1) {
+            $stmt->bind_result($user_id, $hashed_password, $role);
+            $stmt->fetch();
 
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['role'] = $role;
+            if (password_verify($password, $hashed_password)) {
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['role'] = $role;
 
-            switch ($school_number) {
-                case 'superadmin':
-                    header("Location: ../Admin/super_admin/Dashboard.php");
-                    break;
-                case 'staffadmin':
-                    header("Location: ../Admin/admin/Dashboard.php");
-                    break;
-                case 'centeradmin':
-                    header("Location: ../Admin/center_admin/Courses.php");
-                    break;
-                default:
-                    header("Location: index.php");
-                    break;
+                switch ($school_number) {
+                    case 'superadmin':
+                        header("Location: ../Admin/super_admin/Dashboard.php");
+                        break;
+                    case 'staffadmin':
+                        header("Location: ../Admin/admin/Dashboard.php");
+                        break;
+                    case 'centeradmin':
+                        header("Location: ../Admin/center_admin/Courses.php");
+                        break;
+                    default:
+                        header("Location: index.php");
+                        break;
+                }
+                exit;
+            } else {
+                $error = "Invalid school number or password.";
             }
-            exit;
         } else {
             $error = "Invalid school number or password.";
         }
+        $stmt->close();
     } else {
-        $error = "Invalid school number or password.";
+        $error = "Please enter both school number and password.";
     }
-    $stmt->close();
-} else {
-    $error = "Please enter both school number and password.";
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NC Finder - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -68,7 +67,10 @@ if ($school_number && $password) {
             <h2 class="text-lg font-semibold mb-4">Enter Your Account</h2>
 
             <?php if ($error): ?>
-                <div class="bg-red-500 text-white p-2 rounded mb-4 w-full text-center"><?= htmlspecialchars($error) ?></div>
+                <div id="errorMessage"
+                    class="bg-red-500 text-white p-2 rounded mb-4 w-full text-center transition-opacity duration-500 opacity-100">
+                    <?= htmlspecialchars($error) ?>
+                </div>
             <?php endif; ?>
 
             <form class="space-y-4" method="POST" action="">
@@ -86,20 +88,14 @@ if ($school_number && $password) {
 
                 <!-- Password -->
                 <div class="flex items-center bg-white rounded-lg px-3 py-2 relative">
-                    <!-- Lock Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
                         class="h-5 w-5 text-black mr-2">
                         <path
                             d="M12 17a2 2 0 100-4 2 2 0 000 4zm6-6V9a6 6 0 00-12 0v2H4v10h16V11h-2zm-8-2a4 4 0 118 0v2H10V9z" />
                     </svg>
-
-                    <!-- Input -->
                     <input type="password" name="password" id="signInPassword" placeholder="Password"
                         class="w-full text-black focus:outline-none pr-10" required />
-
-                    <!-- Eye toggle -->
                     <button type="button" id="signInTogglePassword" class="absolute right-3">
-                        <!-- Eye Slash (hidden password) -->
                         <svg id="signInEyeSlash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             fill="currentColor" class="h-5 w-5 text-black">
                             <path
@@ -109,8 +105,6 @@ if ($school_number && $password) {
                             <path
                                 d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
                         </svg>
-
-                        <!-- Eye Open (visible password) -->
                         <svg id="signInEyeOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             fill="currentColor" class="h-5 w-5 text-black hidden">
                             <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -120,7 +114,6 @@ if ($school_number && $password) {
                         </svg>
                     </button>
                 </div>
-
 
                 <button type="submit"
                     class="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-lg font-semibold">
@@ -141,39 +134,15 @@ if ($school_number && $password) {
                     <input type="checkbox" id="mainTermsCheckbox" name="terms" required>
                     <label for="mainTermsCheckbox" class="text-xs">
                         I agree to the
-                        <button type="button" id="openTerms" class="text-blue-400 underline">Terms and
-                            Conditions</button>
+                        <button type="button" id="openTerms" class="text-blue-400 underline">Terms and Conditions</button>
                     </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div id="termsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative text-black">
-                <button onclick="closeModal()"
-                    class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold">&times;</button>
-                <h3 class="text-lg font-bold mb-4 text-center text-indigo-900">Terms and Conditions</h3>
-                <div class="overflow-y-auto max-h-60 text-sm text-gray-700 space-y-2">
-                    <p>Welcome to NC Finder. By signing in, you agree to the following terms and conditions:</p>
-                    <ul class="list-disc pl-6 space-y-1">
-                        <li>Your login credentials are confidential and must not be shared.</li>
-                        <li>You are responsible for all activity under your account.</li>
-                        <li>Do not use the system for illegal or harmful activities.</li>
-                        <li>We may collect anonymous usage data to improve the service.</li>
-                        <li>Violation of terms may result in account suspension.</li>
-                    </ul>
-                    <p>Thank you for using NC Finder responsibly!</p>
-                </div>
-                <div class="mt-4 text-right">
-                    <button onclick="closeModal()"
-                        class="bg-sky-400 hover:bg-sky-500 text-white px-4 py-2 rounded-md">Close</button>
                 </div>
             </div>
         </div>
 
         <!-- JavaScript -->
         <script>
+            // Eye toggle logic
             const signInPassword = document.getElementById("signInPassword");
             const signInToggle = document.getElementById("signInTogglePassword");
             const eyeOpen = document.getElementById("signInEyeOpen");
@@ -185,7 +154,6 @@ if ($school_number && $password) {
                 eyeOpen.classList.toggle("hidden", !isHidden);
                 eyeSlash.classList.toggle("hidden", isHidden);
             });
-
 
             // Terms Modal
             const openTerms = document.getElementById('openTerms');
@@ -201,15 +169,25 @@ if ($school_number && $password) {
                 termsModal.classList.add('hidden');
                 termsModal.classList.remove('flex');
             }
+
             document.querySelector('form').addEventListener('submit', function(e) {
-                const checkbox = document.getElementById('mainTermsCheckbox');
-                if (!checkbox.checked) {
-                    e.preventDefault(); // Stop form submission
+                if (!mainTermsCheckbox.checked) {
+                    e.preventDefault();
                     alert('You must agree to the Terms and Conditions before logging in.');
                 }
             });
-        </script>
 
+            // Fade out error message after 2 seconds
+            window.addEventListener("DOMContentLoaded", () => {
+                const errorBox = document.getElementById("errorMessage");
+                if (errorBox) {
+                    setTimeout(() => {
+                        errorBox.style.opacity = "0";
+                        setTimeout(() => errorBox.remove(), 500);
+                    }, 2000);
+                }
+            });
+        </script>
 </body>
 
 </html>
