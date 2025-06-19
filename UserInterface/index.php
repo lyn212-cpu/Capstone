@@ -83,6 +83,7 @@ if (isset($_POST['submit_feedback'])) {
                         <li class="nav-item">
                             <a style="color: #190960" class="nav-link fw-bold" href="./pages/about_us.php">About Us</a>
                         </li>
+                        <li class="nav-item"><a class="nav-link active" href="./pages/Announcements.php">Announcements</a></li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">
                         <div class="dropdown">

@@ -77,6 +77,7 @@
                         <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="./FindCourse.php">Courses</a></li>
                         <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="contact_us.php">Contact Us</a></li>
                         <li class="nav-item"><a class="nav-link fw-bold" style="color: #190960;" href="./about_us.php">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./Announcements.php">Announcements</a></li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-end p-2">
                         <div class="dropdown">

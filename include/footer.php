@@ -6,6 +6,7 @@
                 <a href="./privacy_and_policy.php" class="text-white text-decoration-underline mx-2">Privacy Policy</a>
                 <a href="./terms_and_condition.php" class="text-white text-decoration-underline mx-2">Terms and
                     Conditions</a>
+                <a href="./FAQ.php" class="text-white text-decoration-underline mx-2">FAQ</a>
             </div>
         </div>
         <div class="row">
