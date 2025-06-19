@@ -2,7 +2,6 @@
 session_start();
 include '../../Backend/connect.php';
 
-// Make sure user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../login.php");
     exit;
@@ -15,7 +14,6 @@ $error = "";
 if (isset($_POST['register']) && isset($_POST['course_id'])) {
     $course_id = $_POST['course_id'];
 
-    // Check if user already registered
     $check_sql = "SELECT COUNT(*) AS total FROM registrations WHERE user_id = ?";
     $check_stmt = $conn->prepare($check_sql);
     $check_stmt->bind_param("i", $user_id);
@@ -26,7 +24,6 @@ if (isset($_POST['register']) && isset($_POST['course_id'])) {
     if ($already_registered > 0) {
         $error = "You have already registered to a training center.";
     } else {
-        // Get available slots
         $sql = "SELECT slots_available FROM nc_course WHERE course_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $course_id);
@@ -37,26 +34,23 @@ if (isset($_POST['register']) && isset($_POST['course_id'])) {
         if ($course_data && $course_data['slots_available'] > 0) {
             $new_slots = $course_data['slots_available'] - 1;
 
-            // Register user
             $reg_sql = "INSERT INTO registrations (user_id, course_id, registered_at) VALUES (?, ?, NOW())";
             $reg_stmt = $conn->prepare($reg_sql);
             $reg_stmt->bind_param("ii", $user_id, $course_id);
             $reg_stmt->execute();
 
-            // Update slot
             $update_sql = "UPDATE nc_course SET slots_available = ? WHERE course_id = ?";
             $update_stmt = $conn->prepare($update_sql);
             $update_stmt->bind_param("ii", $new_slots, $course_id);
             $update_stmt->execute();
 
-            $success = true; // trigger modal
+            $success = true;
         } else {
             $error = "Sorry, no slots available.";
         }
     }
 }
 
-// Get course details
 if (isset($_GET['id'])) {
     $course_id = $_GET['id'];
     $sql = "SELECT * FROM nc_course WHERE course_id = ?";
@@ -67,6 +61,7 @@ if (isset($_GET['id'])) {
 
     if ($result->num_rows === 1) {
         $course = $result->fetch_assoc();
+        $status = ($course['slots_available'] <= 0) ? 'Completed' : 'Ongoing';
     } else {
         echo "Course not found.";
         exit;
@@ -84,17 +79,10 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($course['course_name']); ?> - Course Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap CSS & JS -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="../../js/bootstrap.bundle.min.js"></script>
-
-    <!-- FontAwesome for icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../Assets/style.css">
-
     <style>
         body {
             background-image: url("../../Assets/bg.jpg");
@@ -140,8 +128,6 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
@@ -150,7 +136,6 @@ if (isset($_GET['id'])) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
@@ -178,24 +163,26 @@ if (isset($_GET['id'])) {
         </div>
     </nav>
 
-    <!-- Course Details Section -->
     <div class="container py-5">
         <div class="course-box text-white shadow-lg rounded-4 p-4 p-md-5">
             <div class="row g-4 align-items-center">
-                <!-- Left Column -->
                 <div class="col-md-6">
                     <h1 class="h4 fw-bold text-white"><?php echo htmlspecialchars($course['course_name']); ?></h1>
                     <p class="fw-semibold mb-1"><?php echo htmlspecialchars($course['training_center_name']); ?></p>
                     <p><strong>Duration:</strong> <?php echo htmlspecialchars($course['duration']); ?></p>
-                    <p><strong>Slots Available:</strong> <?php echo htmlspecialchars($course['slots_available']); ?></p>
+                    <p>
+                        <strong>Slots Available:</strong> <?php echo htmlspecialchars($course['slots_available']); ?><br>
+                        <strong>Status:</strong>
+                        <span class="badge bg-<?php echo ($status === 'Completed') ? 'danger' : 'success'; ?>">
+                            <?php echo $status; ?>
+                        </span>
+                    </p>
                     <p><strong>Start Date:</strong> <?php echo htmlspecialchars($course['start_date']); ?></p>
                     <p><strong>End Date:</strong> <?php echo htmlspecialchars($course['end_date']); ?></p>
                     <p><strong>Location:</strong> <?php echo htmlspecialchars($course['location']); ?></p>
                     <p><strong>Contact:</strong> <?php echo htmlspecialchars($course['contact_info']); ?></p>
-
                     <h5 class="mt-4 fw-bold">Course Description:</h5>
                     <p><?php echo nl2br(htmlspecialchars($course['course_description'])); ?></p>
-
                     <h5 class="mt-4 fw-bold">Requirements:</h5>
                     <ul class="list-unstyled ps-3">
                         <?php
@@ -205,8 +192,6 @@ if (isset($_GET['id'])) {
                         }
                         ?>
                     </ul>
-
-                    <!-- Register Button -->
                     <?php if ($course['slots_available'] > 0): ?>
                         <form method="POST">
                             <input type="hidden" name="course_id" value="<?php echo $course['course_id']; ?>">
@@ -216,8 +201,6 @@ if (isset($_GET['id'])) {
                         <p class="mt-3 text-warning">No slots available</p>
                     <?php endif; ?>
                 </div>
-
-                <!-- Right Column -->
                 <div class="col-md-6">
                     <img src="<?php echo htmlspecialchars($course['image'] ?? '../css.jpg'); ?>" alt="Course Image" class="img-fluid course-image shadow">
                 </div>
@@ -226,7 +209,6 @@ if (isset($_GET['id'])) {
     </div>
 
     <?php if ($success): ?>
-        <!-- Success Modal -->
         <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -243,7 +225,6 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-
         <script>
             const modal = new bootstrap.Modal(document.getElementById('successModal'));
             window.onload = () => modal.show();
@@ -251,7 +232,6 @@ if (isset($_GET['id'])) {
     <?php endif; ?>
 
     <?php if (!empty($error)): ?>
-        <!-- Error Modal -->
         <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-danger">
@@ -268,14 +248,11 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-
         <script>
             const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
             window.onload = () => errorModal.show();
         </script>
     <?php endif; ?>
-
-
 </body>
 
 </html>
