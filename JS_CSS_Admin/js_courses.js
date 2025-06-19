@@ -1,11 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // DataTable
-  const datatablesSimple = document.getElementById("datatablesSimple");
-  if (datatablesSimple) {
-    new simpleDatatables.DataTable(datatablesSimple);
+  // ✅ Initialize DataTable with custom options
+  const table = document.getElementById("datatablesSimple");
+  if (table) {
+    new simpleDatatables.DataTable(table, {
+      searchable: true,
+      sortable: true,
+      fixedHeight: true,
+      perPage: 10,
+      perPageSelect: [5, 10, 25, 50, -1],
+      labels: {
+        placeholder: "Search...",
+        perPage: "{select} entries per page",
+        noRows: "No courses found",
+        info: "Showing {start} to {end} of {rows} courses",
+      },
+      columns: [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        { sortable: false }, // disable for last column
+      ],
+    });
   }
 
-  // Sidebar toggle
+  // ✅ Sidebar toggle
   const Nav = document.getElementById("collapseExample");
   const btn_menu = document.getElementById("btn_menu");
   if (btn_menu && Nav) {
@@ -19,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// ✅ Approve course
 function approveCourse(courseId) {
   if (confirm("Are you sure you want to approve this course?")) {
     window.location.href =
@@ -28,6 +53,7 @@ function approveCourse(courseId) {
   }
 }
 
+// ✅ Disapprove course
 function disapproveCourse(courseId) {
   if (confirm("Are you sure you want to **disapprove** this post?")) {
     window.location.href =

@@ -106,12 +106,19 @@ include '../../Backend/connect.php';
                             <th>Course Description</th>
                             <th>Requirements</th>
                             <th>Status</th>
+                            <th>Created At</th>
+
+                            <th class="no-sort">Actions</th>
+
+                            <!-- ✅ THIS is the missing one -->
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php
                         // Fetch data from nc_course table
-                        $sql = "SELECT course_id, course_name, training_center_name, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, location, contact_info, course_description, requirements, status FROM nc_course";
+                        $sql = "SELECT course_id, course_name, training_center_name, duration, slots_available, blockLot, street, subdivision, barangay, city, province, zipCode, location, contact_info, course_description, requirements, status, created_at FROM nc_course ORDER BY created_at DESC";
+
                         $result = mysqli_query($conn, $sql);
 
                         // Check if there are records
@@ -146,6 +153,7 @@ include '../../Backend/connect.php';
                                 echo "<td>" . htmlspecialchars($row['course_description']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
                                 echo "<td>";
 
                                 // Show Approve button only if status is "pending"
@@ -167,9 +175,10 @@ include '../../Backend/connect.php';
         </div>
     </main>
 
-    <script src="/Capstone/JS_CSS_Admin/js_courses.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
+    <script src="/Capstone/JS_CSS_Admin/js_courses.js"></script>
 </body>
 
 </html>
