@@ -314,36 +314,36 @@ if (isset($_POST['submit_feedback'])) {
             </a>
             <!--  category card end  -->
     </section>
-            <!--  Training Center  -->
-            <section id="topTraining"
-                class="container-fluid d-flex flex-column justify-content-center align-items-center text-light"
-                style="min-height: 100vh; padding: 100px 0;">
+    <!--  Training Center  -->
+    <section id="topTraining"
+        class="container-fluid d-flex flex-column justify-content-center align-items-center text-light"
+        style="min-height: 100vh; padding: 100px 0;">
 
-                <div class="container d-flex flex-column justify-content-center align-items-center text-center">
-                    <h2 class="fw-bold mb-4" style="font-size: 3.5rem;">Vision</h2>
-                    <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
-                        To empower PUP ITECH students with accessible, organized, and reliable information on skills training
-                        and certification opportunities that support academic and career success.
-                    </p>
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+            <h2 class="fw-bold mb-4" style="font-size: 3.5rem;">Vision</h2>
+            <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
+                To empower PUP ITECH students with accessible, organized, and reliable information on skills training
+                and certification opportunities that support academic and career success.
+            </p>
 
-                    <h2 class="fw-bold mt-5 mb-4" style="font-size: 3.5rem;">Mission</h2>
-                    <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
-                        Our mission is to provide a user-friendly platform that connects ITECH students to relevant
-                        TESDA-aligned courses and training centers, enabling them to fulfill graduation requirements and
-                        enhance their professional readiness.
-                    </p>
-                </div>
-            </section>
+            <h2 class="fw-bold mt-5 mb-4" style="font-size: 3.5rem;">Mission</h2>
+            <p class="col-lg-8" style="color: #c5bdbd; font-size: 1.75rem; line-height: 1.8;">
+                Our mission is to provide a user-friendly platform that connects ITECH students to relevant
+                TESDA-aligned courses and training centers, enabling them to fulfill graduation requirements and
+                enhance their professional readiness.
+            </p>
+        </div>
+    </section>
 
-            <section class="container-fluid p-5 mt-5">
-                <div class="text-center">
-                    <h3>Students Feedback</h3>
-                    <p>Honest Review From Real Students</p>
-                </div>
-                <div class="row justify-content-center mt-5 g-4" id="feedbackContainer">
-                    <!-- Dynamic feedback will go here -->
-                </div>
-            </section>
+    <section class="container-fluid p-5 mt-5">
+        <div class="text-center">
+            <h3>Students Feedback</h3>
+            <p>Honest Review From Real Students</p>
+        </div>
+        <div class="row justify-content-center mt-5 g-4" id="feedbackContainer">
+            <!-- Dynamic feedback will go here -->
+        </div>
+    </section>
 
     <!-- Modal for login -->
     <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -383,6 +383,7 @@ if (isset($_POST['submit_feedback'])) {
                         <a href="./pages/terms_and_condition.php" class="text-white text-decoration-underline mx-2">
                             Terms and Conditions
                         </a>
+                        <a href="./pages/FAQ.php" class="text-white text-decoration-underline mx-2">FAQ</a>
                     </div>
                 </div>
                 <div class="row">

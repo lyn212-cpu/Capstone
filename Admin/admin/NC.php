@@ -89,6 +89,14 @@ include '../../Backend/connect.php';
                 National Certificate Form List
             </div>
 
+            <div class="d-flex justify-content-end p-3">
+                <a href="download_nc_report.php" class="btn btn-outline-primary">
+                    <i class="fa fa-download me-1"></i> Download CSV Report
+                </a>
+            </div>
+
+
+
             <table id="datatablesSimple" class="table table-bordered">
                 <thead>
                     <tr>
