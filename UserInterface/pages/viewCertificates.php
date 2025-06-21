@@ -141,8 +141,10 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <input type="text" name="certificate_name" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="certificate_file" class="form-label">Upload Certificate (JPG or PDF Only)</label>
-                    <input type="file" name="certificate_file" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
+                    <label for="certificate_file" class="form-label">Upload Certificate (PDF Only)</label>
+                    <input type="file" name="certificate_file" class="form-control" accept="application/pdf" required>
+                    <small class="text-muted">Only PDF files are allowed. Max size: 2MB.</small>
+
                 </div>
                 <button type="submit" class="btn btn-primary">Upload</button>
             </form>
