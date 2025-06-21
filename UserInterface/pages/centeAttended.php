@@ -149,10 +149,17 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                     <?php
                     $query = "
     SELECT 
-        nc.training_center_name,
-        nc.location,
-        nc.course_name,
-        r.registered_at
+    nc.training_center_name,
+    nc.blockLot,
+    nc.street,
+    nc.subdivision,
+    nc.barangay,
+    nc.city,
+    nc.province,
+    nc.zipCode,
+    nc.course_name,
+    r.registered_at
+
     FROM 
         registrations r
     JOIN 
@@ -172,7 +179,22 @@ $user = ($result->num_rows > 0) ? $result->fetch_assoc() : null;
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row['training_center_name']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                            $location_parts = [];
+
+                            if (!empty($row['blockLot']))     $location_parts[] = $row['blockLot'];
+                            if (!empty($row['street']))       $location_parts[] = $row['street'];
+                            if (!empty($row['subdivision']))  $location_parts[] = $row['subdivision'];
+                            if (!empty($row['barangay']))     $location_parts[] = $row['barangay'];
+                            if (!empty($row['city']))         $location_parts[] = $row['city'];
+                            if (!empty($row['province']))     $location_parts[] = $row['province'];
+                            if (!empty($row['zipCode']))      $location_parts[] = $row['zipCode'];
+
+                            $location_display = !empty($location_parts)
+                                ? implode(', ', $location_parts)
+                                : ($row['location'] ?? '');
+
+                            echo "<td>" . htmlspecialchars($location_display) . "</td>";
+
                             echo "<td>" . htmlspecialchars($row['course_name']) . "</td>";
                             echo "<td>" . date("m/d/Y", strtotime($row['registered_at'])) . "</td>";
                             echo "</tr>";

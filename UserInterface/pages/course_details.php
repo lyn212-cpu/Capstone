@@ -179,7 +179,23 @@ if (isset($_GET['id'])) {
                     </p>
                     <p><strong>Start Date:</strong> <?php echo htmlspecialchars($course['start_date']); ?></p>
                     <p><strong>End Date:</strong> <?php echo htmlspecialchars($course['end_date']); ?></p>
-                    <p><strong>Location:</strong> <?php echo htmlspecialchars($course['location']); ?></p>
+                    <?php
+                    $location_parts = [];
+
+                    if (!empty($course['blockLot'])) $location_parts[] = $course['blockLot'];
+                    if (!empty($course['street'])) $location_parts[] = $course['street'];
+                    if (!empty($course['subdivision'])) $location_parts[] = $course['subdivision'];
+                    if (!empty($course['barangay'])) $location_parts[] = $course['barangay'];
+                    if (!empty($course['city'])) $location_parts[] = $course['city'];
+                    if (!empty($course['province'])) $location_parts[] = $course['province'];
+                    if (!empty($course['zipCode'])) $location_parts[] = $course['zipCode'];
+
+                    $location_display = !empty($location_parts)
+                        ? implode(', ', $location_parts)
+                        : ($course['location'] ?? '');
+                    ?>
+
+                    <p><strong>Location:</strong> <?php echo htmlspecialchars($location_display); ?></p>
                     <p><strong>Contact:</strong> <?php echo htmlspecialchars($course['contact_info']); ?></p>
                     <h5 class="mt-4 fw-bold">Course Description:</h5>
                     <p><?php echo nl2br(htmlspecialchars($course['course_description'])); ?></p>
