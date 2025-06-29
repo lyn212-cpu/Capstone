@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../Assets/style.css">
     <style>
         body {
-            background-image: url("../../Assets/bg.jpg");
+            background-image: url("../../Assets/BACKGROUND/blur_2.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             font-family: 'Segoe UI', sans-serif;
@@ -142,6 +142,7 @@ if (isset($_GET['id'])) {
                     <li class="nav-item"><a class="nav-link active" href="findcourse.php">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="about_us.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./Announcements.php">Announcements</a></li>
                 </ul>
                 <div class="d-flex align-items-center justify-content-end p-2">
                     <div class="dropdown">
@@ -218,7 +219,7 @@ if (isset($_GET['id'])) {
                     <?php endif; ?>
                 </div>
                 <div class="col-md-6">
-                    <img src="<?php echo htmlspecialchars($course['image'] ?? '../css.jpg'); ?>" alt="Course Image" class="img-fluid course-image shadow">
+                    <img src="<?php echo htmlspecialchars($course['image'] ?? '../CSS.jpg'); ?>" alt="Course Image" class="img-fluid course-image shadow">
                 </div>
             </div>
         </div>
