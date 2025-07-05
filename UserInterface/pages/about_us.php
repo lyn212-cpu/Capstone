@@ -21,7 +21,8 @@ if (!isset($_SESSION['user_id'])) {
     <title>About Us</title>
 
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
         }
@@ -44,24 +45,6 @@ if (!isset($_SESSION['user_id'])) {
         #topTraining {
             padding-top: 100px;
             padding-bottom: 50px;
-        }
-
-        #footer {
-            background-color: #190960;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        #footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        #footer a:hover {
-            text-decoration: underline;
         }
 
         p {
@@ -110,7 +93,9 @@ if (!isset($_SESSION['user_id'])) {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userMenu">
                                     <li><a class="dropdown-item" href="userProfile.php"><i class="fa fa-user me-2"></i>Profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
                                     <li><a class="dropdown-item text-danger" href="../../include/logout.php"><i class="fa fa-sign-out-alt me-2"></i>Logout</a></li>
                                 </ul>
                             </div>
@@ -124,7 +109,7 @@ if (!isset($_SESSION['user_id'])) {
         <main class="flex-fill">
             <section id="topTraining" class="container mt-3">
                 <h1 class="text-center fw-bold mb-5 display-4" style="letter-spacing: 2px; color:rgb(255, 255, 255);">ABOUT US</h1>
-                
+
                 <div class="card p-5">
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0">
@@ -154,9 +139,10 @@ if (!isset($_SESSION['user_id'])) {
         </main>
 
         <!-- FOOTER -->
-        <footer id="footer">
+        <div>
             <?php include_once '../../include/footer.php'; ?>
-        </footer>
+        </div>
     </div>
 </body>
+
 </html>

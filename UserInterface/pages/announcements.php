@@ -44,24 +44,6 @@ if (!isset($_SESSION['user_id'])) {
             padding-bottom: 50px;
         }
 
-        #footer {
-            background-color: #190960;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        #footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        #footer a:hover {
-            text-decoration: underline;
-        }
-
         p {
             color: rgb(255, 255, 255);
             font-size: 1.1rem;
@@ -178,11 +160,11 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </main>
 
+    </div>
 
-        <!-- FOOTER -->
-        <footer id="footer">
-            <?php include_once '../../include/footer.php'; ?>
-        </footer>
+    <!-- FOOTER -->
+    <div>
+        <?php include_once '../../include/footer.php'; ?>
     </div>
 </body>
 
